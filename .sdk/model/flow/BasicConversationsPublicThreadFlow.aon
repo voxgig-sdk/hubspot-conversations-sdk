@@ -1,0 +1,51 @@
+# BasicConversationsPublicThreadFlow
+
+main: kit: flow: BasicConversationsPublicThreadFlow:
+{
+  entity: "conversations_public_thread",
+  kind: "basic",
+  name: "BasicConversationsPublicThreadFlow",
+  step: [
+    {
+      input: {
+        ref: "conversations_public_thread_ref01",
+        srcdatavar: "conversations_public_thread_ref01_data",
+        suffix: "_up0",
+        textfield: "associatedTicketId"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_public_thread_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "conversations_public_thread_ref01",
+        srcdatavar: "conversations_public_thread_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "conversations_public_thread01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_public_thread_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsPublicThreadFlow"
+}

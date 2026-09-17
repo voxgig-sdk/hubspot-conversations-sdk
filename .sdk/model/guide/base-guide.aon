@@ -1,0 +1,299 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 36
+  metrics: count: path: 35
+  metrics: count: method: 48
+
+  entity: channel: {
+    path: "/conversations/custom-channels/2026-09/{channelId}": {
+      rename: param: "channelId": *"channel_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: conversations_batch_response_public_actor: {
+    path: "/conversations/conversations/2026-09/actors/batch/read": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: conversations_collection_response_public_message_forward_paging: {
+    path: "/conversations/conversations/2026-09/threads/{threadId}/messages": {
+      rename: param: "threadId": *"thread_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_collection_response_public_thread_forward_paging: {
+    path: "/conversations/conversations/2026-09/threads": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_collection_response_with_total_public_channel: {
+    path: "/conversations/conversations/2026-09/channels": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_collection_response_with_total_public_channel_account: {
+    path: "/conversations/conversations/2026-09/channel-accounts": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_collection_response_with_total_public_inbox: {
+    path: "/conversations/conversations/2026-09/inboxes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_batch_response_public_actor: {
+    path: "/conversations/v3/conversations/actors/batch/read": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: conversations_inbox_messages_collection_response_public_message: {
+    path: "/conversations/v3/conversations/threads/{threadId}/messages": {
+      rename: param: "threadId": *"thread_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_collection_response_public_thread: {
+    path: "/conversations/v3/conversations/threads": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_collection_response_with_total_public: {
+    path: "/conversations/v3/conversations/channel-accounts": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_collection_response_with_total_public2: {
+    path: "/conversations/v3/conversations/channels": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_collection_response_with_total_public3: {
+    path: "/conversations/v3/conversations/inboxes": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_public_actor: {
+    path: "/conversations/v3/conversations/actors/{actorId}": {
+      rename: param: "actorId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_public_channel: {
+    path: "/conversations/v3/conversations/channels/{channelId}": {
+      rename: param: "channelId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_public_channel_account: {
+    path: "/conversations/v3/conversations/channel-accounts/{channelAccountId}": {
+      rename: param: "channelAccountId": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.deliveryIdentifier`")|top
+    }
+  }
+
+  entity: conversations_inbox_messages_public_inbox: {
+    path: "/conversations/v3/conversations/inboxes/{inboxId}": {
+      rename: param: "inboxId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_public_message: {
+    path: "/conversations/v3/conversations/threads/{threadId}/messages": {
+      rename: param: "threadId": *"thread_id"
+      op: create: method: *POST
+    }
+    path: "/conversations/v3/conversations/threads/{threadId}/messages/{messageId}": {
+      rename: param: "messageId": *"id"
+      rename: param: "threadId": *"thread_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_public_message_content: {
+    path: "/conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content": {
+      rename: param: "messageId": *"message_id"
+      rename: param: "threadId": *"thread_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_inbox_messages_public_thread: {
+    path: "/conversations/v3/conversations/threads/{threadId}": {
+      rename: param: "threadId": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.threadAssociations`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.threadAssociations`")|top
+    }
+  }
+
+  entity: conversations_public_actor: {
+    path: "/conversations/conversations/2026-09/actors/{actorId}": {
+      rename: param: "actorId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_public_channel: {
+    path: "/conversations/conversations/2026-09/channels/{channelId}": {
+      rename: param: "channelId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_public_channel_account: {
+    path: "/conversations/conversations/2026-09/channel-accounts/{channelAccountId}": {
+      rename: param: "channelAccountId": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.deliveryIdentifier`")|top
+    }
+  }
+
+  entity: conversations_public_inbox: {
+    path: "/conversations/conversations/2026-09/inboxes/{inboxId}": {
+      rename: param: "inboxId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_public_message: {
+    path: "/conversations/conversations/2026-09/threads/{threadId}/messages": {
+      rename: param: "threadId": *"thread_id"
+      op: create: method: *POST
+    }
+    path: "/conversations/conversations/2026-09/threads/{threadId}/messages/{messageId}": {
+      rename: param: "messageId": *"id"
+      rename: param: "threadId": *"thread_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_public_message_content: {
+    path: "/conversations/conversations/2026-09/threads/{threadId}/messages/{messageId}/original-content": {
+      rename: param: "messageId": *"message_id"
+      rename: param: "threadId": *"thread_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: conversations_public_thread: {
+    path: "/conversations/conversations/2026-09/threads/{threadId}": {
+      rename: param: "threadId": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.threadAssociations`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.threadAssociations`")|top
+    }
+    path: "/conversations/conversations/2026-09/threads/{threadId}/assignee": {
+      action: "assignee": {}
+      rename: param: "threadId": *"thread_id"
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.threadAssociations`")|top
+    }
+  }
+
+  entity: custom_channels_collection_response_with_total_public_channel: {
+    path: "/conversations/custom-channels/2026-09": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: custom_channels_collection_response_with_total_public_channel2: {
+    path: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts": {
+      rename: param: "channelId": *"channel_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: custom_channels_public_channel_account: {
+    path: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts": {
+      rename: param: "channelId": *"channel_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deliveryIdentifier`")|top
+    }
+    path: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}": {
+      rename: param: "channelAccountId": *"id"
+      rename: param: "channelId": *"channel_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.deliveryIdentifier`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.deliveryIdentifier`")|top
+    }
+  }
+
+  entity: custom_channels_public_channel_account_staging_token: {
+    path: "/conversations/custom-channels/2026-09/{channelId}/channel-account-staging-tokens/{accountToken}": {
+      rename: param: "accountToken": *"id"
+      rename: param: "channelId": *"channel_id"
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.deliveryIdentifier`")|top
+    }
+  }
+
+  entity: custom_channels_public_channel_integration_channel: {
+    path: "/conversations/custom-channels/2026-09": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.capabilities`")|top
+    }
+    path: "/conversations/custom-channels/2026-09/{channelId}": {
+      rename: param: "channelId": *"channel_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.capabilities`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.capabilities`")|top
+    }
+  }
+
+  entity: custom_channels_public_conversations_message: {
+    path: "/conversations/custom-channels/2026-09/{channelId}/messages": {
+      rename: param: "channelId": *"channel_id"
+      op: create: method: *POST
+    }
+    path: "/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}": {
+      rename: param: "channelId": *"channel_id"
+      rename: param: "messageId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: public_thread: {
+    path: "/conversations/v3/conversations/threads/{threadId}": {
+      rename: param: "threadId": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: thread: {
+    path: "/conversations/conversations/2026-09/threads/{threadId}": {
+      rename: param: "threadId": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: visitor_identification_identification_token: {
+    path: "/visitor-identification/2026-09/tokens/create": {
+      op: create: method: *POST
+    }
+  }
+
+}

@@ -1,0 +1,94 @@
+package core
+
+var UtilityRegistrar func(u *Utility)
+
+var NewBaseFeatureFunc func() Feature
+
+var NewDebugFeatureFunc func() Feature
+
+var NewIdempotencyFeatureFunc func() Feature
+
+var NewMetricsFeatureFunc func() Feature
+
+var NewPagingFeatureFunc func() Feature
+
+var NewRatelimitFeatureFunc func() Feature
+
+var NewRetryFeatureFunc func() Feature
+
+var NewTestFeatureFunc func() Feature
+
+var NewTimeoutFeatureFunc func() Feature
+
+var NewChannelEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsBatchResponsePublicActorEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsCollectionResponsePublicMessageForwardPagingEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsCollectionResponsePublicThreadForwardPagingEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsCollectionResponseWithTotalPublicChannelEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsCollectionResponseWithTotalPublicChannelAccountEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsCollectionResponseWithTotalPublicInboxEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesBatchResponsePublicActorEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesCollectionResponsePublicMessageEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesCollectionResponsePublicThreadEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesCollectionResponseWithTotalPublicEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesCollectionResponseWithTotalPublic2EntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesCollectionResponseWithTotalPublic3EntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicActorEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicChannelEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicChannelAccountEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicInboxEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicMessageEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicMessageContentEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsInboxMessagesPublicThreadEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicActorEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicChannelEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicChannelAccountEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicInboxEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicMessageEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicMessageContentEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewConversationsPublicThreadEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewCustomChannelsCollectionResponseWithTotalPublicChannelEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewCustomChannelsCollectionResponseWithTotalPublicChannel2EntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewCustomChannelsPublicChannelAccountEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewCustomChannelsPublicChannelAccountStagingTokenEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewCustomChannelsPublicChannelIntegrationChannelEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewCustomChannelsPublicConversationsMessageEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewPublicThreadEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewThreadEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+
+var NewVisitorIdentificationIdentificationTokenEntityFunc func(client *HubspotConversationsSDK, entopts map[string]any) HubspotConversationsEntity
+

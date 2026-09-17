@@ -1,0 +1,132 @@
+# Entity: conversations_public_inbox
+
+main: kit: entity: conversations_public_inbox: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "archived"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      format: "date-time"
+      name: "archivedAt"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      format: "date-time"
+      name: "createdAt"
+      req: true
+      short: "When the inbox was created."
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      short: "The ID of the inbox."
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: true
+      short: "The name of the inbox."
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: true
+      short: "Specifies whether this refers to a Conversations Inbox or to the Help Desk."
+      type: "`$STRING`"
+    }
+    {
+      format: "date-time"
+      name: "updatedAt"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_public_inbox"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: null
+                kind: "param"
+                name: "id"
+                orig: "inbox_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                example: null
+                kind: "query"
+                name: "archived"
+                orig: "archived"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /conversations/conversations/2026-09/inboxes/{inboxId}"
+            json: "{\"operationId\":\"get-/conversations/conversations/2026-09/inboxes/{inboxId}\",\"parameters\":[{\"description\":\"\",\"explode\":false,\"in\":\"path\",\"name\":\"inboxId\",\"required\":true,\"schema\":{\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"style\":\"simple\"},{\"description\":\"Whether to return only results that have been archived.\",\"explode\":true,\"in\":\"query\",\"name\":\"archived\",\"required\":false,\"schema\":{\"default\":false,\"example\":null,\"type\":\"boolean\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"archived\":{\"example\":null,\"type\":\"boolean\"},\"archivedAt\":{\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"createdAt\":{\"description\":\"When the inbox was created.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the inbox.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"The name of the inbox.\",\"example\":null,\"type\":\"string\"},\"type\":{\"description\":\"Specifies whether this refers to a Conversations Inbox or to the Help Desk. Valid values are INBOX or HELP_DESK\",\"enum\":[\"HELP_DESK\",\"INBOX\"],\"example\":null,\"type\":\"string\"},\"updatedAt\":{\"example\":null,\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"archived\",\"createdAt\",\"id\",\"name\",\"type\",\"updatedAt\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"conversations.read\"]},{\"private_apps\":[\"conversations.read\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/conversations/conversations/2026-09/inboxes/{inboxId}"
+          rename: {
+            param: {
+              inboxId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "inboxes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "archived"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

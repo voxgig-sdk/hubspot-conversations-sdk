@@ -1,0 +1,22 @@
+# BasicCustomChannelsCollectionResponseWithTotalPublicChannelFlow
+
+main: kit: flow: BasicCustomChannelsCollectionResponseWithTotalPublicChannelFlow:
+{
+  entity: "custom_channels_collection_response_with_total_public_channel",
+  kind: "basic",
+  name: "BasicCustomChannelsCollectionResponseWithTotalPublicChannelFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "custom_channels_collection_response_with_total_public_channel_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomChannelsCollectionResponseWithTotalPublicChannelFlow"
+}

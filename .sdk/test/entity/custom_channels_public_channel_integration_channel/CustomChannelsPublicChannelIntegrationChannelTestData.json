@@ -1,0 +1,882 @@
+{
+  "existing": {
+    "custom_channels_public_channel_integration_channel": {
+      "CUSTOM_CHANNELS_PUBLIC_CHANNEL_INTEGRATION_CHANNEL00": {
+        "capabilities": {},
+        "channelAccountConnectionRedirectUrl": "s3d",
+        "channelDescription": "s3e",
+        "channelLogoUrl": "s3f",
+        "name": "s40",
+        "webhookUrl": "s41",
+        "channel_id": "CHANNEL01",
+        "id": "CUSTOM_CHANNELS_PUBLIC_CHANNEL_INTEGRATION_CHANNEL00"
+      },
+      "CUSTOM_CHANNELS_PUBLIC_CHANNEL_INTEGRATION_CHANNEL01": {
+        "capabilities": {},
+        "channelAccountConnectionRedirectUrl": "s79",
+        "channelDescription": "s7a",
+        "channelLogoUrl": "s7b",
+        "name": "s7c",
+        "webhookUrl": "s7d",
+        "channel_id": "CHANNEL01",
+        "id": "CUSTOM_CHANNELS_PUBLIC_CHANNEL_INTEGRATION_CHANNEL01"
+      },
+      "CUSTOM_CHANNELS_PUBLIC_CHANNEL_INTEGRATION_CHANNEL02": {
+        "capabilities": {},
+        "channelAccountConnectionRedirectUrl": "sb5",
+        "channelDescription": "sb6",
+        "channelLogoUrl": "sb7",
+        "name": "sb8",
+        "webhookUrl": "sb9",
+        "channel_id": "CHANNEL01",
+        "id": "CUSTOM_CHANNELS_PUBLIC_CHANNEL_INTEGRATION_CHANNEL02"
+      }
+    }
+  },
+  "new": {
+    "custom_channels_public_channel_integration_channel": {
+      "custom_channels_public_channel_integration_channel_ref01": {
+        "capabilities": {},
+        "channelAccountConnectionRedirectUrl": "sf1",
+        "channelDescription": "sf2",
+        "channelLogoUrl": "sf3",
+        "name": "sf4",
+        "webhookUrl": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /conversations/custom-channels/2026-09": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "post-/conversations/custom-channels/2026-09_/conversations/custom-channels/v3",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": null,
+              "schema": {
+                "example": null,
+                "properties": {
+                  "capabilities": {
+                    "additionalProperties": {
+                      "example": null,
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "description": "An object that defines the capabilities of the channel, with additional properties as key-value pairs.",
+                    "example": null,
+                    "type": "object"
+                  },
+                  "channelAccountConnectionRedirectUrl": {
+                    "description": "A string representing the URL to which users will be redirected to connect their channel account.",
+                    "example": null,
+                    "type": "string"
+                  },
+                  "channelDescription": {
+                    "description": "A string providing a description of the channel.",
+                    "example": null,
+                    "type": "string"
+                  },
+                  "channelLogoUrl": {
+                    "description": "A string representing the URL of the channel's logo.",
+                    "example": null,
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "A string representing the name of the channel.",
+                    "example": null,
+                    "type": "string"
+                  },
+                  "webhookUrl": {
+                    "description": "A string representing the URL to which webhook events will be sent.",
+                    "example": null,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "capabilities",
+                  "name"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "capabilities": {
+                      "additionalProperties": {
+                        "example": null,
+                        "properties": {},
+                        "type": "object"
+                      },
+                      "description": "An object detailing the capabilities of the channel, with additional properties as objects.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "channelAccountConnectionRedirectUrl": {
+                      "description": "A string representing the URL used to redirect for channel account connection.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "channelDescription": {
+                      "description": "A string providing a description of the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "channelLogoUrl": {
+                      "description": "A string representing the URL of the channel's logo.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "description": "The date and time when the channel was created, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "A string that uniquely identifies the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "A string representing the name of the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "webhookUrl": {
+                      "description": "A string representing the URL to which webhook events will be sent.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "capabilities",
+                    "createdAt",
+                    "id",
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation",
+            "headers": {
+              "Location": {
+                "description": "URL of the newly created resource",
+                "explode": false,
+                "schema": {
+                  "example": null,
+                  "type": "string"
+                },
+                "style": "simple"
+              }
+            }
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "further information about the error",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {
+                  "conversations.read": "Read from conversations",
+                  "conversations.write": "Write to conversations"
+                },
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "GET /conversations/custom-channels/2026-09/{channelId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-/conversations/custom-channels/2026-09/{channelId}",
+        "parameters": [
+          {
+            "description": "The unique identifier of the custom channel to retrieve. It is an integer value.",
+            "explode": false,
+            "in": "path",
+            "name": "channelId",
+            "required": true,
+            "schema": {
+              "example": null,
+              "format": "int32",
+              "type": "integer"
+            },
+            "style": "simple"
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "capabilities": {
+                      "additionalProperties": {
+                        "example": null,
+                        "properties": {},
+                        "type": "object"
+                      },
+                      "description": "An object detailing the capabilities of the channel, with additional properties as objects.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "channelAccountConnectionRedirectUrl": {
+                      "description": "A string representing the URL used to redirect for channel account connection.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "channelDescription": {
+                      "description": "A string providing a description of the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "channelLogoUrl": {
+                      "description": "A string representing the URL of the channel's logo.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "description": "The date and time when the channel was created, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "A string that uniquely identifies the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "A string representing the name of the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "webhookUrl": {
+                      "description": "A string representing the URL to which webhook events will be sent.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "capabilities",
+                    "createdAt",
+                    "id",
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "further information about the error",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {
+                  "conversations.read": "Read from conversations",
+                  "conversations.write": "Write to conversations"
+                },
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "PATCH /conversations/custom-channels/2026-09/{channelId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "patch-/conversations/custom-channels/2026-09/{channelId}",
+        "parameters": [
+          {
+            "description": "The unique identifier of the custom channel to update.",
+            "explode": false,
+            "in": "path",
+            "name": "channelId",
+            "required": true,
+            "schema": {
+              "example": null,
+              "format": "int32",
+              "type": "integer"
+            },
+            "style": "simple"
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": null,
+              "schema": {
+                "example": null,
+                "properties": {
+                  "capabilities": {
+                    "additionalProperties": {
+                      "example": null,
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "description": "An object that defines the capabilities of the channel. This can include various properties that describe what the channel can do.",
+                    "example": null,
+                    "type": "object"
+                  },
+                  "channelAccountConnectionRedirectUrl": {
+                    "description": "An object representing the URL used to redirect for channel account connection.",
+                    "example": null,
+                    "properties": {},
+                    "type": "object"
+                  },
+                  "channelDescription": {
+                    "description": "An object containing the description of the channel.",
+                    "example": null,
+                    "properties": {},
+                    "type": "object"
+                  },
+                  "channelLogoUrl": {
+                    "description": "An object representing the URL of the channel's logo.",
+                    "example": null,
+                    "properties": {},
+                    "type": "object"
+                  },
+                  "name": {
+                    "description": "An object representing the name of the channel.",
+                    "example": null,
+                    "properties": {},
+                    "type": "object"
+                  },
+                  "webhookUrl": {
+                    "description": "An object representing the URL for the webhook associated with the channel.",
+                    "example": null,
+                    "properties": {},
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "capabilities",
+                  "channelAccountConnectionRedirectUrl",
+                  "channelDescription",
+                  "channelLogoUrl",
+                  "name",
+                  "webhookUrl"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "capabilities": {
+                      "additionalProperties": {
+                        "example": null,
+                        "properties": {},
+                        "type": "object"
+                      },
+                      "description": "An object detailing the capabilities of the channel, with additional properties as objects.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "channelAccountConnectionRedirectUrl": {
+                      "description": "A string representing the URL used to redirect for channel account connection.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "channelDescription": {
+                      "description": "A string providing a description of the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "channelLogoUrl": {
+                      "description": "A string representing the URL of the channel's logo.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "description": "The date and time when the channel was created, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "A string that uniquely identifies the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "A string representing the name of the channel.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "webhookUrl": {
+                      "description": "A string representing the URL to which webhook events will be sent.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "capabilities",
+                    "createdAt",
+                    "id",
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "further information about the error",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {
+                  "conversations.read": "Read from conversations",
+                  "conversations.write": "Write to conversations"
+                },
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
+  }
+}

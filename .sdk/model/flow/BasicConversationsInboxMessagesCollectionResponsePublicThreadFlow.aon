@@ -1,0 +1,22 @@
+# BasicConversationsInboxMessagesCollectionResponsePublicThreadFlow
+
+main: kit: flow: BasicConversationsInboxMessagesCollectionResponsePublicThreadFlow:
+{
+  entity: "conversations_inbox_messages_collection_response_public_thread",
+  kind: "basic",
+  name: "BasicConversationsInboxMessagesCollectionResponsePublicThreadFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "conversations_inbox_messages_collection_response_public_thread_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsInboxMessagesCollectionResponsePublicThreadFlow"
+}

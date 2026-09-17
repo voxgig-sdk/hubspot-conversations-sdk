@@ -1,0 +1,59 @@
+# BasicCustomChannelsPublicChannelIntegrationChannelFlow
+
+main: kit: flow: BasicCustomChannelsPublicChannelIntegrationChannelFlow:
+{
+  entity: "custom_channels_public_channel_integration_channel",
+  kind: "basic",
+  name: "BasicCustomChannelsPublicChannelIntegrationChannelFlow",
+  step: [
+    {
+      input: {
+        ref: "custom_channels_public_channel_integration_channel_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "custom_channels_public_channel_integration_channel_ref01",
+        srcdatavar: "custom_channels_public_channel_integration_channel_ref01_data",
+        suffix: "_up0",
+        textfield: "channelAccountConnectionRedirectUrl"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_channel_integration_channel_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "custom_channels_public_channel_integration_channel_ref01",
+        srcdatavar: "custom_channels_public_channel_integration_channel_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "custom_channels_public_channel_integration_channel01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_channel_integration_channel_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomChannelsPublicChannelIntegrationChannelFlow"
+}

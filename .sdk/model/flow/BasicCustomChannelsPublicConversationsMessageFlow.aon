@@ -1,0 +1,68 @@
+# BasicCustomChannelsPublicConversationsMessageFlow
+
+main: kit: flow: BasicCustomChannelsPublicConversationsMessageFlow:
+{
+  entity: "custom_channels_public_conversations_message",
+  kind: "basic",
+  name: "BasicCustomChannelsPublicConversationsMessageFlow",
+  step: [
+    {
+      input: {
+        ref: "custom_channels_public_conversations_message_ref01"
+      }
+
+      match: {
+        channel_id: "channel01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        channel_id: "channel01"
+      }
+
+      input: {
+        ref: "custom_channels_public_conversations_message_ref01",
+        srcdatavar: "custom_channels_public_conversations_message_ref01_data",
+        suffix: "_up0",
+        textfield: "channelAccountId"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_conversations_message_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "custom_channels_public_conversations_message_ref01",
+        srcdatavar: "custom_channels_public_conversations_message_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        channel_id: "channel01",
+        id: "custom_channels_public_conversations_message01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_conversations_message_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomChannelsPublicConversationsMessageFlow"
+}

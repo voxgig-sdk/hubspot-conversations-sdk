@@ -1,0 +1,224 @@
+# Entity: custom_channels_public_channel_integration_channel
+
+main: kit: entity: custom_channels_public_channel_integration_channel: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "capabilities"
+      req: true
+      short: "An object that defines the capabilities of the channel, with additional properties as key-value pairs."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "channelAccountConnectionRedirectUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      short: "A string representing the URL to which users will be redirected to connect their channel account."
+      type: "`$STRING`"
+    }
+    {
+      name: "channelDescription"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      short: "A string providing a description of the channel."
+      type: "`$STRING`"
+    }
+    {
+      name: "channelLogoUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      short: "A string representing the URL of the channel's logo."
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: true
+      short: "A string representing the name of the channel."
+      type: "`$STRING`"
+    }
+    {
+      name: "webhookUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      short: "A string representing the URL to which webhook events will be sent."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "custom_channels_public_channel_integration_channel"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          contract: {
+            id: "POST /conversations/custom-channels/2026-09"
+            json: "{\"operationId\":\"post-/conversations/custom-channels/2026-09_/conversations/custom-channels/v3\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"capabilities\":{\"additionalProperties\":{\"example\":null,\"properties\":{},\"type\":\"object\"},\"description\":\"An object that defines the capabilities of the channel, with additional properties as key-value pairs.\",\"example\":null,\"type\":\"object\"},\"channelAccountConnectionRedirectUrl\":{\"description\":\"A string representing the URL to which users will be redirected to connect their channel account.\",\"example\":null,\"type\":\"string\"},\"channelDescription\":{\"description\":\"A string providing a description of the channel.\",\"example\":null,\"type\":\"string\"},\"channelLogoUrl\":{\"description\":\"A string representing the URL of the channel's logo.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"A string representing the name of the channel.\",\"example\":null,\"type\":\"string\"},\"webhookUrl\":{\"description\":\"A string representing the URL to which webhook events will be sent.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"capabilities\",\"name\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"capabilities\":{\"additionalProperties\":{\"example\":null,\"properties\":{},\"type\":\"object\"},\"description\":\"An object detailing the capabilities of the channel, with additional properties as objects.\",\"example\":null,\"type\":\"object\"},\"channelAccountConnectionRedirectUrl\":{\"description\":\"A string representing the URL used to redirect for channel account connection.\",\"example\":null,\"type\":\"string\"},\"channelDescription\":{\"description\":\"A string providing a description of the channel.\",\"example\":null,\"type\":\"string\"},\"channelLogoUrl\":{\"description\":\"A string representing the URL of the channel's logo.\",\"example\":null,\"type\":\"string\"},\"createdAt\":{\"description\":\"The date and time when the channel was created, in ISO 8601 format.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"A string that uniquely identifies the channel.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"A string representing the name of the channel.\",\"example\":null,\"type\":\"string\"},\"webhookUrl\":{\"description\":\"A string representing the URL to which webhook events will be sent.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"capabilities\",\"createdAt\",\"id\",\"name\"],\"type\":\"object\"}}},\"description\":\"successful operation\",\"headers\":{\"Location\":{\"description\":\"URL of the newly created resource\",\"explode\":false,\"schema\":{\"example\":null,\"type\":\"string\"},\"style\":\"simple\"}}},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/conversations/custom-channels/2026-09"
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.capabilities`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: null
+                kind: "param"
+                name: "channel_id"
+                orig: "channel_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /conversations/custom-channels/2026-09/{channelId}"
+            json: "{\"operationId\":\"get-/conversations/custom-channels/2026-09/{channelId}\",\"parameters\":[{\"description\":\"The unique identifier of the custom channel to retrieve. It is an integer value.\",\"explode\":false,\"in\":\"path\",\"name\":\"channelId\",\"required\":true,\"schema\":{\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"style\":\"simple\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"capabilities\":{\"additionalProperties\":{\"example\":null,\"properties\":{},\"type\":\"object\"},\"description\":\"An object detailing the capabilities of the channel, with additional properties as objects.\",\"example\":null,\"type\":\"object\"},\"channelAccountConnectionRedirectUrl\":{\"description\":\"A string representing the URL used to redirect for channel account connection.\",\"example\":null,\"type\":\"string\"},\"channelDescription\":{\"description\":\"A string providing a description of the channel.\",\"example\":null,\"type\":\"string\"},\"channelLogoUrl\":{\"description\":\"A string representing the URL of the channel's logo.\",\"example\":null,\"type\":\"string\"},\"createdAt\":{\"description\":\"The date and time when the channel was created, in ISO 8601 format.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"A string that uniquely identifies the channel.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"A string representing the name of the channel.\",\"example\":null,\"type\":\"string\"},\"webhookUrl\":{\"description\":\"A string representing the URL to which webhook events will be sent.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"capabilities\",\"createdAt\",\"id\",\"name\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/conversations/custom-channels/2026-09/{channelId}"
+          rename: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+          ]
+          select: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.capabilities`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: null
+                kind: "param"
+                name: "channel_id"
+                orig: "channel_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "PATCH /conversations/custom-channels/2026-09/{channelId}"
+            json: "{\"operationId\":\"patch-/conversations/custom-channels/2026-09/{channelId}\",\"parameters\":[{\"description\":\"The unique identifier of the custom channel to update.\",\"explode\":false,\"in\":\"path\",\"name\":\"channelId\",\"required\":true,\"schema\":{\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"style\":\"simple\"}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"capabilities\":{\"additionalProperties\":{\"example\":null,\"properties\":{},\"type\":\"object\"},\"description\":\"An object that defines the capabilities of the channel. This can include various properties that describe what the channel can do.\",\"example\":null,\"type\":\"object\"},\"channelAccountConnectionRedirectUrl\":{\"description\":\"An object representing the URL used to redirect for channel account connection.\",\"example\":null,\"properties\":{},\"type\":\"object\"},\"channelDescription\":{\"description\":\"An object containing the description of the channel.\",\"example\":null,\"properties\":{},\"type\":\"object\"},\"channelLogoUrl\":{\"description\":\"An object representing the URL of the channel's logo.\",\"example\":null,\"properties\":{},\"type\":\"object\"},\"name\":{\"description\":\"An object representing the name of the channel.\",\"example\":null,\"properties\":{},\"type\":\"object\"},\"webhookUrl\":{\"description\":\"An object representing the URL for the webhook associated with the channel.\",\"example\":null,\"properties\":{},\"type\":\"object\"}},\"required\":[\"capabilities\",\"channelAccountConnectionRedirectUrl\",\"channelDescription\",\"channelLogoUrl\",\"name\",\"webhookUrl\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"capabilities\":{\"additionalProperties\":{\"example\":null,\"properties\":{},\"type\":\"object\"},\"description\":\"An object detailing the capabilities of the channel, with additional properties as objects.\",\"example\":null,\"type\":\"object\"},\"channelAccountConnectionRedirectUrl\":{\"description\":\"A string representing the URL used to redirect for channel account connection.\",\"example\":null,\"type\":\"string\"},\"channelDescription\":{\"description\":\"A string providing a description of the channel.\",\"example\":null,\"type\":\"string\"},\"channelLogoUrl\":{\"description\":\"A string representing the URL of the channel's logo.\",\"example\":null,\"type\":\"string\"},\"createdAt\":{\"description\":\"The date and time when the channel was created, in ISO 8601 format.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"A string that uniquely identifies the channel.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"A string representing the name of the channel.\",\"example\":null,\"type\":\"string\"},\"webhookUrl\":{\"description\":\"A string representing the URL to which webhook events will be sent.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"capabilities\",\"createdAt\",\"id\",\"name\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PATCH"
+          orig: "/conversations/custom-channels/2026-09/{channelId}"
+          rename: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+          ]
+          select: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.capabilities`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "2026_09"
+      ]
+    ]
+  }
+
+
+
+}

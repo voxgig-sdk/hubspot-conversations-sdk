@@ -1,0 +1,68 @@
+# BasicCustomChannelsPublicChannelAccountFlow
+
+main: kit: flow: BasicCustomChannelsPublicChannelAccountFlow:
+{
+  entity: "custom_channels_public_channel_account",
+  kind: "basic",
+  name: "BasicCustomChannelsPublicChannelAccountFlow",
+  step: [
+    {
+      input: {
+        ref: "custom_channels_public_channel_account_ref01"
+      }
+
+      match: {
+        channel_id: "channel01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        channel_id: "channel01"
+      }
+
+      input: {
+        ref: "custom_channels_public_channel_account_ref01",
+        srcdatavar: "custom_channels_public_channel_account_ref01_data",
+        suffix: "_up0",
+        textfield: "inboxId"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_channel_account_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "custom_channels_public_channel_account_ref01",
+        srcdatavar: "custom_channels_public_channel_account_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        channel_id: "channel01",
+        id: "custom_channels_public_channel_account01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_channel_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomChannelsPublicChannelAccountFlow"
+}

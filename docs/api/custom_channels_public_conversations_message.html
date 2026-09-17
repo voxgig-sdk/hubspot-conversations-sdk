@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CustomChannelsPublicConversationsMessage | HubSpot Conversations API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">HubSpot Conversations API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/hubspot-conversations-sdk">voxgig-sdk/hubspot-conversations-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Conversations API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/channel.html">Channel</a>
+<a href="../api/conversations_batch_response_public_actor.html">ConversationsBatchResponsePublicActor</a>
+<a href="../api/conversations_collection_response_public_message_forward_paging.html">ConversationsCollectionResponsePublicMessageForwardPaging</a>
+<a href="../api/conversations_collection_response_public_thread_forward_paging.html">ConversationsCollectionResponsePublicThreadForwardPaging</a>
+<a href="../api/conversations_collection_response_with_total_public_channel.html">ConversationsCollectionResponseWithTotalPublicChannel</a>
+<a href="../api/conversations_collection_response_with_total_public_channel_account.html">ConversationsCollectionResponseWithTotalPublicChannelAccount</a>
+<a href="../api/conversations_collection_response_with_total_public_inbox.html">ConversationsCollectionResponseWithTotalPublicInbox</a>
+<a href="../api/conversations_inbox_messages_batch_response_public_actor.html">ConversationsInboxMessagesBatchResponsePublicActor</a>
+<a href="../api/conversations_inbox_messages_collection_response_public_message.html">ConversationsInboxMessagesCollectionResponsePublicMessage</a>
+<a href="../api/conversations_inbox_messages_collection_response_public_thread.html">ConversationsInboxMessagesCollectionResponsePublicThread</a>
+<a href="../api/conversations_inbox_messages_collection_response_with_total_public.html">ConversationsInboxMessagesCollectionResponseWithTotalPublic</a>
+<a href="../api/conversations_inbox_messages_collection_response_with_total_public2.html">ConversationsInboxMessagesCollectionResponseWithTotalPublic2</a>
+<a href="../api/conversations_inbox_messages_collection_response_with_total_public3.html">ConversationsInboxMessagesCollectionResponseWithTotalPublic3</a>
+<a href="../api/conversations_inbox_messages_public_actor.html">ConversationsInboxMessagesPublicActor</a>
+<a href="../api/conversations_inbox_messages_public_channel.html">ConversationsInboxMessagesPublicChannel</a>
+<a href="../api/conversations_inbox_messages_public_channel_account.html">ConversationsInboxMessagesPublicChannelAccount</a>
+<a href="../api/conversations_inbox_messages_public_inbox.html">ConversationsInboxMessagesPublicInbox</a>
+<a href="../api/conversations_inbox_messages_public_message.html">ConversationsInboxMessagesPublicMessage</a>
+<a href="../api/conversations_inbox_messages_public_message_content.html">ConversationsInboxMessagesPublicMessageContent</a>
+<a href="../api/conversations_inbox_messages_public_thread.html">ConversationsInboxMessagesPublicThread</a>
+<a href="../api/conversations_public_actor.html">ConversationsPublicActor</a>
+<a href="../api/conversations_public_channel.html">ConversationsPublicChannel</a>
+<a href="../api/conversations_public_channel_account.html">ConversationsPublicChannelAccount</a>
+<a href="../api/conversations_public_inbox.html">ConversationsPublicInbox</a>
+<a href="../api/conversations_public_message.html">ConversationsPublicMessage</a>
+<a href="../api/conversations_public_message_content.html">ConversationsPublicMessageContent</a>
+<a href="../api/conversations_public_thread.html">ConversationsPublicThread</a>
+<a href="../api/custom_channels_collection_response_with_total_public_channel.html">CustomChannelsCollectionResponseWithTotalPublicChannel</a>
+<a href="../api/custom_channels_collection_response_with_total_public_channel2.html">CustomChannelsCollectionResponseWithTotalPublicChannel2</a>
+<a href="../api/custom_channels_public_channel_account.html">CustomChannelsPublicChannelAccount</a>
+<a href="../api/custom_channels_public_channel_account_staging_token.html">CustomChannelsPublicChannelAccountStagingToken</a>
+<a href="../api/custom_channels_public_channel_integration_channel.html">CustomChannelsPublicChannelIntegrationChannel</a>
+<a aria-current="page" href="../api/custom_channels_public_conversations_message.html">CustomChannelsPublicConversationsMessage</a><div class="nav-sections"><a class="nav-section" href="#post-conversationscustom-channels2026-09channelidmessages">POST /conversations/custom-channels/2026-09/{channelId}/messages</a>
+<a class="nav-section" href="#get-conversationscustom-channels2026-09channelidmessagesmessageid">GET /conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</a>
+<a class="nav-section" href="#patch-conversationscustom-channels2026-09channelidmessagesmessageid">PATCH /conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</a></div>
+<a href="../api/public_thread.html">PublicThread</a>
+<a href="../api/thread.html">Thread</a>
+<a href="../api/visitor_identification_identification_token.html">VisitorIdentificationIdentificationToken</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="customchannelspublicconversationsmessage">CustomChannelsPublicConversationsMessage</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-conversationscustom-channels2026-09channelidmessages"><code>/conversations/custom-channels/2026-09/{channelId}/messages</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-conversationscustom-channels2026-09channelidmessagesmessageid"><code>/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</code></a></td>
+<td><code>load</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-conversationscustom-channels2026-09channelidmessagesmessageid"><code>/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</code></a></td>
+<td><code>update</code></td>
+<td>successful operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the message is archived.</td>
+</tr>
+<tr>
+<td><code>associateWithContactId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the contact with which this message should be associated.</td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of attachments included with the message, which can be files, locations, contacts, or other supported types.</td>
+</tr>
+<tr>
+<td><code>channelAccountId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel account associated with the message.</td>
+</tr>
+<tr>
+<td><code>channelId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel through which the message was sent.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>conversationsThreadId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier for the conversation thread to which this message belongs.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the user or system that created the message.</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The direction of the message, either 'INCOMING' or 'OUTGOING'.</td>
+</tr>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string containing an error message, if applicable.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the message.</td>
+</tr>
+<tr>
+<td><code>inReplyToId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier of the message to which this message is a reply, if applicable.</td>
+</tr>
+<tr>
+<td><code>integrationIdempotencyId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier to ensure idempotency of the message within the integration.</td>
+</tr>
+<tr>
+<td><code>integrationThreadId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the thread within the integration.</td>
+</tr>
+<tr>
+<td><code>messageDirection</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The direction of the message, indicating whether it is 'INCOMING' or 'OUTGOING'.</td>
+</tr>
+<tr>
+<td><code>preResolvedContacts</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recipients</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of recipients of the message, each containing recipient details.</td>
+</tr>
+<tr>
+<td><code>richText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The rich text content of the message, if available.</td>
+</tr>
+<tr>
+<td><code>senders</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of senders associated with the message, each containing sender details.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>statusType</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Valid status are SENT, FAILED, and READ</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The subject of the message, if applicable.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The plain text content of the message.</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>truncationStatus</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Indicates whether the message content is truncated.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the message, which is always 'MESSAGE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the message was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-conversationscustom-channels2026-09channelidmessages" class="operation" data-method="post"><code>POST</code> /conversations/custom-channels/2026-09/{channelId}/messages</h3>
+<p>Operation ID: <code>post-/conversations/custom-channels/2026-09/{channelId}/messages</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>channelId</code> | <code>path</code> | <code>integer (int32)</code> | Yes | The unique identifier of the custom channel where the message will be created. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>associateWithContactId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the contact with which this message should be associated.</td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array of object or object or object or object or object or object or object</code></td>
+<td>Yes</td>
+<td>An array of attachments included with the message, which can be files, locations, contacts, or other supported types.</td>
+</tr>
+<tr>
+<td><code>channelAccountId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The ID of the channel account through which the message is sent.</td>
+</tr>
+<tr>
+<td><code>inReplyToId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ID of the message this message is replying to.</td>
+</tr>
+<tr>
+<td><code>integrationIdempotencyId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier to ensure idempotency of the message within the integration.</td>
+</tr>
+<tr>
+<td><code>integrationThreadId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the thread within the integration.</td>
+</tr>
+<tr>
+<td><code>messageDirection</code></td>
+<td><code>enum: INCOMING, OUTGOING</code></td>
+<td>Yes</td>
+<td>The direction of the message, indicating whether it is 'INCOMING' or 'OUTGOING'.</td>
+</tr>
+<tr>
+<td><code>preResolvedContacts</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>preResolvedContacts.contacts</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of PreResolvedContact objects. Each object contains information about a contact that has been pre-resolved, including properties that led to the match. This array is required.</td>
+</tr>
+<tr>
+<td><code>preResolvedContacts.contacts[].contactPropertiesLeadingToMatch</code></td>
+<td><code>array of enum: address, annualrevenue, associatedcompanyid, associatedcompanylastupdated, city, closedate, ...</code></td>
+<td>Yes</td>
+<td>An array of strings indicating the properties that were used to match and identify the contact. Valid values include various contact attributes such as 'email', 'firstname', 'lastname', and many more.</td>
+</tr>
+<tr>
+<td><code>preResolvedContacts.contacts[].contactVid</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contact, represented as an integer in int64 format.</td>
+</tr>
+<tr>
+<td><code>recipients</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of participants representing the recipients of the message.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
+</tr>
+<tr>
+<td><code>recipients[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the participant. It is a string that can be used to identify the participant within the channel.</td>
+</tr>
+<tr>
+<td><code>recipients[].senderActorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the unique identifier of the sender actor. This is used to distinguish the sender within the channel integration.</td>
+</tr>
+<tr>
+<td><code>richText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The rich text content of the message, allowing for formatting.</td>
+</tr>
+<tr>
+<td><code>senders</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of participants representing the senders of the message.</td>
+</tr>
+<tr>
+<td><code>senders[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The plain text content of the message.</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-successful-operation" class="status" data-status="2xx">201: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the message is archived.</td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array of object or object or object or object or object or object or object or object</code></td>
+<td>Yes</td>
+<td>An array of attachments included with the message, which can be files, locations, contacts, or other supported types.</td>
+</tr>
+<tr>
+<td><code>channelAccountId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel account associated with the message.</td>
+</tr>
+<tr>
+<td><code>channelId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel through which the message was sent.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client.clientType</code></td>
+<td><code>enum: HUBSPOT, INTEGRATION, SYSTEM, UNKNOWN</code></td>
+<td>Yes</td>
+<td>The type of client interacting with the API. Valid values include 'HUBSPOT', 'SYSTEM', 'INTEGRATION', and 'UNKNOWN'.</td>
+</tr>
+<tr>
+<td><code>client.integrationAppId</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The unique identifier for the integration application associated with this client. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>conversationsThreadId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier for the conversation thread to which this message belongs.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the user or system that created the message.</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>enum: INCOMING, OUTGOING</code></td>
+<td>Yes</td>
+<td>The direction of the message, either 'INCOMING' or 'OUTGOING'.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the message.</td>
+</tr>
+<tr>
+<td><code>inReplyToId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier of the message to which this message is a reply, if applicable.</td>
+</tr>
+<tr>
+<td><code>recipients</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of recipients of the message, each containing recipient details.</td>
+</tr>
+<tr>
+<td><code>recipients[].actorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the unique identifier of the actor associated with the recipient.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
+</tr>
+<tr>
+<td><code>recipients[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the name of the recipient.</td>
+</tr>
+<tr>
+<td><code>recipients[].recipientField</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing a specific field related to the recipient.</td>
+</tr>
+<tr>
+<td><code>richText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The rich text content of the message, if available.</td>
+</tr>
+<tr>
+<td><code>senders</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of senders associated with the message, each containing sender details.</td>
+</tr>
+<tr>
+<td><code>senders[].actorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the sender, represented as a string.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>senders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the sender, represented as a string.</td>
+</tr>
+<tr>
+<td><code>senders[].senderField</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string field associated with the sender, its specific use is not detailed in the spec.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status.failureDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status.failureDetails.errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string containing a human-readable description of the error that occurred during message delivery.</td>
+</tr>
+<tr>
+<td><code>status.failureDetails.errorMessageTokens</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object containing key-value pairs where each key is a token name and each value is a string. These tokens provide additional context or details related to the error message.</td>
+</tr>
+<tr>
+<td><code>status.statusType</code></td>
+<td><code>enum: FAILED, READ, RECEIVED, SENT</code></td>
+<td>Yes</td>
+<td>The current status of the message. Valid values include 'SENT', 'FAILED', 'RECEIVED', and 'READ'.</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The subject of the message, if applicable.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The plain text content of the message.</td>
+</tr>
+<tr>
+<td><code>truncationStatus</code></td>
+<td><code>enum: NOT_TRUNCATED, TRUNCATED, TRUNCATED_TO_MOST_RECENT_REPLY</code></td>
+<td>Yes</td>
+<td>Indicates whether the message content is truncated. Valid values are 'NOT_TRUNCATED', 'TRUNCATED_TO_MOST_RECENT_REPLY', and 'TRUNCATED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: MESSAGE</code></td>
+<td>Yes</td>
+<td>The type of the message, which is always 'MESSAGE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the message was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-conversationscustom-channels2026-09channelidmessagesmessageid" class="operation" data-method="get"><code>GET</code> /conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</h3>
+<p>Operation ID: <code>get-/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>channelId</code> | <code>path</code> | <code>integer (int32)</code> | Yes | The unique identifier of the custom channel from which the message is to be retrieved. |
+| <code>messageId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the message to retrieve. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-operation" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the message is archived.</td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array of object or object or object or object or object or object or object or object</code></td>
+<td>Yes</td>
+<td>An array of attachments included with the message, which can be files, locations, contacts, or other supported types.</td>
+</tr>
+<tr>
+<td><code>channelAccountId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel account associated with the message.</td>
+</tr>
+<tr>
+<td><code>channelId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel through which the message was sent.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client.clientType</code></td>
+<td><code>enum: HUBSPOT, INTEGRATION, SYSTEM, UNKNOWN</code></td>
+<td>Yes</td>
+<td>The type of client interacting with the API. Valid values include 'HUBSPOT', 'SYSTEM', 'INTEGRATION', and 'UNKNOWN'.</td>
+</tr>
+<tr>
+<td><code>client.integrationAppId</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The unique identifier for the integration application associated with this client. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>conversationsThreadId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier for the conversation thread to which this message belongs.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the user or system that created the message.</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>enum: INCOMING, OUTGOING</code></td>
+<td>Yes</td>
+<td>The direction of the message, either 'INCOMING' or 'OUTGOING'.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the message.</td>
+</tr>
+<tr>
+<td><code>inReplyToId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier of the message to which this message is a reply, if applicable.</td>
+</tr>
+<tr>
+<td><code>recipients</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of recipients of the message, each containing recipient details.</td>
+</tr>
+<tr>
+<td><code>recipients[].actorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the unique identifier of the actor associated with the recipient.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
+</tr>
+<tr>
+<td><code>recipients[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the name of the recipient.</td>
+</tr>
+<tr>
+<td><code>recipients[].recipientField</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing a specific field related to the recipient.</td>
+</tr>
+<tr>
+<td><code>richText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The rich text content of the message, if available.</td>
+</tr>
+<tr>
+<td><code>senders</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of senders associated with the message, each containing sender details.</td>
+</tr>
+<tr>
+<td><code>senders[].actorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the sender, represented as a string.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>senders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the sender, represented as a string.</td>
+</tr>
+<tr>
+<td><code>senders[].senderField</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string field associated with the sender, its specific use is not detailed in the spec.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status.failureDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status.failureDetails.errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string containing a human-readable description of the error that occurred during message delivery.</td>
+</tr>
+<tr>
+<td><code>status.failureDetails.errorMessageTokens</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object containing key-value pairs where each key is a token name and each value is a string. These tokens provide additional context or details related to the error message.</td>
+</tr>
+<tr>
+<td><code>status.statusType</code></td>
+<td><code>enum: FAILED, READ, RECEIVED, SENT</code></td>
+<td>Yes</td>
+<td>The current status of the message. Valid values include 'SENT', 'FAILED', 'RECEIVED', and 'READ'.</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The subject of the message, if applicable.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The plain text content of the message.</td>
+</tr>
+<tr>
+<td><code>truncationStatus</code></td>
+<td><code>enum: NOT_TRUNCATED, TRUNCATED, TRUNCATED_TO_MOST_RECENT_REPLY</code></td>
+<td>Yes</td>
+<td>Indicates whether the message content is truncated. Valid values are 'NOT_TRUNCATED', 'TRUNCATED_TO_MOST_RECENT_REPLY', and 'TRUNCATED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: MESSAGE</code></td>
+<td>Yes</td>
+<td>The type of the message, which is always 'MESSAGE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the message was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-1">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-conversationscustom-channels2026-09channelidmessagesmessageid" class="operation" data-method="patch"><code>PATCH</code> /conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</h3>
+<p>Operation ID: <code>patch-/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>channelId</code> | <code>path</code> | <code>integer (int32)</code> | Yes | The unique identifier of the custom channel that contains the message. |
+| <code>messageId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the message to update. |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string containing an error message, if applicable.</td>
+</tr>
+<tr>
+<td><code>statusType</code></td>
+<td><code>enum: FAILED, READ, SENT</code></td>
+<td>Yes</td>
+<td>Valid status are SENT, FAILED, and READ</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-operation-1" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the message is archived.</td>
+</tr>
+<tr>
+<td><code>attachments</code></td>
+<td><code>array of object or object or object or object or object or object or object or object</code></td>
+<td>Yes</td>
+<td>An array of attachments included with the message, which can be files, locations, contacts, or other supported types.</td>
+</tr>
+<tr>
+<td><code>channelAccountId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel account associated with the message.</td>
+</tr>
+<tr>
+<td><code>channelId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the channel through which the message was sent.</td>
+</tr>
+<tr>
+<td><code>client</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>client.clientType</code></td>
+<td><code>enum: HUBSPOT, INTEGRATION, SYSTEM, UNKNOWN</code></td>
+<td>Yes</td>
+<td>The type of client interacting with the API. Valid values include 'HUBSPOT', 'SYSTEM', 'INTEGRATION', and 'UNKNOWN'.</td>
+</tr>
+<tr>
+<td><code>client.integrationAppId</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The unique identifier for the integration application associated with this client. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>conversationsThreadId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier for the conversation thread to which this message belongs.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date and time when the message was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The identifier of the user or system that created the message.</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td><code>enum: INCOMING, OUTGOING</code></td>
+<td>Yes</td>
+<td>The direction of the message, either 'INCOMING' or 'OUTGOING'.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the message.</td>
+</tr>
+<tr>
+<td><code>inReplyToId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier of the message to which this message is a reply, if applicable.</td>
+</tr>
+<tr>
+<td><code>recipients</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of recipients of the message, each containing recipient details.</td>
+</tr>
+<tr>
+<td><code>recipients[].actorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the unique identifier of the actor associated with the recipient.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+</tr>
+<tr>
+<td><code>recipients[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
+</tr>
+<tr>
+<td><code>recipients[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the name of the recipient.</td>
+</tr>
+<tr>
+<td><code>recipients[].recipientField</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing a specific field related to the recipient.</td>
+</tr>
+<tr>
+<td><code>richText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The rich text content of the message, if available.</td>
+</tr>
+<tr>
+<td><code>senders</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of senders associated with the message, each containing sender details.</td>
+</tr>
+<tr>
+<td><code>senders[].actorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the sender, represented as a string.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>senders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the sender, represented as a string.</td>
+</tr>
+<tr>
+<td><code>senders[].senderField</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string field associated with the sender, its specific use is not detailed in the spec.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status.failureDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status.failureDetails.errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string containing a human-readable description of the error that occurred during message delivery.</td>
+</tr>
+<tr>
+<td><code>status.failureDetails.errorMessageTokens</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object containing key-value pairs where each key is a token name and each value is a string. These tokens provide additional context or details related to the error message.</td>
+</tr>
+<tr>
+<td><code>status.statusType</code></td>
+<td><code>enum: FAILED, READ, RECEIVED, SENT</code></td>
+<td>Yes</td>
+<td>The current status of the message. Valid values include 'SENT', 'FAILED', 'RECEIVED', and 'READ'.</td>
+</tr>
+<tr>
+<td><code>subject</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The subject of the message, if applicable.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The plain text content of the message.</td>
+</tr>
+<tr>
+<td><code>truncationStatus</code></td>
+<td><code>enum: NOT_TRUNCATED, TRUNCATED, TRUNCATED_TO_MOST_RECENT_REPLY</code></td>
+<td>Yes</td>
+<td>Indicates whether the message content is truncated. Valid values are 'NOT_TRUNCATED', 'TRUNCATED_TO_MOST_RECENT_REPLY', and 'TRUNCATED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: MESSAGE</code></td>
+<td>Yes</td>
+<td>The type of the message, which is always 'MESSAGE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the message was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-2">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

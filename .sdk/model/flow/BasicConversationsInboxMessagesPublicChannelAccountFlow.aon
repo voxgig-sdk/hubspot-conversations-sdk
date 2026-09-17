@@ -1,0 +1,32 @@
+# BasicConversationsInboxMessagesPublicChannelAccountFlow
+
+main: kit: flow: BasicConversationsInboxMessagesPublicChannelAccountFlow:
+{
+  entity: "conversations_inbox_messages_public_channel_account",
+  kind: "basic",
+  name: "BasicConversationsInboxMessagesPublicChannelAccountFlow",
+  step: [
+    {
+      input: {
+        ref: "conversations_inbox_messages_public_channel_account_ref01",
+        srcdatavar: "conversations_inbox_messages_public_channel_account_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "conversations_inbox_messages_public_channel_account01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_inbox_messages_public_channel_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsInboxMessagesPublicChannelAccountFlow"
+}

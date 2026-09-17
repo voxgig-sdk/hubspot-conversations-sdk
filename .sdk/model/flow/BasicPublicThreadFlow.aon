@@ -1,0 +1,9 @@
+# BasicPublicThreadFlow
+
+main: kit: flow: BasicPublicThreadFlow:
+{
+  entity: "public_thread",
+  kind: "basic",
+  name: "BasicPublicThreadFlow",
+  "key$": "BasicPublicThreadFlow"
+}

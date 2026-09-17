@@ -1,0 +1,18 @@
+# BasicConversationsBatchResponsePublicActorFlow
+
+main: kit: flow: BasicConversationsBatchResponsePublicActorFlow:
+{
+  entity: "conversations_batch_response_public_actor",
+  kind: "basic",
+  name: "BasicConversationsBatchResponsePublicActorFlow",
+  step: [
+    {
+      input: {
+        ref: "conversations_batch_response_public_actor_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicConversationsBatchResponsePublicActorFlow"
+}

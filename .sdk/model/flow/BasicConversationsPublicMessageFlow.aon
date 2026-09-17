@@ -1,0 +1,45 @@
+# BasicConversationsPublicMessageFlow
+
+main: kit: flow: BasicConversationsPublicMessageFlow:
+{
+  entity: "conversations_public_message",
+  kind: "basic",
+  name: "BasicConversationsPublicMessageFlow",
+  step: [
+    {
+      input: {
+        ref: "conversations_public_message_ref01"
+      }
+
+      match: {
+        thread_id: "thread01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "conversations_public_message_ref01",
+        srcdatavar: "conversations_public_message_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "conversations_public_message01",
+        thread_id: "thread01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_public_message_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsPublicMessageFlow"
+}

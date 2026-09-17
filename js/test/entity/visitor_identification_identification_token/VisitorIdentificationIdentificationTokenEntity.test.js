@@ -1,0 +1,147 @@
+
+const envlocal = __dirname + '/../../../.env.local'
+require('../../utility').loadEnvLocal(envlocal)
+
+const Path = require('node:path')
+const Fs = require('node:fs')
+
+const { test, describe, afterEach } = require('node:test')
+const assert = require('node:assert')
+const { createLiveTransport } = require('../../live-runner')
+const { runLiveEntity } = require('../../live-entity')
+
+
+const { HubspotConversationsSDK, BaseFeature, stdutil, config } = require('../../..')
+
+const {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+} = require('../../utility')
+
+
+describe('VisitorIdentificationIdentificationTokenEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when HUBSPOT_CONVERSATIONS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HUBSPOT_CONVERSATIONS_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = HubspotConversationsSDK.test()
+    const ent = testsdk.VisitorIdentificationIdentificationToken()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"email","req":true,"short":"The email of the visitor that you wish to identify","type":"`$STRING`","index$":0},{"active":true,"name":"firstName","req":false,"short":"The first name of the visitor that you wish to identify.","type":"`$STRING`","index$":1},{"active":true,"name":"hsCustomerAgentContext","req":true,"short":"An object containing additional context about the customer agent.","type":"`$OBJECT`","index$":2},{"active":true,"name":"lastName","req":false,"short":"The last name of the visitor that you wish to identify.","type":"`$STRING`","index$":3},{"active":true,"name":"token","req":true,"short":"An identification token that allows the visitor to be treated as a known contact.","type":"`$STRING`","index$":4}],"name":"visitor_identification_identification_token","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{},"contract":{"id":"POST /visitor-identification/2026-09/tokens/create","json":"{\"operationId\":\"post-/visitor-identification/2026-09/tokens/create_generateToken\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"email\":{\"description\":\"The email of the visitor that you wish to identify\",\"example\":null,\"type\":\"string\"},\"firstName\":{\"description\":\"The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.\",\"example\":null,\"type\":\"string\"},\"hsCustomerAgentContext\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object containing additional context about the customer agent. This field is required and can include various string properties.\",\"example\":null,\"type\":\"object\"},\"lastName\":{\"description\":\"The last name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where last name is unknown. Optional.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"email\",\"hsCustomerAgentContext\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"token\":{\"description\":\"An identification token that allows the visitor to be treated as a known contact.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"token\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"conversations.visitor_identification.tokens.create\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/visitor-identification/2026-09/tokens/create","segments":[{"lit":"visitor-identification"},{"lit":"2026-09"},{"lit":"tokens"},{"lit":"create"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"visitor_identification_identification_token","name__orig":"visitor_identification_identification_token","Name":"VisitorIdentificationIdentificationToken","name_":"visitor_identification_identification_token","name-":"visitor-identification-identification-token","NAME":"VISITOR_IDENTIFICATION_IDENTIFICATION_TOKEN","index$":35}, {"active":true,"entity":"visitor_identification_identification_token","key$":"BasicVisitorIdentificationIdentificationTokenFlow","kind":"basic","name":"BasicVisitorIdentificationIdentificationTokenFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"visitor_identification_identification_token_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0}]}, 'VisitorIdentificationIdentificationToken')
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const visitor_identification_identification_token_ref01_ent = client.VisitorIdentificationIdentificationToken()
+    let visitor_identification_identification_token_ref01_data = setup.data.new.visitor_identification_identification_token['visitor_identification_identification_token_ref01']
+
+    visitor_identification_identification_token_ref01_data = (await visitor_identification_identification_token_ref01_ent.create(visitor_identification_identification_token_ref01_data)).data()
+    assert(null != visitor_identification_identification_token_ref01_data)
+
+
+  })
+})
+
+
+
+function basicSetup(extra) {
+  // TODO: fix test def options
+  const options = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname,
+      '../../../../.sdk/test/entity/visitor_identification_identification_token/VisitorIdentificationIdentificationTokenTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = HubspotConversationsSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['visitor_identification_identification_token01','visitor_identification_identification_token02','visitor_identification_identification_token03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'HUBSPOT_CONVERSATIONS_TEST_VISITOR_IDENTIFICATION_IDENTIFICATION_TOKEN_ENTID': idmap,
+    'HUBSPOT_CONVERSATIONS_TEST_LIVE': 'FALSE',
+    'HUBSPOT_CONVERSATIONS_TEST_EXPLAIN': 'FALSE',
+    'HUBSPOT_CONVERSATIONS_APIKEY': '',
+  })
+
+  idmap = env['HUBSPOT_CONVERSATIONS_TEST_VISITOR_IDENTIFICATION_IDENTIFICATION_TOKEN_ENTID']
+
+  const live = 'TRUE' === env.HUBSPOT_CONVERSATIONS_TEST_LIVE
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['HUBSPOT_CONVERSATIONS_TEST_VISITOR_IDENTIFICATION_IDENTIFICATION_TOKEN_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new HubspotConversationsSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.HUBSPOT_CONVERSATIONS_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when
+      // the last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey and
+      // server values above and handed the SDK undefined.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.HUBSPOT_CONVERSATIONS_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

@@ -1,0 +1,33 @@
+# BasicConversationsInboxMessagesPublicMessageContentFlow
+
+main: kit: flow: BasicConversationsInboxMessagesPublicMessageContentFlow:
+{
+  entity: "conversations_inbox_messages_public_message_content",
+  kind: "basic",
+  name: "BasicConversationsInboxMessagesPublicMessageContentFlow",
+  step: [
+    {
+      input: {
+        ref: "conversations_inbox_messages_public_message_content_ref01",
+        srcdatavar: "conversations_inbox_messages_public_message_content_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "conversations_inbox_messages_public_message_content01",
+        thread_id: "thread01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_inbox_messages_public_message_content_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsInboxMessagesPublicMessageContentFlow"
+}

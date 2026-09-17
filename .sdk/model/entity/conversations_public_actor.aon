@@ -1,0 +1,95 @@
+# Entity: conversations_public_actor
+
+main: kit: entity: conversations_public_actor: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_public_actor"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: null
+                kind: "param"
+                name: "id"
+                orig: "actor_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: null
+                kind: "query"
+                name: "property"
+                orig: "property"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /conversations/conversations/2026-09/actors/{actorId}"
+            json: "{\"operationId\":\"get-/conversations/conversations/2026-09/actors/{actorId}\",\"parameters\":[{\"description\":\"\",\"explode\":false,\"in\":\"path\",\"name\":\"actorId\",\"required\":true,\"schema\":{\"example\":null,\"type\":\"string\"},\"style\":\"simple\"},{\"description\":\"\",\"explode\":true,\"in\":\"query\",\"name\":\"property\",\"required\":false,\"schema\":{\"example\":null,\"type\":\"string\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"oneOf\":[{\"allOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf]\",\"example\":null,\"properties\":{}},{\"allOf\":[{\"example\":null,\"oneOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf.0.oneOf]\",\"properties\":{}},{\"example\":null,\"properties\":{\"avatar\":{\"example\":null,\"type\":\"string\"},\"id\":{\"example\":null,\"type\":\"string\"},\"name\":{\"example\":null,\"type\":\"string\"},\"type\":{\"default\":\"BOT\",\"enum\":[\"BOT\"],\"example\":null,\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"example\":null,\"properties\":{}},{\"allOf\":[{\"example\":null,\"oneOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf.0.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/1/allOf/0/properties\"}},{\"example\":null,\"properties\":{\"avatar\":{\"example\":null,\"type\":\"string\"},\"id\":{\"example\":null,\"type\":\"string\"},\"name\":{\"example\":null,\"type\":\"string\"},\"type\":{\"default\":\"INTEGRATOR\",\"enum\":[\"INTEGRATOR\"],\"example\":null,\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"type\"],\"type\":\"object\"}],\"example\":null,\"properties\":{}},{\"allOf\":[{\"example\":null,\"oneOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf.0.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/1/allOf/0/properties\"}},{\"example\":null,\"properties\":{\"id\":{\"example\":null,\"type\":\"string\"},\"type\":{\"default\":\"SYSTEM\",\"enum\":[\"SYSTEM\"],\"example\":null,\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"example\":null,\"properties\":{}},{\"allOf\":[{\"example\":null,\"oneOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf.0.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/1/allOf/0/properties\"}},{\"example\":null,\"properties\":{\"avatar\":{\"example\":null,\"type\":\"string\"},\"email\":{\"example\":null,\"type\":\"string\"},\"id\":{\"example\":null,\"type\":\"string\"},\"name\":{\"example\":null,\"type\":\"string\"},\"type\":{\"default\":\"VISITOR\",\"enum\":[\"VISITOR\"],\"example\":null,\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"example\":null,\"properties\":{}},{\"allOf\":[{\"example\":null,\"oneOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf.0.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/1/allOf/0/properties\"}},{\"example\":null,\"properties\":{\"email\":{\"example\":null,\"type\":\"string\"},\"id\":{\"example\":null,\"type\":\"string\"},\"type\":{\"default\":\"EMAIL\",\"enum\":[\"EMAIL\"],\"example\":null,\"type\":\"string\"}},\"required\":[\"email\",\"id\",\"type\"],\"type\":\"object\"}],\"example\":null,\"properties\":{}},{\"allOf\":[{\"example\":null,\"oneOf\":\"[Circular *paths./conversations/conversations/2026-09/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf.0.allOf.0.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/1/allOf/0/properties\"}},{\"example\":null,\"properties\":{\"avatar\":{\"example\":null,\"type\":\"string\"},\"id\":{\"example\":null,\"type\":\"string\"},\"name\":{\"example\":null,\"type\":\"string\"},\"type\":{\"default\":\"LLM\",\"enum\":[\"LLM\"],\"example\":null,\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"example\":null,\"properties\":{}}],\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/1/allOf/0/properties\"}}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"conversations.read\"]},{\"private_apps\":[\"conversations.read\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/conversations/conversations/2026-09/actors/{actorId}"
+          rename: {
+            param: {
+              actorId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+              "property"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

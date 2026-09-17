@@ -1,0 +1,9 @@
+# BasicChannelFlow
+
+main: kit: flow: BasicChannelFlow:
+{
+  entity: "channel",
+  kind: "basic",
+  name: "BasicChannelFlow",
+  "key$": "BasicChannelFlow"
+}

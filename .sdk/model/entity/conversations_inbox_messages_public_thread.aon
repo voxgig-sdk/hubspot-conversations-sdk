@@ -1,0 +1,193 @@
+# Entity: conversations_inbox_messages_public_thread
+
+main: kit: entity: conversations_inbox_messages_public_thread: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "archived"
+      req: false
+      short: "Whether this thread is archived."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "associatedTicketId"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      short: "The thread's status: `OPEN` or `CLOSED`."
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_inbox_messages_public_thread"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "thread_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "archived"
+                orig: "archived"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                kind: "query"
+                name: "association"
+                orig: "association"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "property"
+                orig: "property"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /conversations/v3/conversations/threads/{threadId}"
+            json: "{\"operationId\":\"get-/conversations/v3/conversations/threads/{threadId}\",\"parameters\":[{\"description\":\"Whether to return only results that have been archived. Default is false.\",\"explode\":true,\"in\":\"query\",\"name\":\"archived\",\"required\":false,\"schema\":{\"type\":\"boolean\"},\"style\":\"form\"},{\"description\":\"You can specify an association type here of `TICKET`. If this is set the response will included a thread associations object and associated ticket id if present. If there are no associations to a ticket with this conversation, then the thread associations object will not be present on the response. \",\"explode\":true,\"in\":\"query\",\"name\":\"association\",\"required\":false,\"schema\":{\"items\":{\"enum\":[\"TICKET\"],\"type\":\"string\"},\"type\":\"array\"},\"style\":\"form\"},{\"description\":\"A specific property to include in the thread response.\",\"explode\":true,\"in\":\"query\",\"name\":\"property\",\"required\":false,\"schema\":{\"type\":\"string\"},\"style\":\"form\"},{\"description\":\"The unique ID of the thread.\",\"explode\":false,\"in\":\"path\",\"name\":\"threadId\",\"required\":true,\"schema\":{\"format\":\"int64\",\"type\":\"integer\"},\"style\":\"simple\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"archived\":{\"description\":\"Whether this thread is archived.\",\"type\":\"boolean\"},\"assignedTo\":{\"type\":\"string\"},\"associatedContactId\":{\"description\":\"The ID of the associated Contact in the CRM. If the Contact for the thread has not yet been added or created, the `associatedContactId` returned will be a visitorID and cannot be used to search for the Contact in the CRM.\",\"type\":\"string\"},\"closedAt\":{\"description\":\"When the thread was closed. Only set if the thread is closed.\",\"format\":\"date-time\",\"type\":\"string\"},\"createdAt\":{\"description\":\"When the thread was created.\",\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"The unique ID of the thread.\",\"type\":\"string\"},\"inboxId\":{\"description\":\"The ID of the conversations inbox containing the thread.\",\"type\":\"string\"},\"latestMessageReceivedTimestamp\":{\"description\":\"The time that the latest message was sent on the thread.\",\"format\":\"date-time\",\"type\":\"string\"},\"latestMessageSentTimestamp\":{\"description\":\"The time that the latest message was sent on the thread.\",\"format\":\"date-time\",\"type\":\"string\"},\"latestMessageTimestamp\":{\"description\":\"The time that the latest message was sent or received on the thread.\",\"format\":\"date-time\",\"type\":\"string\"},\"originalChannelAccountId\":{\"type\":\"string\"},\"originalChannelId\":{\"type\":\"string\"},\"spam\":{\"description\":\"Whether the thread is marked as spam.\",\"type\":\"boolean\"},\"status\":{\"description\":\"The thread's status: `OPEN` or `CLOSED`.\",\"enum\":[\"CLOSED\",\"OPEN\"],\"type\":\"string\"},\"threadAssociations\":{\"properties\":{\"associatedTicketId\":{\"type\":\"string\"}},\"type\":\"object\"}},\"required\":[\"archived\",\"associatedContactId\",\"createdAt\",\"id\",\"inboxId\",\"originalChannelAccountId\",\"originalChannelId\",\"spam\",\"status\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"schema\":{\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"items\":{\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"An error occurred.\"}},\"security\":[{\"oauth2\":[\"conversations.read\"]},{\"private_apps\":[\"conversations.read\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/conversations/v3/conversations/threads/{threadId}"
+          rename: {
+            param: {
+              threadId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "archived"
+              "association"
+              "id"
+              "property"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.threadAssociations`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "thread_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "archived"
+                orig: "archived"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          contract: {
+            id: "PATCH /conversations/v3/conversations/threads/{threadId}"
+            json: "{\"operationId\":\"patch-/conversations/v3/conversations/threads/{threadId}\",\"parameters\":[{\"description\":\"Whether the thread to update is archived. Default is false. A thread's status property can not be updated if the thread is archived.\",\"explode\":true,\"in\":\"query\",\"name\":\"archived\",\"required\":false,\"schema\":{\"type\":\"boolean\"},\"style\":\"form\"},{\"description\":\"The unique ID of the thread.\",\"explode\":false,\"in\":\"path\",\"name\":\"threadId\",\"required\":true,\"schema\":{\"format\":\"int64\",\"type\":\"integer\"},\"style\":\"simple\"}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"archived\":{\"description\":\"Whether this thread is archived. Set to false to restore the thread.\",\"type\":\"boolean\"},\"status\":{\"description\":\"The thread's status: `OPEN` or `CLOSED`.\",\"enum\":[\"CLOSED\",\"OPEN\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"archived\":{\"description\":\"Whether this thread is archived.\",\"type\":\"boolean\"},\"assignedTo\":{\"type\":\"string\"},\"associatedContactId\":{\"description\":\"The ID of the associated Contact in the CRM. If the Contact for the thread has not yet been added or created, the `associatedContactId` returned will be a visitorID and cannot be used to search for the Contact in the CRM.\",\"type\":\"string\"},\"closedAt\":{\"description\":\"When the thread was closed. Only set if the thread is closed.\",\"format\":\"date-time\",\"type\":\"string\"},\"createdAt\":{\"description\":\"When the thread was created.\",\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"description\":\"The unique ID of the thread.\",\"type\":\"string\"},\"inboxId\":{\"description\":\"The ID of the conversations inbox containing the thread.\",\"type\":\"string\"},\"latestMessageReceivedTimestamp\":{\"description\":\"The time that the latest message was sent on the thread.\",\"format\":\"date-time\",\"type\":\"string\"},\"latestMessageSentTimestamp\":{\"description\":\"The time that the latest message was sent on the thread.\",\"format\":\"date-time\",\"type\":\"string\"},\"latestMessageTimestamp\":{\"description\":\"The time that the latest message was sent or received on the thread.\",\"format\":\"date-time\",\"type\":\"string\"},\"originalChannelAccountId\":{\"type\":\"string\"},\"originalChannelId\":{\"type\":\"string\"},\"spam\":{\"description\":\"Whether the thread is marked as spam.\",\"type\":\"boolean\"},\"status\":{\"description\":\"The thread's status: `OPEN` or `CLOSED`.\",\"enum\":[\"CLOSED\",\"OPEN\"],\"type\":\"string\"},\"threadAssociations\":{\"properties\":{\"associatedTicketId\":{\"type\":\"string\"}},\"type\":\"object\"}},\"required\":[\"archived\",\"associatedContactId\",\"createdAt\",\"id\",\"inboxId\",\"originalChannelAccountId\",\"originalChannelId\",\"spam\",\"status\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"schema\":{\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"items\":{\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"An error occurred.\"}},\"security\":[{\"oauth2\":[\"conversations.write\"]},{\"private_apps\":[\"conversations.write\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PATCH"
+          orig: "/conversations/v3/conversations/threads/{threadId}"
+          rename: {
+            param: {
+              threadId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "archived"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.threadAssociations`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

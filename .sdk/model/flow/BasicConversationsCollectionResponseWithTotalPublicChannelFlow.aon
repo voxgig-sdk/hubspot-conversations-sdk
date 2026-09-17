@@ -1,0 +1,22 @@
+# BasicConversationsCollectionResponseWithTotalPublicChannelFlow
+
+main: kit: flow: BasicConversationsCollectionResponseWithTotalPublicChannelFlow:
+{
+  entity: "conversations_collection_response_with_total_public_channel",
+  kind: "basic",
+  name: "BasicConversationsCollectionResponseWithTotalPublicChannelFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "conversations_collection_response_with_total_public_channel_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsCollectionResponseWithTotalPublicChannelFlow"
+}

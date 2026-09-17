@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+
+// HubspotConversations SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+HubspotConversationsUtility::setRegistrar(function (HubspotConversationsUtility $u): void {
+    $u->clean = [HubspotConversationsClean::class, 'call'];
+    $u->done = [HubspotConversationsDone::class, 'call'];
+    $u->make_error = [HubspotConversationsMakeError::class, 'call'];
+    $u->feature_add = [HubspotConversationsFeatureAdd::class, 'call'];
+    $u->feature_hook = [HubspotConversationsFeatureHook::class, 'call'];
+    $u->feature_init = [HubspotConversationsFeatureInit::class, 'call'];
+    $u->fetcher = [HubspotConversationsFetcher::class, 'call'];
+    $u->make_fetch_def = [HubspotConversationsMakeFetchDef::class, 'call'];
+    $u->make_context = [HubspotConversationsMakeContext::class, 'call'];
+    $u->make_options = [HubspotConversationsMakeOptions::class, 'call'];
+    $u->make_request = [HubspotConversationsMakeRequest::class, 'call'];
+    $u->make_response = [HubspotConversationsMakeResponse::class, 'call'];
+    $u->make_result = [HubspotConversationsMakeResult::class, 'call'];
+    $u->make_point = [HubspotConversationsMakePoint::class, 'call'];
+    $u->make_spec = [HubspotConversationsMakeSpec::class, 'call'];
+    $u->make_url = [HubspotConversationsMakeUrl::class, 'call'];
+    $u->param = [HubspotConversationsParam::class, 'call'];
+    $u->prepare_auth = [HubspotConversationsPrepareAuth::class, 'call'];
+    $u->prepare_body = [HubspotConversationsPrepareBody::class, 'call'];
+    $u->prepare_headers = [HubspotConversationsPrepareHeaders::class, 'call'];
+    $u->prepare_method = [HubspotConversationsPrepareMethod::class, 'call'];
+    $u->prepare_params = [HubspotConversationsPrepareParams::class, 'call'];
+    $u->prepare_path = [HubspotConversationsPreparePath::class, 'call'];
+    $u->prepare_query = [HubspotConversationsPrepareQuery::class, 'call'];
+    $u->graphql_body = [HubspotConversationsGraphql::class, 'body'];
+    $u->graphql_errors = [HubspotConversationsGraphql::class, 'errors'];
+    $u->result_basic = [HubspotConversationsResultBasic::class, 'call'];
+    $u->result_body = [HubspotConversationsResultBody::class, 'call'];
+    $u->result_headers = [HubspotConversationsResultHeaders::class, 'call'];
+    $u->transform_request = [HubspotConversationsTransformRequest::class, 'call'];
+    $u->transform_response = [HubspotConversationsTransformResponse::class, 'call'];
+});

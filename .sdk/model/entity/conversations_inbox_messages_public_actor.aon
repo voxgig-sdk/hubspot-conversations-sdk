@@ -1,0 +1,93 @@
+# Entity: conversations_inbox_messages_public_actor
+
+main: kit: entity: conversations_inbox_messages_public_actor: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_inbox_messages_public_actor"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "actor_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "property"
+                orig: "property"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /conversations/v3/conversations/actors/{actorId}"
+            json: "{\"operationId\":\"get-/conversations/v3/conversations/actors/{actorId}\",\"parameters\":[{\"description\":\"The unique ID of the actor.\",\"explode\":false,\"in\":\"path\",\"name\":\"actorId\",\"required\":true,\"schema\":{\"type\":\"string\"},\"style\":\"simple\"},{\"description\":\"A specific property to include in the actor response.\",\"explode\":true,\"in\":\"query\",\"name\":\"property\",\"required\":false,\"schema\":{\"type\":\"string\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"oneOf\":[{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{}},{\"properties\":{\"avatar\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"default\":\"AGENT\",\"enum\":[\"AGENT\"],\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"properties\":{}},{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}},{\"properties\":{\"avatar\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"default\":\"BOT\",\"enum\":[\"BOT\"],\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"properties\":{}},{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}},{\"properties\":{\"avatar\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"default\":\"INTEGRATOR\",\"enum\":[\"INTEGRATOR\"],\"type\":\"string\"}},\"required\":[\"id\",\"name\",\"type\"],\"type\":\"object\"}],\"properties\":{}},{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}},{\"properties\":{\"id\":{\"type\":\"string\"},\"type\":{\"default\":\"SYSTEM\",\"enum\":[\"SYSTEM\"],\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"properties\":{}},{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}},{\"properties\":{\"avatar\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"default\":\"VISITOR\",\"enum\":[\"VISITOR\"],\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"properties\":{}},{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}},{\"properties\":{\"email\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"type\":{\"default\":\"EMAIL\",\"enum\":[\"EMAIL\"],\"type\":\"string\"}},\"required\":[\"email\",\"id\",\"type\"],\"type\":\"object\"}],\"properties\":{}},{\"allOf\":[{\"oneOf\":\"[Circular *paths./conversations/v3/conversations/actors/batch/read.post.responses.200.content.application/json.schema.properties.results.items.oneOf]\",\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}},{\"properties\":{\"avatar\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"default\":\"LLM\",\"enum\":[\"LLM\"],\"type\":\"string\"}},\"required\":[\"id\",\"type\"],\"type\":\"object\"}],\"properties\":{}}],\"properties\":{\"$ref\":\"#/responses/200/content/application~1json/schema/oneOf/0/allOf/0/properties\"}}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"schema\":{\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"items\":{\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"An error occurred.\"}},\"security\":[{\"oauth2\":[\"conversations.read\"]},{\"private_apps\":[\"conversations.read\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"conversations.read\":\"Read from conversations\",\"conversations.write\":\"Write to conversations\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/conversations/v3/conversations/actors/{actorId}"
+          rename: {
+            param: {
+              actorId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+              "property"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

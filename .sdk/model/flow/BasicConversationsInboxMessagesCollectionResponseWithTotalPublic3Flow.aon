@@ -1,0 +1,22 @@
+# BasicConversationsInboxMessagesCollectionResponseWithTotalPublic3Flow
+
+main: kit: flow: BasicConversationsInboxMessagesCollectionResponseWithTotalPublic3Flow:
+{
+  entity: "conversations_inbox_messages_collection_response_with_total_public3",
+  kind: "basic",
+  name: "BasicConversationsInboxMessagesCollectionResponseWithTotalPublic3Flow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "conversations_inbox_messages_collection_response_with_total_public3_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsInboxMessagesCollectionResponseWithTotalPublic3Flow"
+}

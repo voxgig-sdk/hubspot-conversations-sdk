@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "HubSpot Conversations API — merged from the vendor's per-API OpenAPI documents."
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "oauth2"
+        type: "oauth2"
+      }
+      servers: [
+        {
+          url: "https://api.hubapi.com"
+        }
+      ]
+      summary: "HubSpot Conversations API — merged from the vendor's per-API OpenAPI documents."
+      title: "HubSpot Conversations API"
+      version: "2026-09"
+      website: "https://hubapi.com"
+    }
+  }
+}
+

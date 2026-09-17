@@ -1,0 +1,33 @@
+# BasicCustomChannelsPublicChannelAccountStagingTokenFlow
+
+main: kit: flow: BasicCustomChannelsPublicChannelAccountStagingTokenFlow:
+{
+  entity: "custom_channels_public_channel_account_staging_token",
+  kind: "basic",
+  name: "BasicCustomChannelsPublicChannelAccountStagingTokenFlow",
+  step: [
+    {
+      data: {
+        channel_id: "channel01"
+      }
+
+      input: {
+        ref: "custom_channels_public_channel_account_staging_token_ref01",
+        srcdatavar: "custom_channels_public_channel_account_staging_token_ref01_data",
+        suffix: "_up0",
+        textfield: "accountName"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_channels_public_channel_account_staging_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomChannelsPublicChannelAccountStagingTokenFlow"
+}

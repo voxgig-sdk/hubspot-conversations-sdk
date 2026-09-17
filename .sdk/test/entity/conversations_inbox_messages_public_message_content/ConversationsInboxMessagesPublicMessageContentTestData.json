@@ -1,0 +1,244 @@
+{
+  "existing": {
+    "conversations_inbox_messages_public_message_content": {
+      "CONVERSATIONS_INBOX_MESSAGES_PUBLIC_MESSAGE_CONTENT00": {
+        "richText": "s14",
+        "text": "s15",
+        "message_id": "MESSAGE01",
+        "thread_id": "THREAD01",
+        "id": "CONVERSATIONS_INBOX_MESSAGES_PUBLIC_MESSAGE_CONTENT00"
+      },
+      "CONVERSATIONS_INBOX_MESSAGES_PUBLIC_MESSAGE_CONTENT01": {
+        "richText": "s28",
+        "text": "s29",
+        "message_id": "MESSAGE01",
+        "thread_id": "THREAD01",
+        "id": "CONVERSATIONS_INBOX_MESSAGES_PUBLIC_MESSAGE_CONTENT01"
+      },
+      "CONVERSATIONS_INBOX_MESSAGES_PUBLIC_MESSAGE_CONTENT02": {
+        "richText": "s3c",
+        "text": "s3d",
+        "message_id": "MESSAGE01",
+        "thread_id": "THREAD01",
+        "id": "CONVERSATIONS_INBOX_MESSAGES_PUBLIC_MESSAGE_CONTENT02"
+      }
+    }
+  },
+  "new": {
+    "conversations_inbox_messages_public_message_content": {
+      "conversations_inbox_messages_public_message_content_ref01": {
+        "richText": "s50",
+        "text": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-/conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content",
+        "parameters": [
+          {
+            "description": "The unique ID of the message.",
+            "explode": false,
+            "in": "path",
+            "name": "messageId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          },
+          {
+            "description": "A specific property to include in the original content response.",
+            "explode": true,
+            "in": "query",
+            "name": "property",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "description": "The unique ID of the thread.",
+            "explode": false,
+            "in": "path",
+            "name": "threadId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            },
+            "style": "simple"
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "richText": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "schema": {
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category",
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "further information about the error",
+                      "items": {
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail",
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found.",
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate",
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "An error occurred."
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "conversations.read"
+            ]
+          },
+          {
+            "private_apps": [
+              "conversations.read"
+            ]
+          }
+        ],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {
+                  "conversations.read": "Read from conversations",
+                  "conversations.write": "Write to conversations"
+                },
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
+  }
+}

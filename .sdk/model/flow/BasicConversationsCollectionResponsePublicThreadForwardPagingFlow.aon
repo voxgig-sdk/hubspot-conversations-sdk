@@ -1,0 +1,22 @@
+# BasicConversationsCollectionResponsePublicThreadForwardPagingFlow
+
+main: kit: flow: BasicConversationsCollectionResponsePublicThreadForwardPagingFlow:
+{
+  entity: "conversations_collection_response_public_thread_forward_paging",
+  kind: "basic",
+  name: "BasicConversationsCollectionResponsePublicThreadForwardPagingFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "conversations_collection_response_public_thread_forward_paging_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsCollectionResponsePublicThreadForwardPagingFlow"
+}
