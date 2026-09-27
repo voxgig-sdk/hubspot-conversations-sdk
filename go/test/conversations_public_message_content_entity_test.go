@@ -98,7 +98,7 @@ func conversations_public_message_contentBasicSetup(extra map[string]any) *entit
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"conversations_public_message_content01", "conversations_public_message_content02", "conversations_public_message_content03", "thread01", "thread02", "thread03", "message01", "message02", "message03"},
+		[]any{"conversations_public_message_content01", "conversations_public_message_content02", "conversations_public_message_content03", "thread01", "thread02", "thread03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

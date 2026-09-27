@@ -96,7 +96,7 @@ function custom_channels_public_conversations_message_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "custom_channels_public_conversations_message01", "custom_channels_public_conversations_message02", "custom_channels_public_conversations_message03", "2026_0901", "2026_0902", "2026_0903", "channel01" },
+    { "custom_channels_public_conversations_message01", "custom_channels_public_conversations_message02", "custom_channels_public_conversations_message03", "channel01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

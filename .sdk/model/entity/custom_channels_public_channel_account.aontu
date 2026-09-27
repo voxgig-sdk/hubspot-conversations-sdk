@@ -1,0 +1,288 @@
+# Entity: custom_channels_public_channel_account
+
+main: kit: entity: custom_channels_public_channel_account: {
+
+  alias: field: {}
+
+  fields: {
+    authorized: {
+      h: "Authorized"
+      n: "authorized"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether the channel account is authorized."
+      t: "`$BOOLEAN`"
+    }
+    deliveryIdentifier: {
+      h: "Delivery Identifier"
+      n: "deliveryIdentifier"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    inboxId: {
+      h: "Inbox Id"
+      n: "inboxId"
+      r: true
+      sh: "The unique identifier for the inbox associated with this channel account."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The name of the channel account."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "A string representing the type of delivery identifier."
+      t: "`$STRING`"
+    }
+    value: {
+      h: "Value"
+      n: "value"
+      r: true
+      sh: "A string representing the value associated with the delivery identifier type."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "custom_channels_public_channel_account"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /conversations/custom-channels/2026-09/{channelId}/channel-accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts"
+          q: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "channel-accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deliveryIdentifier`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "channel_account_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}"
+          q: {
+            exist: [
+              "archived"
+              "channel_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              channelAccountId: "id"
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "channel-accounts"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deliveryIdentifier`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "channel_account_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}"
+          q: {
+            exist: [
+              "channel_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              channelAccountId: "id"
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "channel-accounts"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deliveryIdentifier`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConversationsInboxMessagesCollectionResponsePublicMessageEntity = void 0;
 const HubspotConversationsEntityBase_1 = require("../HubspotConversationsEntityBase");
-// TODO: needs Entity superclass
 class ConversationsInboxMessagesCollectionResponsePublicMessageEntity extends HubspotConversationsEntityBase_1.HubspotConversationsEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

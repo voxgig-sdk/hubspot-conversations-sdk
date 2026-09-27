@@ -85,7 +85,7 @@ func channelBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"channel01", "channel02", "channel03", "2026_0901", "2026_0902", "2026_0903"},
+		[]any{"channel01", "channel02", "channel03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

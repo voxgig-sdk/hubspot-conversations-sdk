@@ -64,7 +64,7 @@ def _channel_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["channel01", "channel02", "channel03", "2026_0901", "2026_0902", "2026_0903"],
+        ["channel01", "channel02", "channel03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

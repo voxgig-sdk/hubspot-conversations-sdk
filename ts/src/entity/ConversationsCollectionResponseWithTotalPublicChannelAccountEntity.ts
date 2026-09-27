@@ -19,7 +19,6 @@ import type {
   ConversationsCollectionResponseWithTotalPublicChannelAccountListMatch,
 } from '../HubspotConversationsTypes'
 
-// TODO: needs Entity superclass
 class ConversationsCollectionResponseWithTotalPublicChannelAccountEntity extends HubspotConversationsEntityBase<ConversationsCollectionResponseWithTotalPublicChannelAccount> {
 
   constructor(client: HubspotConversationsSDK, entopts: any) {

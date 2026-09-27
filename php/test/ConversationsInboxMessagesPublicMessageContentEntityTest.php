@@ -70,7 +70,7 @@ function conversations_inbox_messages_public_message_content_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["conversations_inbox_messages_public_message_content01", "conversations_inbox_messages_public_message_content02", "conversations_inbox_messages_public_message_content03", "thread01", "thread02", "thread03", "message01", "message02", "message03"] as $k) {
+    foreach (["conversations_inbox_messages_public_message_content01", "conversations_inbox_messages_public_message_content02", "conversations_inbox_messages_public_message_content03", "thread01", "thread02", "thread03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

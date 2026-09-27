@@ -1,0 +1,134 @@
+# Entity: conversations_batch_response_public_actor
+
+main: kit: entity: conversations_batch_response_public_actor: {
+
+  alias: field: {}
+
+  fields: {
+    completedAt: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completedAt"
+      r: true
+      t: "`$STRING`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: false
+      t: "`$ARRAY`"
+    }
+    inputs: {
+      h: "Inputs"
+      n: "inputs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    numErrors: {
+      fo: "int32"
+      h: "Num Errors"
+      n: "numErrors"
+      r: false
+      t: "`$INTEGER`"
+    }
+    requestedAt: {
+      fo: "date-time"
+      h: "Requested At"
+      n: "requestedAt"
+      r: false
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 7
+        count: 2
+        depth: 5
+      }
+    }
+    startedAt: {
+      fo: "date-time"
+      h: "Started At"
+      n: "startedAt"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "conversations_batch_response_public_actor"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /conversations/conversations/2026-09/actors/batch/read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "property"
+                or: "property"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/conversations/conversations/2026-09/actors/batch/read"
+          q: {
+            exist: [
+              "property"
+            ]
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              lit: "batch"
+            }
+            {
+              lit: "read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

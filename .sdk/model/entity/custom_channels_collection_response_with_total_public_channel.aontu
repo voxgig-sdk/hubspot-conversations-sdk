@@ -1,0 +1,151 @@
+# Entity: custom_channels_collection_response_with_total_public_channel
+
+main: kit: entity: custom_channels_collection_response_with_total_public_channel: {
+
+  alias: field: {}
+
+  fields: {
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      sh: "An object detailing the capabilities of the channel, with additional properties as objects."
+      t: "`$OBJECT`"
+    }
+    channelAccountConnectionRedirectUrl: {
+      h: "Channel Account Connection Redirect Url"
+      n: "channelAccountConnectionRedirectUrl"
+      r: false
+      sh: "A string representing the URL used to redirect for channel account connection."
+      t: "`$STRING`"
+    }
+    channelDescription: {
+      h: "Channel Description"
+      n: "channelDescription"
+      r: false
+      sh: "A string providing a description of the channel."
+      t: "`$STRING`"
+    }
+    channelLogoUrl: {
+      h: "Channel Logo Url"
+      n: "channelLogoUrl"
+      r: false
+      sh: "A string representing the URL of the channel's logo."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date and time when the channel was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "A string that uniquely identifies the channel."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "A string representing the name of the channel."
+      t: "`$STRING`"
+    }
+    webhookUrl: {
+      h: "Webhook Url"
+      n: "webhookUrl"
+      r: false
+      sh: "A string representing the URL to which webhook events will be sent."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "custom_channels_collection_response_with_total_public_channel"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/custom-channels/2026-09"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "default_page_length"
+                or: "default_page_length"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/custom-channels/2026-09"
+          q: {
+            exist: [
+              "after"
+              "default_page_length"
+              "limit"
+              "sort"
+            ]
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

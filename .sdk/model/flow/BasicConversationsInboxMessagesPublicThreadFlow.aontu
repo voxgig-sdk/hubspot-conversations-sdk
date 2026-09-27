@@ -1,0 +1,51 @@
+# BasicConversationsInboxMessagesPublicThreadFlow
+
+main: kit: flow: BasicConversationsInboxMessagesPublicThreadFlow:
+{
+  entity: "conversations_inbox_messages_public_thread",
+  kind: "basic",
+  name: "BasicConversationsInboxMessagesPublicThreadFlow",
+  step: [
+    {
+      i: {
+        ref: "conversations_inbox_messages_public_thread_ref01",
+        srcdatavar: "conversations_inbox_messages_public_thread_ref01_data",
+        suffix: "_up0",
+        textfield: "associatedTicketId"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_inbox_messages_public_thread_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "conversations_inbox_messages_public_thread_ref01",
+        srcdatavar: "conversations_inbox_messages_public_thread_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "conversations_inbox_messages_public_thread01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conversations_inbox_messages_public_thread_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConversationsInboxMessagesPublicThreadFlow"
+}

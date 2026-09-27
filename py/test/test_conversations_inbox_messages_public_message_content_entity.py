@@ -70,7 +70,7 @@ def _conversations_inbox_messages_public_message_content_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["conversations_inbox_messages_public_message_content01", "conversations_inbox_messages_public_message_content02", "conversations_inbox_messages_public_message_content03", "thread01", "thread02", "thread03", "message01", "message02", "message03"],
+        ["conversations_inbox_messages_public_message_content01", "conversations_inbox_messages_public_message_content02", "conversations_inbox_messages_public_message_content03", "thread01", "thread02", "thread03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

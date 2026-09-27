@@ -1,0 +1,321 @@
+# Entity: conversations_public_thread
+
+main: kit: entity: conversations_public_thread: {
+
+  alias: field: {}
+
+  fields: {
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: false
+      sh: "Whether this thread is archived."
+      t: "`$BOOLEAN`"
+    }
+    associatedTicketId: {
+      h: "Associated Ticket Id"
+      n: "associatedTicketId"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "The thread's status: `OPEN` or `CLOSED`."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_public_thread"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/conversations/2026-09/threads/{threadId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "thread_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "association"
+                or: "association"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "property"
+                or: "property"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/conversations/2026-09/threads/{threadId}"
+          q: {
+            exist: [
+              "archived"
+              "association"
+              "id"
+              "property"
+            ]
+          }
+          r: {
+            param: {
+              threadId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.threadAssociations`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /conversations/conversations/2026-09/threads/{threadId}/assignee"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "thread_id"
+                or: "thread_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/conversations/conversations/2026-09/threads/{threadId}/assignee"
+          q: {
+            "$action": "assignee"
+            exist: [
+              "thread_id"
+            ]
+          }
+          r: {
+            param: {
+              threadId: "thread_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "thread_id"
+            }
+            {
+              lit: "assignee"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /conversations/conversations/2026-09/threads/{threadId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "thread_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/conversations/conversations/2026-09/threads/{threadId}"
+          q: {
+            exist: [
+              "archived"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              threadId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.threadAssociations`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /conversations/conversations/2026-09/threads/{threadId}/assignee"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "thread_id"
+                or: "thread_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/conversations/conversations/2026-09/threads/{threadId}/assignee"
+          q: {
+            "$action": "assignee"
+            exist: [
+              "thread_id"
+            ]
+          }
+          r: {
+            param: {
+              threadId: "thread_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "thread_id"
+            }
+            {
+              lit: "assignee"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.threadAssociations`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.thread")]
+  ]
+
+}

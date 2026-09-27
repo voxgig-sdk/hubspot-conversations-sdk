@@ -1,0 +1,247 @@
+# Entity: conversations_inbox_messages_collection_response_public_thread
+
+main: kit: entity: conversations_inbox_messages_collection_response_public_thread: {
+
+  alias: field: {}
+
+  fields: {
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      sh: "Whether this thread is archived."
+      t: "`$BOOLEAN`"
+    }
+    assignedTo: {
+      h: "Assigned To"
+      n: "assignedTo"
+      r: false
+      t: "`$STRING`"
+    }
+    associatedContactId: {
+      h: "Associated Contact Id"
+      n: "associatedContactId"
+      r: true
+      sh: "The ID of the associated Contact in the CRM."
+      t: "`$STRING`"
+    }
+    closedAt: {
+      fo: "date-time"
+      h: "Closed At"
+      n: "closedAt"
+      r: false
+      sh: "When the thread was closed."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "When the thread was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique ID of the thread."
+      t: "`$STRING`"
+    }
+    inboxId: {
+      h: "Inbox Id"
+      n: "inboxId"
+      r: true
+      sh: "The ID of the conversations inbox containing the thread."
+      t: "`$STRING`"
+    }
+    latestMessageReceivedTimestamp: {
+      fo: "date-time"
+      h: "Latest Message Received Timestamp"
+      n: "latestMessageReceivedTimestamp"
+      r: false
+      sh: "The time that the latest message was sent on the thread."
+      t: "`$STRING`"
+    }
+    latestMessageSentTimestamp: {
+      fo: "date-time"
+      h: "Latest Message Sent Timestamp"
+      n: "latestMessageSentTimestamp"
+      r: false
+      sh: "The time that the latest message was sent on the thread."
+      t: "`$STRING`"
+    }
+    latestMessageTimestamp: {
+      fo: "date-time"
+      h: "Latest Message Timestamp"
+      n: "latestMessageTimestamp"
+      r: false
+      sh: "The time that the latest message was sent or received on the thread."
+      t: "`$STRING`"
+    }
+    originalChannelAccountId: {
+      h: "Original Channel Account Id"
+      n: "originalChannelAccountId"
+      r: true
+      t: "`$STRING`"
+    }
+    originalChannelId: {
+      h: "Original Channel Id"
+      n: "originalChannelId"
+      r: true
+      t: "`$STRING`"
+    }
+    spam: {
+      h: "Spam"
+      n: "spam"
+      r: true
+      sh: "Whether the thread is marked as spam."
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The thread's status: `OPEN` or `CLOSED`."
+      t: "`$STRING`"
+    }
+    threadAssociations: {
+      h: "Thread Associations"
+      n: "threadAssociations"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_inbox_messages_collection_response_public_thread"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/v3/conversations/threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "associated_contact_id"
+                or: "associated_contact_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "association"
+                or: "association"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "inbox_id"
+                or: "inbox_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "latest_message_timestamp_after"
+                or: "latest_message_timestamp_after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "property"
+                or: "property"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "thread_status"
+                or: "thread_status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/v3/conversations/threads"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "associated_contact_id"
+              "association"
+              "inbox_id"
+              "latest_message_timestamp_after"
+              "limit"
+              "property"
+              "sort"
+              "thread_status"
+            ]
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "threads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

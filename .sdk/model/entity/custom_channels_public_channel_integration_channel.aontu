@@ -1,0 +1,219 @@
+# Entity: custom_channels_public_channel_integration_channel
+
+main: kit: entity: custom_channels_public_channel_integration_channel: {
+
+  alias: field: {}
+
+  fields: {
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      sh: "An object that defines the capabilities of the channel, with additional properties as key-value pairs."
+      t: "`$OBJECT`"
+    }
+    channelAccountConnectionRedirectUrl: {
+      h: "Channel Account Connection Redirect Url"
+      n: "channelAccountConnectionRedirectUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string representing the URL to which users will be redirected to connect their channel account."
+      t: "`$STRING`"
+    }
+    channelDescription: {
+      h: "Channel Description"
+      n: "channelDescription"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string providing a description of the channel."
+      t: "`$STRING`"
+    }
+    channelLogoUrl: {
+      h: "Channel Logo Url"
+      n: "channelLogoUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string representing the URL of the channel's logo."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "A string representing the name of the channel."
+      t: "`$STRING`"
+    }
+    webhookUrl: {
+      h: "Webhook Url"
+      n: "webhookUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string representing the URL to which webhook events will be sent."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "custom_channels_public_channel_integration_channel"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /conversations/custom-channels/2026-09"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/conversations/custom-channels/2026-09"
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.capabilities`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/custom-channels/2026-09/{channelId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/custom-channels/2026-09/{channelId}"
+          q: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.capabilities`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /conversations/custom-channels/2026-09/{channelId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/conversations/custom-channels/2026-09/{channelId}"
+          q: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.capabilities`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

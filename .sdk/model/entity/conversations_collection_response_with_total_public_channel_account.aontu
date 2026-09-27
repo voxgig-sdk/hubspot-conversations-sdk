@@ -1,0 +1,191 @@
+# Entity: conversations_collection_response_with_total_public_channel_account
+
+main: kit: entity: conversations_collection_response_with_total_public_channel_account: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: true
+      sh: "Whether the channel account is turned on."
+      t: "`$BOOLEAN`"
+    }
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    archivedAt: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archivedAt"
+      r: false
+      t: "`$STRING`"
+    }
+    authorized: {
+      h: "Authorized"
+      n: "authorized"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    channelId: {
+      h: "Channel Id"
+      n: "channelId"
+      r: true
+      sh: "The ID of the channel that the channel account is an instance of."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: "`$STRING`"
+    }
+    deliveryIdentifier: {
+      h: "Delivery Identifier"
+      n: "deliveryIdentifier"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The ID of the channel account."
+      t: "`$STRING`"
+    }
+    inboxId: {
+      h: "Inbox Id"
+      n: "inboxId"
+      r: true
+      sh: "The ID of the conversations inbox that contains the channel account."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the channel account."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_collection_response_with_total_public_channel_account"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/conversations/2026-09/channel-accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "channel_id"
+                or: "channel_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "default_page_length"
+                or: "default_page_length"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "inbox_id"
+                or: "inbox_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/conversations/2026-09/channel-accounts"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "channel_id"
+              "default_page_length"
+              "inbox_id"
+              "limit"
+              "sort"
+            ]
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "channel-accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -107,7 +107,7 @@ def _custom_channels_collection_response_with_total_public_channel2_basic_setup(
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["custom_channels_collection_response_with_total_public_channel201", "custom_channels_collection_response_with_total_public_channel202", "custom_channels_collection_response_with_total_public_channel203", "2026_0901", "2026_0902", "2026_0903", "channel01"],
+        ["custom_channels_collection_response_with_total_public_channel201", "custom_channels_collection_response_with_total_public_channel202", "custom_channels_collection_response_with_total_public_channel203", "channel01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

@@ -87,7 +87,7 @@ function custom_channels_public_channel_integration_channel_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "custom_channels_public_channel_integration_channel01", "custom_channels_public_channel_integration_channel02", "custom_channels_public_channel_integration_channel03", "2026_0901", "2026_0902", "2026_0903" },
+    { "custom_channels_public_channel_integration_channel01", "custom_channels_public_channel_integration_channel02", "custom_channels_public_channel_integration_channel03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

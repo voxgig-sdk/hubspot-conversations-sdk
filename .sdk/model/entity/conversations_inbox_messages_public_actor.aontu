@@ -1,0 +1,93 @@
+# Entity: conversations_inbox_messages_public_actor
+
+main: kit: entity: conversations_inbox_messages_public_actor: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_inbox_messages_public_actor"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/v3/conversations/actors/{actorId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "actor_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "property"
+                or: "property"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/v3/conversations/actors/{actorId}"
+          q: {
+            exist: [
+              "id"
+              "property"
+            ]
+          }
+          r: {
+            param: {
+              actorId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

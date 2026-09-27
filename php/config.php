@@ -226,26 +226,9 @@ class HubspotConversationsConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -260,84 +243,101 @@ class HubspotConversationsConfig
                       'var' => 'channel_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
                     '2026-09',
                     '{channel_id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'conversations_batch_response_public_actor' => [
           'fields' => [
             [
-              'format' => 'date-time',
               'name' => 'completedAt',
-              'req' => true,
+              'title' => 'Completed At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
             [
               'name' => 'errors',
+              'title' => 'Errors',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'inputs',
-              'req' => true,
+              'title' => 'Inputs',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
             [
               'name' => 'links',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
             ],
             [
-              'format' => 'int32',
               'name' => 'numErrors',
+              'title' => 'Num Errors',
               'type' => '`$INTEGER`',
+              'format' => 'int32',
             ],
             [
-              'format' => 'date-time',
               'name' => 'requestedAt',
+              'title' => 'Requested At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'results',
-              'req' => true,
+              'title' => 'Results',
               'type' => '`$ARRAY`',
-              'union' => [
-                'branches' => 7,
-                'count' => 2,
-                'depth' => 5,
-              ],
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'startedAt',
-              'req' => true,
+              'title' => 'Started At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
             [
               'name' => 'status',
-              'req' => true,
+              'title' => 'Status',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'conversations_batch_response_public_actor',
@@ -347,17 +347,6 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/conversations/2026-09/actors/batch/read',
@@ -381,15 +370,6 @@ class HubspotConversationsConfig
                       'lit' => 'read',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'property',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -397,6 +377,27 @@ class HubspotConversationsConfig
                     'actors',
                     'batch',
                     'read',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'property',
+                    ],
                   ],
                 ],
               ],
@@ -410,17 +411,14 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'paging',
+              'title' => 'Paging',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'req' => true,
+              'title' => 'Results',
               'type' => '`$ARRAY`',
-              'union' => [
-                'branches' => 8,
-                'count' => 4,
-                'depth' => 12,
-              ],
+              'req' => true,
             ],
           ],
           'name' => 'conversations_collection_response_public_message_forward_paging',
@@ -430,63 +428,9 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}/messages',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -507,6 +451,72 @@ class HubspotConversationsConfig
                       'lit' => 'messages',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'conversations',
+                    '2026-09',
+                    'threads',
+                    '{thread_id}',
+                    'messages',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -517,18 +527,6 @@ class HubspotConversationsConfig
                       'thread_id',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'conversations',
-                    '2026-09',
-                    'threads',
-                    '{thread_id}',
-                    'messages',
-                  ],
                 ],
               ],
             ],
@@ -536,7 +534,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -545,87 +543,102 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
+              'title' => 'Archived',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether this thread is archived.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'assignedTo',
+              'title' => 'Assigned To',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'associatedContactId',
+              'title' => 'Associated Contact Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the associated Contact in the CRM.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'closedAt',
-              'short' => 'When the thread was closed.',
+              'title' => 'Closed At',
               'type' => '`$STRING`',
+              'short' => 'When the thread was closed.',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'When the thread was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique ID of the thread.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'inboxId',
+              'title' => 'Inbox Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the conversations inbox containing the thread.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'latestMessageReceivedTimestamp',
-              'short' => 'The time that the latest message was sent on the thread.',
+              'title' => 'Latest Message Received Timestamp',
               'type' => '`$STRING`',
+              'short' => 'The time that the latest message was sent on the thread.',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'latestMessageSentTimestamp',
-              'short' => 'The time that the latest message was sent on the thread.',
+              'title' => 'Latest Message Sent Timestamp',
               'type' => '`$STRING`',
+              'short' => 'The time that the latest message was sent on the thread.',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'latestMessageTimestamp',
-              'short' => 'The time that the latest message was sent or received on the thread.',
+              'title' => 'Latest Message Timestamp',
               'type' => '`$STRING`',
+              'short' => 'The time that the latest message was sent or received on the thread.',
+              'format' => 'date-time',
             ],
             [
               'name' => 'originalChannelAccountId',
-              'req' => true,
+              'title' => 'Original Channel Account Id',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'originalChannelId',
-              'req' => true,
+              'title' => 'Original Channel Id',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'spam',
+              'title' => 'Spam',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether the thread is marked as spam.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'status',
+              'title' => 'Status',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The thread\'s status: `OPEN` or `CLOSED`.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'threadAssociations',
+              'title' => 'Thread Associations',
               'type' => '`$OBJECT`',
             ],
           ],
@@ -640,87 +653,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'associated_contact_id',
-                        'orig' => 'associated_contact_id',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'associated_ticket_id',
-                        'orig' => 'associated_ticket_id',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'association',
-                        'orig' => 'association',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'inbox_id',
-                        'orig' => 'inbox_id',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'latest_message_timestamp_after',
-                        'orig' => 'latest_message_timestamp_after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'thread_status',
-                        'orig' => 'thread_status',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/threads',
@@ -738,6 +670,98 @@ class HubspotConversationsConfig
                       'lit' => 'threads',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'conversations',
+                    '2026-09',
+                    'threads',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'associated_contact_id',
+                        'orig' => 'associated_contact_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'associated_ticket_id',
+                        'orig' => 'associated_ticket_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'association',
+                        'orig' => 'association',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'inbox_id',
+                        'orig' => 'inbox_id',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'latest_message_timestamp_after',
+                        'orig' => 'latest_message_timestamp_after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'thread_status',
+                        'orig' => 'thread_status',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -753,16 +777,6 @@ class HubspotConversationsConfig
                       'thread_status',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'conversations',
-                    '2026-09',
-                    'threads',
-                  ],
                 ],
               ],
             ],
@@ -775,15 +789,17 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -797,38 +813,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/channels',
@@ -846,6 +830,49 @@ class HubspotConversationsConfig
                       'lit' => 'channels',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'conversations',
+                    '2026-09',
+                    'channels',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -853,16 +880,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'conversations',
-                    '2026-09',
-                    'channels',
                   ],
                 ],
               ],
@@ -876,59 +893,69 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'active',
+              'title' => 'Active',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether the channel account is turned on.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'archived',
-              'req' => true,
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'authorized',
-              'req' => true,
+              'title' => 'Authorized',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
               'name' => 'channelId',
+              'title' => 'Channel Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel that the channel account is an instance of.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
-              'req' => true,
+              'title' => 'Created At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
             [
               'name' => 'deliveryIdentifier',
-              'req' => true,
+              'title' => 'Delivery Identifier',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'inboxId',
+              'title' => 'Inbox Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the conversations inbox that contains the channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel account.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -942,59 +969,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'inbox_id',
-                        'orig' => 'inbox_id',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/channel-accounts',
@@ -1012,6 +986,70 @@ class HubspotConversationsConfig
                       'lit' => 'channel-accounts',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'conversations',
+                    '2026-09',
+                    'channel-accounts',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'inbox_id',
+                        'orig' => 'inbox_id',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -1022,16 +1060,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'conversations',
-                    '2026-09',
-                    'channel-accounts',
                   ],
                 ],
               ],
@@ -1045,44 +1073,51 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
-              'req' => true,
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'When the inbox was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Specifies whether this refers to a Conversations Inbox or to the Help Desk.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
-              'req' => true,
+              'title' => 'Updated At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
           ],
           'id' => [
@@ -1096,45 +1131,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/inboxes',
@@ -1152,6 +1148,56 @@ class HubspotConversationsConfig
                       'lit' => 'inboxes',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'conversations',
+                    '2026-09',
+                    'inboxes',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -1160,16 +1206,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'conversations',
-                    '2026-09',
-                    'inboxes',
                   ],
                 ],
               ],
@@ -1182,45 +1218,47 @@ class HubspotConversationsConfig
         'conversations_inbox_messages_batch_response_public_actor' => [
           'fields' => [
             [
-              'format' => 'date-time',
               'name' => 'completedAt',
-              'req' => true,
+              'title' => 'Completed At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
             [
               'name' => 'inputs',
-              'req' => true,
+              'title' => 'Inputs',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
             [
               'name' => 'links',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'requestedAt',
+              'title' => 'Requested At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'results',
-              'req' => true,
+              'title' => 'Results',
               'type' => '`$ARRAY`',
-              'union' => [
-                'branches' => 7,
-                'count' => 1,
-                'depth' => 1,
-              ],
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'startedAt',
-              'req' => true,
+              'title' => 'Started At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
             [
               'name' => 'status',
-              'req' => true,
+              'title' => 'Status',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'conversations_inbox_messages_batch_response_public_actor',
@@ -1230,16 +1268,6 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/v3/conversations/actors/batch/read',
@@ -1263,15 +1291,6 @@ class HubspotConversationsConfig
                       'lit' => 'read',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'property',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
@@ -1279,6 +1298,26 @@ class HubspotConversationsConfig
                     'actors',
                     'batch',
                     'read',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'property',
+                    ],
                   ],
                 ],
               ],
@@ -1292,17 +1331,14 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'paging',
+              'title' => 'Paging',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'req' => true,
+              'title' => 'Results',
               'type' => '`$ARRAY`',
-              'union' => [
-                'branches' => 8,
-                'count' => 4,
-                'depth' => 12,
-              ],
+              'req' => true,
             ],
           ],
           'name' => 'conversations_inbox_messages_collection_response_public_message',
@@ -1312,57 +1348,9 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}/messages',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -1383,6 +1371,66 @@ class HubspotConversationsConfig
                       'lit' => 'messages',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'v3',
+                    'conversations',
+                    'threads',
+                    '{thread_id}',
+                    'messages',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -1393,18 +1441,6 @@ class HubspotConversationsConfig
                       'thread_id',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'v3',
-                    'conversations',
-                    'threads',
-                    '{thread_id}',
-                    'messages',
-                  ],
                 ],
               ],
             ],
@@ -1412,7 +1448,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -1421,87 +1457,102 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
+              'title' => 'Archived',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether this thread is archived.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'assignedTo',
+              'title' => 'Assigned To',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'associatedContactId',
+              'title' => 'Associated Contact Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the associated Contact in the CRM.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'closedAt',
-              'short' => 'When the thread was closed.',
+              'title' => 'Closed At',
               'type' => '`$STRING`',
+              'short' => 'When the thread was closed.',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'When the thread was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique ID of the thread.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'inboxId',
+              'title' => 'Inbox Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the conversations inbox containing the thread.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'latestMessageReceivedTimestamp',
-              'short' => 'The time that the latest message was sent on the thread.',
+              'title' => 'Latest Message Received Timestamp',
               'type' => '`$STRING`',
+              'short' => 'The time that the latest message was sent on the thread.',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'latestMessageSentTimestamp',
-              'short' => 'The time that the latest message was sent on the thread.',
+              'title' => 'Latest Message Sent Timestamp',
               'type' => '`$STRING`',
+              'short' => 'The time that the latest message was sent on the thread.',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'latestMessageTimestamp',
-              'short' => 'The time that the latest message was sent or received on the thread.',
+              'title' => 'Latest Message Timestamp',
               'type' => '`$STRING`',
+              'short' => 'The time that the latest message was sent or received on the thread.',
+              'format' => 'date-time',
             ],
             [
               'name' => 'originalChannelAccountId',
-              'req' => true,
+              'title' => 'Original Channel Account Id',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'originalChannelId',
-              'req' => true,
+              'title' => 'Original Channel Id',
               'type' => '`$STRING`',
+              'req' => true,
             ],
             [
               'name' => 'spam',
+              'title' => 'Spam',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether the thread is marked as spam.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'status',
+              'title' => 'Status',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The thread\'s status: `OPEN` or `CLOSED`.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'threadAssociations',
+              'title' => 'Thread Associations',
               'type' => '`$OBJECT`',
             ],
           ],
@@ -1516,70 +1567,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'associated_contact_id',
-                        'orig' => 'associated_contact_id',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'association',
-                        'orig' => 'association',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'inbox_id',
-                        'orig' => 'inbox_id',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'latest_message_timestamp_after',
-                        'orig' => 'latest_message_timestamp_after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'thread_status',
-                        'orig' => 'thread_status',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/threads',
@@ -1597,6 +1584,81 @@ class HubspotConversationsConfig
                       'lit' => 'threads',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'v3',
+                    'conversations',
+                    'threads',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'associated_contact_id',
+                        'orig' => 'associated_contact_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'association',
+                        'orig' => 'association',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'inbox_id',
+                        'orig' => 'inbox_id',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'latest_message_timestamp_after',
+                        'orig' => 'latest_message_timestamp_after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'thread_status',
+                        'orig' => 'thread_status',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -1611,16 +1673,6 @@ class HubspotConversationsConfig
                       'thread_status',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'v3',
-                    'conversations',
-                    'threads',
-                  ],
                 ],
               ],
             ],
@@ -1633,59 +1685,69 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'active',
+              'title' => 'Active',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether the channel account is turned on.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'archived',
-              'req' => true,
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'authorized',
-              'req' => true,
+              'title' => 'Authorized',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
               'name' => 'channelId',
+              'title' => 'Channel Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel that the channel account is an instance of.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
-              'req' => true,
+              'title' => 'Created At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
             [
               'name' => 'deliveryIdentifier',
-              'req' => true,
+              'title' => 'Delivery Identifier',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'inboxId',
+              'title' => 'Inbox Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the conversations inbox that contains the channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel account.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -1699,52 +1761,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'inbox_id',
-                        'orig' => 'inbox_id',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/channel-accounts',
@@ -1762,6 +1778,63 @@ class HubspotConversationsConfig
                       'lit' => 'channel-accounts',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'v3',
+                    'conversations',
+                    'channel-accounts',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'inbox_id',
+                        'orig' => 'inbox_id',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -1772,16 +1845,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'v3',
-                    'conversations',
-                    'channel-accounts',
                   ],
                 ],
               ],
@@ -1795,15 +1858,17 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -1817,34 +1882,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/channels',
@@ -1862,6 +1899,45 @@ class HubspotConversationsConfig
                       'lit' => 'channels',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'v3',
+                    'conversations',
+                    'channels',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -1869,16 +1945,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'v3',
-                    'conversations',
-                    'channels',
                   ],
                 ],
               ],
@@ -1892,44 +1958,51 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
-              'req' => true,
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'When the inbox was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Specifies whether this refers to a Conversations Inbox or to the Help Desk.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
-              'req' => true,
+              'title' => 'Updated At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
           ],
           'id' => [
@@ -1943,40 +2016,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/inboxes',
@@ -1994,6 +2033,51 @@ class HubspotConversationsConfig
                       'lit' => 'inboxes',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'v3',
+                    'conversations',
+                    'inboxes',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -2002,16 +2086,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'v3',
-                    'conversations',
-                    'inboxes',
                   ],
                 ],
               ],
@@ -2025,6 +2099,7 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -2039,33 +2114,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'actor_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/actors/{actorId}',
-                  'rename' => [
-                    'param' => [
-                      'actorId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2083,22 +2134,46 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                      'property',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
                     'conversations',
                     'actors',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'actorId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'actor_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                      'property',
+                    ],
                   ],
                 ],
               ],
@@ -2112,15 +2187,17 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -2134,25 +2211,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/channels/{channelId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2170,21 +2231,37 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
                     'conversations',
                     'channels',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -2198,19 +2275,22 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The type of identifier.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'value',
+              'title' => 'Value',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -2224,34 +2304,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'channel_account_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => false,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/channel-accounts/{channelAccountId}',
-                  'rename' => [
-                    'param' => [
-                      'channelAccountId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2269,22 +2324,47 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'archived',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.deliveryIdentifier`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
                     'conversations',
                     'channel-accounts',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelAccountId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.deliveryIdentifier`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'channel_account_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => false,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'archived',
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -2298,44 +2378,51 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
-              'req' => true,
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'When the inbox was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Specifies whether this refers to a Conversations Inbox or to the Help Desk.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
-              'req' => true,
+              'title' => 'Updated At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
           ],
           'id' => [
@@ -2349,34 +2436,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'inbox_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => false,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/inboxes/{inboxId}',
-                  'rename' => [
-                    'param' => [
-                      'inboxId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2394,22 +2456,47 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'archived',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
                     'conversations',
                     'inboxes',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'inboxId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'inbox_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => false,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'archived',
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -2423,6 +2510,7 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -2437,25 +2525,9 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}/messages',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2476,15 +2548,6 @@ class HubspotConversationsConfig
                       'lit' => 'messages',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
@@ -2492,6 +2555,31 @@ class HubspotConversationsConfig
                     'threads',
                     '{thread_id}',
                     'messages',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'thread_id',
+                    ],
                   ],
                 ],
               ],
@@ -2501,41 +2589,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'message_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}/messages/{messageId}',
-                  'rename' => [
-                    'param' => [
-                      'messageId' => 'id',
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2559,17 +2615,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                      'property',
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
@@ -2579,6 +2624,49 @@ class HubspotConversationsConfig
                     'messages',
                     '{id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'messageId' => 'id',
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'message_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                      'property',
+                      'thread_id',
+                    ],
+                  ],
                 ],
               ],
             ],
@@ -2586,7 +2674,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -2595,10 +2683,12 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'richText',
+              'title' => 'Rich Text',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'text',
+              'title' => 'Text',
               'type' => '`$STRING`',
             ],
           ],
@@ -2609,41 +2699,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'message_id',
-                        'orig' => 'message_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content',
-                  'rename' => [
-                    'param' => [
-                      'messageId' => 'message_id',
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2670,17 +2728,6 @@ class HubspotConversationsConfig
                       'lit' => 'original-content',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'message_id',
-                      'property',
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
@@ -2691,6 +2738,49 @@ class HubspotConversationsConfig
                     '{message_id}',
                     'original-content',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'messageId' => 'message_id',
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'message_id',
+                        'orig' => 'message_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'message_id',
+                      'property',
+                      'thread_id',
+                    ],
+                  ],
                 ],
               ],
             ],
@@ -2698,8 +2788,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
-                'message',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -2708,21 +2797,25 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
-              'short' => 'Whether this thread is archived.',
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'short' => 'Whether this thread is archived.',
             ],
             [
               'name' => 'associatedTicketId',
+              'title' => 'Associated Ticket Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
-              'short' => 'The thread\'s status: `OPEN` or `CLOSED`.',
+              'title' => 'Status',
               'type' => '`$STRING`',
+              'short' => 'The thread\'s status: `OPEN` or `CLOSED`.',
             ],
           ],
           'id' => [
@@ -2736,45 +2829,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'association',
-                        'orig' => 'association',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2790,6 +2847,53 @@ class HubspotConversationsConfig
                     ],
                     [
                       'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'conversations',
+                    'v3',
+                    'conversations',
+                    'threads',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.threadAssociations`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'association',
+                        'orig' => 'association',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
                     ],
                   ],
                   'select' => [
@@ -2800,17 +2904,6 @@ class HubspotConversationsConfig
                       'property',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.threadAssociations`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'v3',
-                    'conversations',
-                    'threads',
-                    '{id}',
-                  ],
                 ],
               ],
             ],
@@ -2819,33 +2912,9 @@ class HubspotConversationsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2863,22 +2932,46 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'archived',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.threadAssociations`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
                     'conversations',
                     'threads',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.threadAssociations`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'archived',
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -2892,6 +2985,7 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -2906,35 +3000,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'actor_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/actors/{actorId}',
-                  'rename' => [
-                    'param' => [
-                      'actorId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -2952,22 +3020,48 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                      'property',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
                     '2026-09',
                     'actors',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'actorId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'actor_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                      'property',
+                    ],
                   ],
                 ],
               ],
@@ -2981,15 +3075,17 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -3003,26 +3099,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/channels/{channelId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3040,21 +3119,38 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
                     '2026-09',
                     'channels',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -3068,19 +3164,22 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The type of identifier.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'value',
+              'title' => 'Value',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -3094,35 +3193,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'channel_account_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/channel-accounts/{channelAccountId}',
-                  'rename' => [
-                    'param' => [
-                      'channelAccountId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3140,22 +3213,48 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'archived',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.deliveryIdentifier`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
                     '2026-09',
                     'channel-accounts',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelAccountId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.deliveryIdentifier`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'channel_account_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'archived',
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -3169,44 +3268,51 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
-              'req' => true,
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'req' => true,
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'When the inbox was created.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The ID of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the inbox.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Specifies whether this refers to a Conversations Inbox or to the Help Desk.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
-              'req' => true,
+              'title' => 'Updated At',
               'type' => '`$STRING`',
+              'req' => true,
+              'format' => 'date-time',
             ],
           ],
           'id' => [
@@ -3220,35 +3326,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'inbox_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/inboxes/{inboxId}',
-                  'rename' => [
-                    'param' => [
-                      'inboxId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3266,22 +3346,48 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'archived',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
                     '2026-09',
                     'inboxes',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'inboxId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'inbox_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'archived',
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -3295,6 +3401,7 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -3309,26 +3416,9 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}/messages',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3349,15 +3439,6 @@ class HubspotConversationsConfig
                       'lit' => 'messages',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -3365,6 +3446,32 @@ class HubspotConversationsConfig
                     'threads',
                     '{thread_id}',
                     'messages',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'thread_id',
+                    ],
                   ],
                 ],
               ],
@@ -3374,44 +3481,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'message_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}/messages/{messageId}',
-                  'rename' => [
-                    'param' => [
-                      'messageId' => 'id',
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3435,17 +3507,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                      'property',
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -3455,6 +3516,52 @@ class HubspotConversationsConfig
                     'messages',
                     '{id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'messageId' => 'id',
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'message_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                      'property',
+                      'thread_id',
+                    ],
+                  ],
                 ],
               ],
             ],
@@ -3462,7 +3569,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -3471,10 +3578,12 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'richText',
+              'title' => 'Rich Text',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'text',
+              'title' => 'Text',
               'type' => '`$STRING`',
             ],
           ],
@@ -3485,44 +3594,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'message_id',
-                        'orig' => 'message_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}/messages/{messageId}/original-content',
-                  'rename' => [
-                    'param' => [
-                      'messageId' => 'message_id',
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3549,17 +3623,6 @@ class HubspotConversationsConfig
                       'lit' => 'original-content',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'message_id',
-                      'property',
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -3570,6 +3633,52 @@ class HubspotConversationsConfig
                     '{message_id}',
                     'original-content',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'messageId' => 'message_id',
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'message_id',
+                        'orig' => 'message_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'message_id',
+                      'property',
+                      'thread_id',
+                    ],
+                  ],
                 ],
               ],
             ],
@@ -3577,8 +3686,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
-                'message',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -3587,21 +3695,25 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'archived',
-              'short' => 'Whether this thread is archived.',
+              'title' => 'Archived',
               'type' => '`$BOOLEAN`',
+              'short' => 'Whether this thread is archived.',
             ],
             [
               'name' => 'associatedTicketId',
+              'title' => 'Associated Ticket Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
-              'short' => 'The thread\'s status: `OPEN` or `CLOSED`.',
+              'title' => 'Status',
               'type' => '`$STRING`',
+              'short' => 'The thread\'s status: `OPEN` or `CLOSED`.',
             ],
           ],
           'id' => [
@@ -3615,49 +3727,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'association',
-                        'orig' => 'association',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'property',
-                        'orig' => 'property',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3673,6 +3745,57 @@ class HubspotConversationsConfig
                     ],
                     [
                       'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'conversations',
+                    'conversations',
+                    '2026-09',
+                    'threads',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.threadAssociations`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'association',
+                        'orig' => 'association',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'property',
+                        'orig' => 'property',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
                     ],
                   ],
                   'select' => [
@@ -3683,17 +3806,6 @@ class HubspotConversationsConfig
                       'property',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.threadAssociations`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'conversations',
-                    '2026-09',
-                    'threads',
-                    '{id}',
-                  ],
                 ],
               ],
             ],
@@ -3702,26 +3814,9 @@ class HubspotConversationsConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'thread_id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}/assignee',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3742,16 +3837,6 @@ class HubspotConversationsConfig
                       'lit' => 'assignee',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'assignee',
-                    'exist' => [
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -3759,6 +3844,33 @@ class HubspotConversationsConfig
                     'threads',
                     '{thread_id}',
                     'assignee',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'assignee',
+                    'exist' => [
+                      'thread_id',
+                    ],
                   ],
                 ],
               ],
@@ -3768,35 +3880,9 @@ class HubspotConversationsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3814,16 +3900,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'archived',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.threadAssociations`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -3831,28 +3907,47 @@ class HubspotConversationsConfig
                     'threads',
                     '{id}',
                   ],
-                ],
-                [
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.threadAssociations`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'thread_id',
+                        'name' => 'id',
                         'orig' => 'thread_id',
-                        'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'archived',
+                      'id',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}/assignee',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'thread_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -3873,16 +3968,6 @@ class HubspotConversationsConfig
                       'lit' => 'assignee',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'assignee',
-                    'exist' => [
-                      'thread_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.threadAssociations`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
@@ -3891,6 +3976,33 @@ class HubspotConversationsConfig
                     '{thread_id}',
                     'assignee',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'thread_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.threadAssociations`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'thread_id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'assignee',
+                    'exist' => [
+                      'thread_id',
+                    ],
+                  ],
                 ],
               ],
             ],
@@ -3898,7 +4010,7 @@ class HubspotConversationsConfig
           'relations' => [
             'ancestors' => [
               [
-                'thread',
+                '$.main.kit.entity.thread',
               ],
             ],
           ],
@@ -3907,48 +4019,56 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'capabilities',
+              'title' => 'Capabilities',
+              'type' => '`$OBJECT`',
               'req' => true,
               'short' => 'An object detailing the capabilities of the channel, with additional properties as objects.',
-              'type' => '`$OBJECT`',
             ],
             [
               'name' => 'channelAccountConnectionRedirectUrl',
-              'short' => 'A string representing the URL used to redirect for channel account connection.',
+              'title' => 'Channel Account Connection Redirect Url',
               'type' => '`$STRING`',
+              'short' => 'A string representing the URL used to redirect for channel account connection.',
             ],
             [
               'name' => 'channelDescription',
-              'short' => 'A string providing a description of the channel.',
+              'title' => 'Channel Description',
               'type' => '`$STRING`',
+              'short' => 'A string providing a description of the channel.',
             ],
             [
               'name' => 'channelLogoUrl',
-              'short' => 'A string representing the URL of the channel\'s logo.',
+              'title' => 'Channel Logo Url',
               'type' => '`$STRING`',
+              'short' => 'A string representing the URL of the channel\'s logo.',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the channel was created, in ISO 8601 format.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string that uniquely identifies the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representing the name of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'webhookUrl',
-              'short' => 'A string representing the URL to which webhook events will be sent.',
+              'title' => 'Webhook Url',
               'type' => '`$STRING`',
+              'short' => 'A string representing the URL to which webhook events will be sent.',
             ],
           ],
           'id' => [
@@ -3962,38 +4082,6 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/custom-channels/2026-09',
@@ -4008,6 +4096,48 @@ class HubspotConversationsConfig
                       'lit' => '2026-09',
                     ],
                   ],
+                  'parts' => [
+                    'conversations',
+                    'custom-channels',
+                    '2026-09',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'after',
@@ -4015,15 +4145,6 @@ class HubspotConversationsConfig
                       'limit',
                       'sort',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'custom-channels',
-                    '2026-09',
                   ],
                 ],
               ],
@@ -4037,63 +4158,73 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'active',
+              'title' => 'Active',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'A boolean indicating whether the channel account is currently active.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'archived',
+              'title' => 'Archived',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'A boolean indicating whether the channel account is archived.',
-              'type' => '`$BOOLEAN`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'archivedAt',
-              'short' => 'The date and time when the channel account was archived, in ISO 8601 format.',
+              'title' => 'Archived At',
               'type' => '`$STRING`',
+              'short' => 'The date and time when the channel account was archived, in ISO 8601 format.',
+              'format' => 'date-time',
             ],
             [
               'name' => 'authorized',
+              'title' => 'Authorized',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'A boolean indicating whether the channel account is authorized.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'channelId',
+              'title' => 'Channel Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the channel to which this account belongs, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the channel account was created, in ISO 8601 format.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'deliveryIdentifier',
-              'req' => true,
+              'title' => 'Delivery Identifier',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for this channel account, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'inboxId',
+              'title' => 'Inbox Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the inbox associated with this channel account, represented as a string.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the channel account, represented as a string.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -4107,77 +4238,9 @@ class HubspotConversationsConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'after',
-                        'orig' => 'after',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'default_page_length',
-                        'orig' => 'default_page_length',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'delivery_identifier_type',
-                        'orig' => 'delivery_identifier_type',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'delivery_identifier_value',
-                        'orig' => 'delivery_identifier_value',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$ARRAY`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/channel-accounts',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4193,6 +4256,85 @@ class HubspotConversationsConfig
                     ],
                     [
                       'lit' => 'channel-accounts',
+                    ],
+                  ],
+                  'parts' => [
+                    'conversations',
+                    'custom-channels',
+                    '2026-09',
+                    '{channel_id}',
+                    'channel-accounts',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'after',
+                        'orig' => 'after',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'default_page_length',
+                        'orig' => 'default_page_length',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'delivery_identifier_type',
+                        'orig' => 'delivery_identifier_type',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'delivery_identifier_value',
+                        'orig' => 'delivery_identifier_value',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
                     ],
                   ],
                   'select' => [
@@ -4207,79 +4349,71 @@ class HubspotConversationsConfig
                       'sort',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'custom-channels',
-                    '2026-09',
-                    '{channel_id}',
-                    'channel-accounts',
-                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'custom_channels_public_channel_account' => [
           'fields' => [
             [
               'name' => 'authorized',
+              'title' => 'Authorized',
+              'type' => '`$BOOLEAN`',
+              'req' => true,
               'op' => [
                 'update' => [
                   'type' => '`$BOOLEAN`',
                 ],
               ],
-              'req' => true,
               'short' => 'A boolean indicating whether the channel account is authorized.',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'deliveryIdentifier',
-              'req' => true,
+              'title' => 'Delivery Identifier',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'inboxId',
+              'title' => 'Inbox Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the inbox associated with this channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
+              'req' => true,
               'op' => [
                 'update' => [
                   'type' => '`$STRING`',
                 ],
               ],
-              'req' => true,
               'short' => 'The name of the channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representing the type of delivery identifier.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'value',
+              'title' => 'Value',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representing the value associated with the delivery identifier type.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -4293,26 +4427,9 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/channel-accounts',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4330,21 +4447,38 @@ class HubspotConversationsConfig
                       'lit' => 'channel-accounts',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.deliveryIdentifier`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
                     '2026-09',
                     '{channel_id}',
                     'channel-accounts',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.deliveryIdentifier`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                    ],
                   ],
                 ],
               ],
@@ -4354,44 +4488,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'channel_account_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => null,
-                        'kind' => 'query',
-                        'name' => 'archived',
-                        'orig' => 'archived',
-                        'type' => '`$BOOLEAN`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}',
-                  'rename' => [
-                    'param' => [
-                      'channelAccountId' => 'id',
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4410,6 +4509,53 @@ class HubspotConversationsConfig
                     ],
                     [
                       'var' => 'id',
+                    ],
+                  ],
+                  'parts' => [
+                    'conversations',
+                    'custom-channels',
+                    '2026-09',
+                    '{channel_id}',
+                    'channel-accounts',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelAccountId' => 'id',
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.deliveryIdentifier`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'id',
+                        'orig' => 'channel_account_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'archived',
+                        'orig' => 'archived',
+                        'type' => '`$BOOLEAN`',
+                        'kind' => 'query',
+                        'example' => null,
+                      ],
                     ],
                   ],
                   'select' => [
@@ -4419,18 +4565,6 @@ class HubspotConversationsConfig
                       'id',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.deliveryIdentifier`',
-                  ],
-                  'parts' => [
-                    'conversations',
-                    'custom-channels',
-                    '2026-09',
-                    '{channel_id}',
-                    'channel-accounts',
-                    '{id}',
-                  ],
                 ],
               ],
             ],
@@ -4439,35 +4573,9 @@ class HubspotConversationsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'channel_account_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}',
-                  'rename' => [
-                    'param' => [
-                      'channelAccountId' => 'id',
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4488,16 +4596,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.deliveryIdentifier`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
@@ -4506,45 +4604,82 @@ class HubspotConversationsConfig
                     'channel-accounts',
                     '{id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'channelAccountId' => 'id',
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.deliveryIdentifier`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'id',
+                        'orig' => 'channel_account_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                      'id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'custom_channels_public_channel_account_staging_token' => [
           'fields' => [
             [
               'name' => 'accountName',
-              'short' => 'A string representing the name of the account associated with the staging token.',
+              'title' => 'Account Name',
               'type' => '`$STRING`',
+              'short' => 'A string representing the name of the account associated with the staging token.',
             ],
             [
               'name' => 'deliveryIdentifier',
-              'req' => true,
+              'title' => 'Delivery Identifier',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representing the type of delivery identifier.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'value',
+              'title' => 'Value',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representing the value associated with the delivery identifier type.',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -4558,35 +4693,9 @@ class HubspotConversationsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'account_token',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/channel-account-staging-tokens/{accountToken}',
-                  'rename' => [
-                    'param' => [
-                      'accountToken' => 'id',
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4607,16 +4716,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.deliveryIdentifier`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
@@ -4625,28 +4724,63 @@ class HubspotConversationsConfig
                     'channel-account-staging-tokens',
                     '{id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'accountToken' => 'id',
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.deliveryIdentifier`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'id',
+                        'orig' => 'account_token',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                      'id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'custom_channels_public_channel_integration_channel' => [
           'fields' => [
             [
               'name' => 'capabilities',
+              'title' => 'Capabilities',
+              'type' => '`$OBJECT`',
               'req' => true,
               'short' => 'An object that defines the capabilities of the channel, with additional properties as key-value pairs.',
-              'type' => '`$OBJECT`',
             ],
             [
               'name' => 'channelAccountConnectionRedirectUrl',
+              'title' => 'Channel Account Connection Redirect Url',
+              'type' => '`$STRING`',
               'op' => [
                 'update' => [
                   'req' => true,
@@ -4654,10 +4788,11 @@ class HubspotConversationsConfig
                 ],
               ],
               'short' => 'A string representing the URL to which users will be redirected to connect their channel account.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'channelDescription',
+              'title' => 'Channel Description',
+              'type' => '`$STRING`',
               'op' => [
                 'update' => [
                   'req' => true,
@@ -4665,10 +4800,11 @@ class HubspotConversationsConfig
                 ],
               ],
               'short' => 'A string providing a description of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'channelLogoUrl',
+              'title' => 'Channel Logo Url',
+              'type' => '`$STRING`',
               'op' => [
                 'update' => [
                   'req' => true,
@@ -4676,16 +4812,18 @@ class HubspotConversationsConfig
                 ],
               ],
               'short' => 'A string representing the URL of the channel\'s logo.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'A string representing the name of the channel.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'webhookUrl',
+              'title' => 'Webhook Url',
+              'type' => '`$STRING`',
               'op' => [
                 'update' => [
                   'req' => true,
@@ -4693,7 +4831,6 @@ class HubspotConversationsConfig
                 ],
               ],
               'short' => 'A string representing the URL to which webhook events will be sent.',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'custom_channels_public_channel_integration_channel',
@@ -4703,7 +4840,6 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/custom-channels/2026-09',
@@ -4718,16 +4854,18 @@ class HubspotConversationsConfig
                       'lit' => '2026-09',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.capabilities`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
                     '2026-09',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.capabilities`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -4736,26 +4874,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4770,20 +4891,37 @@ class HubspotConversationsConfig
                       'var' => 'channel_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
+                  'parts' => [
+                    'conversations',
+                    'custom-channels',
+                    '2026-09',
+                    '{channel_id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.capabilities`',
                   ],
-                  'parts' => [
-                    'conversations',
-                    'custom-channels',
-                    '2026-09',
-                    '{channel_id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                    ],
                   ],
                 ],
               ],
@@ -4793,26 +4931,9 @@ class HubspotConversationsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -4827,200 +4948,236 @@ class HubspotConversationsConfig
                       'var' => 'channel_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.capabilities`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
                     '2026-09',
                     '{channel_id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.capabilities`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'custom_channels_public_conversations_message' => [
           'fields' => [
             [
               'name' => 'archived',
+              'title' => 'Archived',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'A boolean indicating whether the message is archived.',
-              'type' => '`$BOOLEAN`',
             ],
             [
-              'format' => 'int64',
               'name' => 'associateWithContactId',
-              'short' => 'The ID of the contact with which this message should be associated.',
+              'title' => 'Associate With Contact Id',
               'type' => '`$INTEGER`',
+              'short' => 'The ID of the contact with which this message should be associated.',
+              'format' => 'int64',
             ],
             [
               'name' => 'attachments',
+              'title' => 'Attachments',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of attachments included with the message, which can be files, locations, contacts, or other supported types.',
-              'type' => '`$ARRAY`',
-              'union' => [
-                'branches' => 8,
-                'count' => 1,
-                'depth' => 1,
-              ],
             ],
             [
               'name' => 'channelAccountId',
+              'title' => 'Channel Account Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The identifier of the channel account associated with the message.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'channelId',
+              'title' => 'Channel Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The identifier of the channel through which the message was sent.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'client',
-              'req' => true,
+              'title' => 'Client',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'conversationsThreadId',
+              'title' => 'Conversations Thread Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The identifier for the conversation thread to which this message belongs.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the message was created, in ISO 8601 format.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'createdBy',
+              'title' => 'Created By',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The identifier of the user or system that created the message.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'direction',
+              'title' => 'Direction',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The direction of the message, either \'INCOMING\' or \'OUTGOING\'.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'errorMessage',
-              'short' => 'A string containing an error message, if applicable.',
+              'title' => 'Error Message',
               'type' => '`$STRING`',
+              'short' => 'A string containing an error message, if applicable.',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The unique identifier for the message.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'inReplyToId',
-              'short' => 'The identifier of the message to which this message is a reply, if applicable.',
+              'title' => 'In Reply To Id',
               'type' => '`$STRING`',
+              'short' => 'The identifier of the message to which this message is a reply, if applicable.',
             ],
             [
               'name' => 'integrationIdempotencyId',
-              'short' => 'A unique identifier to ensure idempotency of the message within the integration.',
+              'title' => 'Integration Idempotency Id',
               'type' => '`$STRING`',
+              'short' => 'A unique identifier to ensure idempotency of the message within the integration.',
             ],
             [
               'name' => 'integrationThreadId',
-              'short' => 'A unique identifier for the thread within the integration.',
+              'title' => 'Integration Thread Id',
               'type' => '`$STRING`',
+              'short' => 'A unique identifier for the thread within the integration.',
             ],
             [
               'name' => 'messageDirection',
+              'title' => 'Message Direction',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The direction of the message, indicating whether it is \'INCOMING\' or \'OUTGOING\'.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'preResolvedContacts',
-              'req' => true,
+              'title' => 'Pre Resolved Contacts',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'recipients',
+              'title' => 'Recipients',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of recipients of the message, each containing recipient details.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'richText',
-              'short' => 'The rich text content of the message, if available.',
+              'title' => 'Rich Text',
               'type' => '`$STRING`',
+              'short' => 'The rich text content of the message, if available.',
             ],
             [
               'name' => 'senders',
+              'title' => 'Senders',
+              'type' => '`$ARRAY`',
               'req' => true,
               'short' => 'An array of senders associated with the message, each containing sender details.',
-              'type' => '`$ARRAY`',
             ],
             [
               'name' => 'status',
-              'req' => true,
+              'title' => 'Status',
               'type' => '`$OBJECT`',
+              'req' => true,
             ],
             [
               'name' => 'statusType',
+              'title' => 'Status Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Valid status are SENT, FAILED, and READ',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'subject',
-              'short' => 'The subject of the message, if applicable.',
+              'title' => 'Subject',
               'type' => '`$STRING`',
+              'short' => 'The subject of the message, if applicable.',
             ],
             [
               'name' => 'text',
+              'title' => 'Text',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The plain text content of the message.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'timestamp',
+              'title' => 'Timestamp',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date and time when the message was created, in ISO 8601 format.',
-              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'truncationStatus',
+              'title' => 'Truncation Status',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'Indicates whether the message content is truncated.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'title' => 'Type',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The type of the message, which is always \'MESSAGE\'.',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'date-time',
               'name' => 'updatedAt',
-              'short' => 'The date and time when the message was last updated, in ISO 8601 format.',
+              'title' => 'Updated At',
               'type' => '`$STRING`',
+              'short' => 'The date and time when the message was last updated, in ISO 8601 format.',
+              'format' => 'date-time',
             ],
           ],
           'id' => [
@@ -5034,26 +5191,9 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/messages',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -5071,21 +5211,38 @@ class HubspotConversationsConfig
                       'lit' => 'messages',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
                     '2026-09',
                     '{channel_id}',
                     'messages',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                    ],
                   ],
                 ],
               ],
@@ -5095,35 +5252,9 @@ class HubspotConversationsConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'message_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                      'messageId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -5144,16 +5275,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
@@ -5161,6 +5282,42 @@ class HubspotConversationsConfig
                     '{channel_id}',
                     'messages',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                      'messageId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'id',
+                        'orig' => 'message_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -5170,35 +5327,9 @@ class HubspotConversationsConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'channel_id',
-                        'orig' => 'channel_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'message_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}',
-                  'rename' => [
-                    'param' => [
-                      'channelId' => 'channel_id',
-                      'messageId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -5219,16 +5350,6 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'channel_id',
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'custom-channels',
@@ -5237,22 +5358,55 @@ class HubspotConversationsConfig
                     'messages',
                     '{id}',
                   ],
+                  'rename' => [
+                    'param' => [
+                      'channelId' => 'channel_id',
+                      'messageId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'channel_id',
+                        'orig' => 'channel_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                      [
+                        'name' => 'id',
+                        'orig' => 'message_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'channel_id',
+                      'id',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                '2026_09',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'public_thread' => [
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -5267,25 +5421,9 @@ class HubspotConversationsConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/conversations/v3/conversations/threads/{threadId}',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -5303,21 +5441,37 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'v3',
                     'conversations',
                     'threads',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -5331,6 +5485,7 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -5345,26 +5500,9 @@ class HubspotConversationsConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => null,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'thread_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/conversations/conversations/2026-09/threads/{threadId}',
-                  'rename' => [
-                    'param' => [
-                      'threadId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'conversations',
@@ -5382,21 +5520,38 @@ class HubspotConversationsConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'conversations',
                     'conversations',
                     '2026-09',
                     'threads',
                     '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'threadId' => 'id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'thread_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => null,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -5410,31 +5565,36 @@ class HubspotConversationsConfig
           'fields' => [
             [
               'name' => 'email',
+              'title' => 'Email',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The email of the visitor that you wish to identify',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'firstName',
-              'short' => 'The first name of the visitor that you wish to identify.',
+              'title' => 'First Name',
               'type' => '`$STRING`',
+              'short' => 'The first name of the visitor that you wish to identify.',
             ],
             [
               'name' => 'hsCustomerAgentContext',
+              'title' => 'Hs Customer Agent Context',
+              'type' => '`$OBJECT`',
               'req' => true,
               'short' => 'An object containing additional context about the customer agent.',
-              'type' => '`$OBJECT`',
             ],
             [
               'name' => 'lastName',
-              'short' => 'The last name of the visitor that you wish to identify.',
+              'title' => 'Last Name',
               'type' => '`$STRING`',
+              'short' => 'The last name of the visitor that you wish to identify.',
             ],
             [
               'name' => 'token',
+              'title' => 'Token',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'An identification token that allows the visitor to be treated as a known contact.',
-              'type' => '`$STRING`',
             ],
           ],
           'name' => 'visitor_identification_identification_token',
@@ -5444,7 +5604,6 @@ class HubspotConversationsConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/visitor-identification/2026-09/tokens/create',
@@ -5462,17 +5621,19 @@ class HubspotConversationsConfig
                       'lit' => 'create',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'visitor-identification',
                     '2026-09',
                     'tokens',
                     'create',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],

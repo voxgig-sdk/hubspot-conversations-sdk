@@ -204,26 +204,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -238,84 +221,101 @@ func MakeConfig() map[string]any {
 										"var": "channel_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
 									"2026-09",
 									"{channel_id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"conversations_batch_response_public_actor": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date-time",
 						"name": "completedAt",
-						"req": true,
+						"title": "Completed At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "errors",
+						"title": "Errors",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "inputs",
-						"req": true,
+						"title": "Inputs",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "links",
+						"title": "Links",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
-						"format": "int32",
 						"name": "numErrors",
+						"title": "Num Errors",
 						"type": "`$INTEGER`",
+						"format": "int32",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "requestedAt",
+						"title": "Requested At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "results",
-						"req": true,
+						"title": "Results",
 						"type": "`$ARRAY`",
-						"union": map[string]any{
-							"branches": 7,
-							"count": 2,
-							"depth": 5,
-						},
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "startedAt",
-						"req": true,
+						"title": "Started At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "status",
-						"req": true,
+						"title": "Status",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "conversations_batch_response_public_actor",
@@ -325,17 +325,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/conversations/2026-09/actors/batch/read",
@@ -359,15 +348,6 @@ func MakeConfig() map[string]any {
 										"lit": "read",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"property",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -375,6 +355,27 @@ func MakeConfig() map[string]any {
 									"actors",
 									"batch",
 									"read",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"property",
+									},
 								},
 							},
 						},
@@ -388,17 +389,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "paging",
+						"title": "Paging",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"req": true,
+						"title": "Results",
 						"type": "`$ARRAY`",
-						"union": map[string]any{
-							"branches": 8,
-							"count": 4,
-							"depth": 12,
-						},
+						"req": true,
 					},
 				},
 				"name": "conversations_collection_response_public_message_forward_paging",
@@ -408,63 +406,9 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}/messages",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -485,6 +429,72 @@ func MakeConfig() map[string]any {
 										"lit": "messages",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"conversations",
+									"2026-09",
+									"threads",
+									"{thread_id}",
+									"messages",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -495,18 +505,6 @@ func MakeConfig() map[string]any {
 										"thread_id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"conversations",
-									"2026-09",
-									"threads",
-									"{thread_id}",
-									"messages",
-								},
 							},
 						},
 					},
@@ -514,7 +512,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -523,87 +521,102 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
+						"title": "Archived",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether this thread is archived.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "assignedTo",
+						"title": "Assigned To",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "associatedContactId",
+						"title": "Associated Contact Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the associated Contact in the CRM.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "closedAt",
-						"short": "When the thread was closed.",
+						"title": "Closed At",
 						"type": "`$STRING`",
+						"short": "When the thread was closed.",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "When the thread was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique ID of the thread.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inboxId",
+						"title": "Inbox Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the conversations inbox containing the thread.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "latestMessageReceivedTimestamp",
-						"short": "The time that the latest message was sent on the thread.",
+						"title": "Latest Message Received Timestamp",
 						"type": "`$STRING`",
+						"short": "The time that the latest message was sent on the thread.",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "latestMessageSentTimestamp",
-						"short": "The time that the latest message was sent on the thread.",
+						"title": "Latest Message Sent Timestamp",
 						"type": "`$STRING`",
+						"short": "The time that the latest message was sent on the thread.",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "latestMessageTimestamp",
-						"short": "The time that the latest message was sent or received on the thread.",
+						"title": "Latest Message Timestamp",
 						"type": "`$STRING`",
+						"short": "The time that the latest message was sent or received on the thread.",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "originalChannelAccountId",
-						"req": true,
+						"title": "Original Channel Account Id",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "originalChannelId",
-						"req": true,
+						"title": "Original Channel Id",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "spam",
+						"title": "Spam",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether the thread is marked as spam.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The thread's status: `OPEN` or `CLOSED`.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "threadAssociations",
+						"title": "Thread Associations",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -618,87 +631,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "associated_contact_id",
-											"orig": "associated_contact_id",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "associated_ticket_id",
-											"orig": "associated_ticket_id",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "association",
-											"orig": "association",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "inbox_id",
-											"orig": "inbox_id",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "latest_message_timestamp_after",
-											"orig": "latest_message_timestamp_after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "thread_status",
-											"orig": "thread_status",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/threads",
@@ -716,6 +648,98 @@ func MakeConfig() map[string]any {
 										"lit": "threads",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"conversations",
+									"2026-09",
+									"threads",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "associated_contact_id",
+											"orig": "associated_contact_id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "associated_ticket_id",
+											"orig": "associated_ticket_id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "association",
+											"orig": "association",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "inbox_id",
+											"orig": "inbox_id",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "latest_message_timestamp_after",
+											"orig": "latest_message_timestamp_after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "thread_status",
+											"orig": "thread_status",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -731,16 +755,6 @@ func MakeConfig() map[string]any {
 										"thread_status",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"conversations",
-									"2026-09",
-									"threads",
-								},
 							},
 						},
 					},
@@ -753,15 +767,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -775,38 +791,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/channels",
@@ -824,6 +808,49 @@ func MakeConfig() map[string]any {
 										"lit": "channels",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"conversations",
+									"2026-09",
+									"channels",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -831,16 +858,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"conversations",
-									"2026-09",
-									"channels",
 								},
 							},
 						},
@@ -854,59 +871,69 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active",
+						"title": "Active",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether the channel account is turned on.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "archived",
-						"req": true,
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "authorized",
-						"req": true,
+						"title": "Authorized",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "channelId",
+						"title": "Channel Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel that the channel account is an instance of.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "deliveryIdentifier",
-						"req": true,
+						"title": "Delivery Identifier",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inboxId",
+						"title": "Inbox Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the conversations inbox that contains the channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel account.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -920,59 +947,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "inbox_id",
-											"orig": "inbox_id",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/channel-accounts",
@@ -990,6 +964,70 @@ func MakeConfig() map[string]any {
 										"lit": "channel-accounts",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"conversations",
+									"2026-09",
+									"channel-accounts",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "inbox_id",
+											"orig": "inbox_id",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1000,16 +1038,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"conversations",
-									"2026-09",
-									"channel-accounts",
 								},
 							},
 						},
@@ -1023,44 +1051,51 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
-						"req": true,
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "When the inbox was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Specifies whether this refers to a Conversations Inbox or to the Help Desk.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -1074,45 +1109,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/inboxes",
@@ -1130,6 +1126,56 @@ func MakeConfig() map[string]any {
 										"lit": "inboxes",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"conversations",
+									"2026-09",
+									"inboxes",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1138,16 +1184,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"conversations",
-									"2026-09",
-									"inboxes",
 								},
 							},
 						},
@@ -1160,45 +1196,47 @@ func MakeConfig() map[string]any {
 			"conversations_inbox_messages_batch_response_public_actor": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date-time",
 						"name": "completedAt",
-						"req": true,
+						"title": "Completed At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "inputs",
-						"req": true,
+						"title": "Inputs",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "links",
+						"title": "Links",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "requestedAt",
+						"title": "Requested At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "results",
-						"req": true,
+						"title": "Results",
 						"type": "`$ARRAY`",
-						"union": map[string]any{
-							"branches": 7,
-							"count": 1,
-							"depth": 1,
-						},
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "startedAt",
-						"req": true,
+						"title": "Started At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "status",
-						"req": true,
+						"title": "Status",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "conversations_inbox_messages_batch_response_public_actor",
@@ -1208,16 +1246,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/v3/conversations/actors/batch/read",
@@ -1241,15 +1269,6 @@ func MakeConfig() map[string]any {
 										"lit": "read",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"property",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
@@ -1257,6 +1276,26 @@ func MakeConfig() map[string]any {
 									"actors",
 									"batch",
 									"read",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"property",
+									},
 								},
 							},
 						},
@@ -1270,17 +1309,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "paging",
+						"title": "Paging",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"req": true,
+						"title": "Results",
 						"type": "`$ARRAY`",
-						"union": map[string]any{
-							"branches": 8,
-							"count": 4,
-							"depth": 12,
-						},
+						"req": true,
 					},
 				},
 				"name": "conversations_inbox_messages_collection_response_public_message",
@@ -1290,57 +1326,9 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/threads/{threadId}/messages",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -1361,6 +1349,66 @@ func MakeConfig() map[string]any {
 										"lit": "messages",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"v3",
+									"conversations",
+									"threads",
+									"{thread_id}",
+									"messages",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1371,18 +1419,6 @@ func MakeConfig() map[string]any {
 										"thread_id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"v3",
-									"conversations",
-									"threads",
-									"{thread_id}",
-									"messages",
-								},
 							},
 						},
 					},
@@ -1390,7 +1426,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -1399,87 +1435,102 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
+						"title": "Archived",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether this thread is archived.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "assignedTo",
+						"title": "Assigned To",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "associatedContactId",
+						"title": "Associated Contact Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the associated Contact in the CRM.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "closedAt",
-						"short": "When the thread was closed.",
+						"title": "Closed At",
 						"type": "`$STRING`",
+						"short": "When the thread was closed.",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "When the thread was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique ID of the thread.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inboxId",
+						"title": "Inbox Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the conversations inbox containing the thread.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "latestMessageReceivedTimestamp",
-						"short": "The time that the latest message was sent on the thread.",
+						"title": "Latest Message Received Timestamp",
 						"type": "`$STRING`",
+						"short": "The time that the latest message was sent on the thread.",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "latestMessageSentTimestamp",
-						"short": "The time that the latest message was sent on the thread.",
+						"title": "Latest Message Sent Timestamp",
 						"type": "`$STRING`",
+						"short": "The time that the latest message was sent on the thread.",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "latestMessageTimestamp",
-						"short": "The time that the latest message was sent or received on the thread.",
+						"title": "Latest Message Timestamp",
 						"type": "`$STRING`",
+						"short": "The time that the latest message was sent or received on the thread.",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "originalChannelAccountId",
-						"req": true,
+						"title": "Original Channel Account Id",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "originalChannelId",
-						"req": true,
+						"title": "Original Channel Id",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "spam",
+						"title": "Spam",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether the thread is marked as spam.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "status",
+						"title": "Status",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The thread's status: `OPEN` or `CLOSED`.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "threadAssociations",
+						"title": "Thread Associations",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -1494,70 +1545,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "associated_contact_id",
-											"orig": "associated_contact_id",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "association",
-											"orig": "association",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "inbox_id",
-											"orig": "inbox_id",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "latest_message_timestamp_after",
-											"orig": "latest_message_timestamp_after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "thread_status",
-											"orig": "thread_status",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/threads",
@@ -1575,6 +1562,81 @@ func MakeConfig() map[string]any {
 										"lit": "threads",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"v3",
+									"conversations",
+									"threads",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "associated_contact_id",
+											"orig": "associated_contact_id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "association",
+											"orig": "association",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "inbox_id",
+											"orig": "inbox_id",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "latest_message_timestamp_after",
+											"orig": "latest_message_timestamp_after",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "thread_status",
+											"orig": "thread_status",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1589,16 +1651,6 @@ func MakeConfig() map[string]any {
 										"thread_status",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"v3",
-									"conversations",
-									"threads",
-								},
 							},
 						},
 					},
@@ -1611,59 +1663,69 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active",
+						"title": "Active",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether the channel account is turned on.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "archived",
-						"req": true,
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "authorized",
-						"req": true,
+						"title": "Authorized",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "channelId",
+						"title": "Channel Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel that the channel account is an instance of.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
-						"req": true,
+						"title": "Created At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "deliveryIdentifier",
-						"req": true,
+						"title": "Delivery Identifier",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inboxId",
+						"title": "Inbox Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the conversations inbox that contains the channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel account.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -1677,52 +1739,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "inbox_id",
-											"orig": "inbox_id",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/channel-accounts",
@@ -1740,6 +1756,63 @@ func MakeConfig() map[string]any {
 										"lit": "channel-accounts",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"v3",
+									"conversations",
+									"channel-accounts",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "inbox_id",
+											"orig": "inbox_id",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1750,16 +1823,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"v3",
-									"conversations",
-									"channel-accounts",
 								},
 							},
 						},
@@ -1773,15 +1836,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -1795,34 +1860,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/channels",
@@ -1840,6 +1877,45 @@ func MakeConfig() map[string]any {
 										"lit": "channels",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"v3",
+									"conversations",
+									"channels",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1847,16 +1923,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"v3",
-									"conversations",
-									"channels",
 								},
 							},
 						},
@@ -1870,44 +1936,51 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
-						"req": true,
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "When the inbox was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Specifies whether this refers to a Conversations Inbox or to the Help Desk.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -1921,40 +1994,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/inboxes",
@@ -1972,6 +2011,51 @@ func MakeConfig() map[string]any {
 										"lit": "inboxes",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"v3",
+									"conversations",
+									"inboxes",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -1980,16 +2064,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"v3",
-									"conversations",
-									"inboxes",
 								},
 							},
 						},
@@ -2003,6 +2077,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -2017,33 +2092,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "actor_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/actors/{actorId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"actorId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2061,22 +2112,46 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"property",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
 									"conversations",
 									"actors",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"actorId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "actor_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"property",
+									},
 								},
 							},
 						},
@@ -2090,15 +2165,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -2112,25 +2189,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/channels/{channelId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2148,21 +2209,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
 									"conversations",
 									"channels",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -2176,19 +2253,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The type of identifier.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
+						"title": "Value",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -2202,34 +2282,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "channel_account_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": false,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/channel-accounts/{channelAccountId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelAccountId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2247,22 +2302,47 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"archived",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.deliveryIdentifier`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
 									"conversations",
 									"channel-accounts",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelAccountId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.deliveryIdentifier`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "channel_account_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": false,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"archived",
+										"id",
+									},
 								},
 							},
 						},
@@ -2276,44 +2356,51 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
-						"req": true,
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "When the inbox was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Specifies whether this refers to a Conversations Inbox or to the Help Desk.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -2327,34 +2414,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "inbox_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": false,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/inboxes/{inboxId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"inboxId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2372,22 +2434,47 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"archived",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
 									"conversations",
 									"inboxes",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"inboxId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "inbox_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": false,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"archived",
+										"id",
+									},
 								},
 							},
 						},
@@ -2401,6 +2488,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -2415,25 +2503,9 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/v3/conversations/threads/{threadId}/messages",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2454,15 +2526,6 @@ func MakeConfig() map[string]any {
 										"lit": "messages",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
@@ -2470,6 +2533,31 @@ func MakeConfig() map[string]any {
 									"threads",
 									"{thread_id}",
 									"messages",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"thread_id",
+									},
 								},
 							},
 						},
@@ -2479,41 +2567,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "message_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/threads/{threadId}/messages/{messageId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"messageId": "id",
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2537,17 +2593,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"property",
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
@@ -2557,6 +2602,49 @@ func MakeConfig() map[string]any {
 									"messages",
 									"{id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"messageId": "id",
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "message_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"property",
+										"thread_id",
+									},
+								},
 							},
 						},
 					},
@@ -2564,7 +2652,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -2573,10 +2661,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "richText",
+						"title": "Rich Text",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "text",
+						"title": "Text",
 						"type": "`$STRING`",
 					},
 				},
@@ -2587,41 +2677,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "message_id",
-											"orig": "message_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"messageId": "message_id",
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2648,17 +2706,6 @@ func MakeConfig() map[string]any {
 										"lit": "original-content",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"message_id",
-										"property",
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
@@ -2669,6 +2716,49 @@ func MakeConfig() map[string]any {
 									"{message_id}",
 									"original-content",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"messageId": "message_id",
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "message_id",
+											"orig": "message_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"message_id",
+										"property",
+										"thread_id",
+									},
+								},
 							},
 						},
 					},
@@ -2676,8 +2766,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
-							"message",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -2686,21 +2775,25 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
-						"short": "Whether this thread is archived.",
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"short": "Whether this thread is archived.",
 					},
 					map[string]any{
 						"name": "associatedTicketId",
+						"title": "Associated Ticket Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
-						"short": "The thread's status: `OPEN` or `CLOSED`.",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "The thread's status: `OPEN` or `CLOSED`.",
 					},
 				},
 				"id": map[string]any{
@@ -2714,45 +2807,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "association",
-											"orig": "association",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/v3/conversations/threads/{threadId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2768,6 +2825,53 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"conversations",
+									"v3",
+									"conversations",
+									"threads",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.threadAssociations`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "association",
+											"orig": "association",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -2778,17 +2882,6 @@ func MakeConfig() map[string]any {
 										"property",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.threadAssociations`",
-								},
-								"parts": []any{
-									"conversations",
-									"v3",
-									"conversations",
-									"threads",
-									"{id}",
-								},
 							},
 						},
 					},
@@ -2797,33 +2890,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/conversations/v3/conversations/threads/{threadId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2841,22 +2910,46 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"archived",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.threadAssociations`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
 									"conversations",
 									"threads",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.threadAssociations`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"archived",
+										"id",
+									},
 								},
 							},
 						},
@@ -2870,6 +2963,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -2884,35 +2978,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "actor_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/actors/{actorId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"actorId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -2930,22 +2998,48 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"property",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
 									"2026-09",
 									"actors",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"actorId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "actor_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"property",
+									},
 								},
 							},
 						},
@@ -2959,15 +3053,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -2981,26 +3077,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/channels/{channelId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3018,21 +3097,38 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
 									"2026-09",
 									"channels",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -3046,19 +3142,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The type of identifier.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
+						"title": "Value",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -3072,35 +3171,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "channel_account_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/channel-accounts/{channelAccountId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelAccountId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3118,22 +3191,48 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"archived",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.deliveryIdentifier`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
 									"2026-09",
 									"channel-accounts",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelAccountId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.deliveryIdentifier`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "channel_account_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"archived",
+										"id",
+									},
 								},
 							},
 						},
@@ -3147,44 +3246,51 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
-						"req": true,
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "When the inbox was created.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The ID of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the inbox.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Specifies whether this refers to a Conversations Inbox or to the Help Desk.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
-						"req": true,
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"req": true,
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -3198,35 +3304,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "inbox_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/inboxes/{inboxId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"inboxId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3244,22 +3324,48 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"archived",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
 									"2026-09",
 									"inboxes",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"inboxId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "inbox_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"archived",
+										"id",
+									},
 								},
 							},
 						},
@@ -3273,6 +3379,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -3287,26 +3394,9 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}/messages",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3327,15 +3417,6 @@ func MakeConfig() map[string]any {
 										"lit": "messages",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -3343,6 +3424,32 @@ func MakeConfig() map[string]any {
 									"threads",
 									"{thread_id}",
 									"messages",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"thread_id",
+									},
 								},
 							},
 						},
@@ -3352,44 +3459,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "message_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}/messages/{messageId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"messageId": "id",
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3413,17 +3485,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-										"property",
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -3433,6 +3494,52 @@ func MakeConfig() map[string]any {
 									"messages",
 									"{id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"messageId": "id",
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "message_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+										"property",
+										"thread_id",
+									},
+								},
 							},
 						},
 					},
@@ -3440,7 +3547,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -3449,10 +3556,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "richText",
+						"title": "Rich Text",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "text",
+						"title": "Text",
 						"type": "`$STRING`",
 					},
 				},
@@ -3463,44 +3572,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "message_id",
-											"orig": "message_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}/messages/{messageId}/original-content",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"messageId": "message_id",
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3527,17 +3601,6 @@ func MakeConfig() map[string]any {
 										"lit": "original-content",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"message_id",
-										"property",
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -3548,6 +3611,52 @@ func MakeConfig() map[string]any {
 									"{message_id}",
 									"original-content",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"messageId": "message_id",
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "message_id",
+											"orig": "message_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"message_id",
+										"property",
+										"thread_id",
+									},
+								},
 							},
 						},
 					},
@@ -3555,8 +3664,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
-							"message",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -3565,21 +3673,25 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
-						"short": "Whether this thread is archived.",
+						"title": "Archived",
 						"type": "`$BOOLEAN`",
+						"short": "Whether this thread is archived.",
 					},
 					map[string]any{
 						"name": "associatedTicketId",
+						"title": "Associated Ticket Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
-						"short": "The thread's status: `OPEN` or `CLOSED`.",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "The thread's status: `OPEN` or `CLOSED`.",
 					},
 				},
 				"id": map[string]any{
@@ -3593,49 +3705,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "association",
-											"orig": "association",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "property",
-											"orig": "property",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3651,6 +3723,57 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"conversations",
+									"conversations",
+									"2026-09",
+									"threads",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.threadAssociations`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "association",
+											"orig": "association",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "property",
+											"orig": "property",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
 									},
 								},
 								"select": map[string]any{
@@ -3661,17 +3784,6 @@ func MakeConfig() map[string]any {
 										"property",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.threadAssociations`",
-								},
-								"parts": []any{
-									"conversations",
-									"conversations",
-									"2026-09",
-									"threads",
-									"{id}",
-								},
 							},
 						},
 					},
@@ -3680,26 +3792,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "thread_id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}/assignee",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3720,16 +3815,6 @@ func MakeConfig() map[string]any {
 										"lit": "assignee",
 									},
 								},
-								"select": map[string]any{
-									"$action": "assignee",
-									"exist": []any{
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -3737,6 +3822,33 @@ func MakeConfig() map[string]any {
 									"threads",
 									"{thread_id}",
 									"assignee",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "assignee",
+									"exist": []any{
+										"thread_id",
+									},
 								},
 							},
 						},
@@ -3746,35 +3858,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3792,16 +3878,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"archived",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.threadAssociations`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -3809,28 +3885,47 @@ func MakeConfig() map[string]any {
 									"threads",
 									"{id}",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.threadAssociations`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "thread_id",
+											"name": "id",
 											"orig": "thread_id",
-											"reqd": true,
 											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"archived",
+										"id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "PUT",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}/assignee",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "thread_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -3851,16 +3946,6 @@ func MakeConfig() map[string]any {
 										"lit": "assignee",
 									},
 								},
-								"select": map[string]any{
-									"$action": "assignee",
-									"exist": []any{
-										"thread_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.threadAssociations`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
@@ -3869,6 +3954,33 @@ func MakeConfig() map[string]any {
 									"{thread_id}",
 									"assignee",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "thread_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.threadAssociations`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "thread_id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "assignee",
+									"exist": []any{
+										"thread_id",
+									},
+								},
 							},
 						},
 					},
@@ -3876,7 +3988,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"thread",
+							"$.main.kit.entity.thread",
 						},
 					},
 				},
@@ -3885,48 +3997,56 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "capabilities",
+						"title": "Capabilities",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "An object detailing the capabilities of the channel, with additional properties as objects.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "channelAccountConnectionRedirectUrl",
-						"short": "A string representing the URL used to redirect for channel account connection.",
+						"title": "Channel Account Connection Redirect Url",
 						"type": "`$STRING`",
+						"short": "A string representing the URL used to redirect for channel account connection.",
 					},
 					map[string]any{
 						"name": "channelDescription",
-						"short": "A string providing a description of the channel.",
+						"title": "Channel Description",
 						"type": "`$STRING`",
+						"short": "A string providing a description of the channel.",
 					},
 					map[string]any{
 						"name": "channelLogoUrl",
-						"short": "A string representing the URL of the channel's logo.",
+						"title": "Channel Logo Url",
 						"type": "`$STRING`",
+						"short": "A string representing the URL of the channel's logo.",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the channel was created, in ISO 8601 format.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string that uniquely identifies the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representing the name of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "webhookUrl",
-						"short": "A string representing the URL to which webhook events will be sent.",
+						"title": "Webhook Url",
 						"type": "`$STRING`",
+						"short": "A string representing the URL to which webhook events will be sent.",
 					},
 				},
 				"id": map[string]any{
@@ -3940,38 +4060,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/custom-channels/2026-09",
@@ -3986,6 +4074,48 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 								},
+								"parts": []any{
+									"conversations",
+									"custom-channels",
+									"2026-09",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"after",
@@ -3993,15 +4123,6 @@ func MakeConfig() map[string]any {
 										"limit",
 										"sort",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"custom-channels",
-									"2026-09",
 								},
 							},
 						},
@@ -4015,63 +4136,73 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active",
+						"title": "Active",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "A boolean indicating whether the channel account is currently active.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "archived",
+						"title": "Archived",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "A boolean indicating whether the channel account is archived.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "archivedAt",
-						"short": "The date and time when the channel account was archived, in ISO 8601 format.",
+						"title": "Archived At",
 						"type": "`$STRING`",
+						"short": "The date and time when the channel account was archived, in ISO 8601 format.",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "authorized",
+						"title": "Authorized",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "A boolean indicating whether the channel account is authorized.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "channelId",
+						"title": "Channel Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the channel to which this account belongs, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the channel account was created, in ISO 8601 format.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "deliveryIdentifier",
-						"req": true,
+						"title": "Delivery Identifier",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for this channel account, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inboxId",
+						"title": "Inbox Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the inbox associated with this channel account, represented as a string.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the channel account, represented as a string.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -4085,77 +4216,9 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "after",
-											"orig": "after",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "default_page_length",
-											"orig": "default_page_length",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "delivery_identifier_type",
-											"orig": "delivery_identifier_type",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "delivery_identifier_value",
-											"orig": "delivery_identifier_value",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$ARRAY`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/channel-accounts",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4171,6 +4234,85 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"lit": "channel-accounts",
+									},
+								},
+								"parts": []any{
+									"conversations",
+									"custom-channels",
+									"2026-09",
+									"{channel_id}",
+									"channel-accounts",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "after",
+											"orig": "after",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "default_page_length",
+											"orig": "default_page_length",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "delivery_identifier_type",
+											"orig": "delivery_identifier_type",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "delivery_identifier_value",
+											"orig": "delivery_identifier_value",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": nil,
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$ARRAY`",
+											"kind": "query",
+											"example": nil,
+										},
 									},
 								},
 								"select": map[string]any{
@@ -4185,79 +4327,71 @@ func MakeConfig() map[string]any {
 										"sort",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"conversations",
-									"custom-channels",
-									"2026-09",
-									"{channel_id}",
-									"channel-accounts",
-								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"custom_channels_public_channel_account": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "authorized",
+						"title": "Authorized",
+						"type": "`$BOOLEAN`",
+						"req": true,
 						"op": map[string]any{
 							"update": map[string]any{
 								"type": "`$BOOLEAN`",
 							},
 						},
-						"req": true,
 						"short": "A boolean indicating whether the channel account is authorized.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "deliveryIdentifier",
-						"req": true,
+						"title": "Delivery Identifier",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inboxId",
+						"title": "Inbox Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the inbox associated with this channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
+						"req": true,
 						"op": map[string]any{
 							"update": map[string]any{
 								"type": "`$STRING`",
 							},
 						},
-						"req": true,
 						"short": "The name of the channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representing the type of delivery identifier.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
+						"title": "Value",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representing the value associated with the delivery identifier type.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -4271,26 +4405,9 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/channel-accounts",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4308,21 +4425,38 @@ func MakeConfig() map[string]any {
 										"lit": "channel-accounts",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.deliveryIdentifier`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
 									"2026-09",
 									"{channel_id}",
 									"channel-accounts",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.deliveryIdentifier`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+									},
 								},
 							},
 						},
@@ -4332,44 +4466,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "channel_account_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "query",
-											"name": "archived",
-											"orig": "archived",
-											"type": "`$BOOLEAN`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelAccountId": "id",
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4388,6 +4487,53 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"conversations",
+									"custom-channels",
+									"2026-09",
+									"{channel_id}",
+									"channel-accounts",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelAccountId": "id",
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.deliveryIdentifier`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "channel_account_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "archived",
+											"orig": "archived",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": nil,
+										},
 									},
 								},
 								"select": map[string]any{
@@ -4397,18 +4543,6 @@ func MakeConfig() map[string]any {
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.deliveryIdentifier`",
-								},
-								"parts": []any{
-									"conversations",
-									"custom-channels",
-									"2026-09",
-									"{channel_id}",
-									"channel-accounts",
-									"{id}",
-								},
 							},
 						},
 					},
@@ -4417,35 +4551,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "channel_account_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/channel-accounts/{channelAccountId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelAccountId": "id",
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4466,16 +4574,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.deliveryIdentifier`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
@@ -4484,45 +4582,82 @@ func MakeConfig() map[string]any {
 									"channel-accounts",
 									"{id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelAccountId": "id",
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.deliveryIdentifier`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "channel_account_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+										"id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"custom_channels_public_channel_account_staging_token": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "accountName",
-						"short": "A string representing the name of the account associated with the staging token.",
+						"title": "Account Name",
 						"type": "`$STRING`",
+						"short": "A string representing the name of the account associated with the staging token.",
 					},
 					map[string]any{
 						"name": "deliveryIdentifier",
-						"req": true,
+						"title": "Delivery Identifier",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representing the type of delivery identifier.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "value",
+						"title": "Value",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representing the value associated with the delivery identifier type.",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -4536,35 +4671,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "account_token",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/channel-account-staging-tokens/{accountToken}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"accountToken": "id",
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4585,16 +4694,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.deliveryIdentifier`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
@@ -4603,28 +4702,63 @@ func MakeConfig() map[string]any {
 									"channel-account-staging-tokens",
 									"{id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"accountToken": "id",
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.deliveryIdentifier`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "account_token",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+										"id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"custom_channels_public_channel_integration_channel": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "capabilities",
+						"title": "Capabilities",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "An object that defines the capabilities of the channel, with additional properties as key-value pairs.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "channelAccountConnectionRedirectUrl",
+						"title": "Channel Account Connection Redirect Url",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"update": map[string]any{
 								"req": true,
@@ -4632,10 +4766,11 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "A string representing the URL to which users will be redirected to connect their channel account.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "channelDescription",
+						"title": "Channel Description",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"update": map[string]any{
 								"req": true,
@@ -4643,10 +4778,11 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "A string providing a description of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "channelLogoUrl",
+						"title": "Channel Logo Url",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"update": map[string]any{
 								"req": true,
@@ -4654,16 +4790,18 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "A string representing the URL of the channel's logo.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "A string representing the name of the channel.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "webhookUrl",
+						"title": "Webhook Url",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"update": map[string]any{
 								"req": true,
@@ -4671,7 +4809,6 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "A string representing the URL to which webhook events will be sent.",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "custom_channels_public_channel_integration_channel",
@@ -4681,7 +4818,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/custom-channels/2026-09",
@@ -4696,16 +4832,18 @@ func MakeConfig() map[string]any {
 										"lit": "2026-09",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.capabilities`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
 									"2026-09",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.capabilities`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -4714,26 +4852,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4748,20 +4869,37 @@ func MakeConfig() map[string]any {
 										"var": "channel_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
+								"parts": []any{
+									"conversations",
+									"custom-channels",
+									"2026-09",
+									"{channel_id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.capabilities`",
 								},
-								"parts": []any{
-									"conversations",
-									"custom-channels",
-									"2026-09",
-									"{channel_id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+									},
 								},
 							},
 						},
@@ -4771,26 +4909,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -4805,200 +4926,236 @@ func MakeConfig() map[string]any {
 										"var": "channel_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.capabilities`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
 									"2026-09",
 									"{channel_id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.capabilities`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"custom_channels_public_conversations_message": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "archived",
+						"title": "Archived",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "A boolean indicating whether the message is archived.",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
-						"format": "int64",
 						"name": "associateWithContactId",
-						"short": "The ID of the contact with which this message should be associated.",
+						"title": "Associate With Contact Id",
 						"type": "`$INTEGER`",
+						"short": "The ID of the contact with which this message should be associated.",
+						"format": "int64",
 					},
 					map[string]any{
 						"name": "attachments",
+						"title": "Attachments",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of attachments included with the message, which can be files, locations, contacts, or other supported types.",
-						"type": "`$ARRAY`",
-						"union": map[string]any{
-							"branches": 8,
-							"count": 1,
-							"depth": 1,
-						},
 					},
 					map[string]any{
 						"name": "channelAccountId",
+						"title": "Channel Account Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The identifier of the channel account associated with the message.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "channelId",
+						"title": "Channel Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The identifier of the channel through which the message was sent.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "client",
-						"req": true,
+						"title": "Client",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "conversationsThreadId",
+						"title": "Conversations Thread Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The identifier for the conversation thread to which this message belongs.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the message was created, in ISO 8601 format.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "createdBy",
+						"title": "Created By",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The identifier of the user or system that created the message.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "direction",
+						"title": "Direction",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The direction of the message, either 'INCOMING' or 'OUTGOING'.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "errorMessage",
-						"short": "A string containing an error message, if applicable.",
+						"title": "Error Message",
 						"type": "`$STRING`",
+						"short": "A string containing an error message, if applicable.",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The unique identifier for the message.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "inReplyToId",
-						"short": "The identifier of the message to which this message is a reply, if applicable.",
+						"title": "In Reply To Id",
 						"type": "`$STRING`",
+						"short": "The identifier of the message to which this message is a reply, if applicable.",
 					},
 					map[string]any{
 						"name": "integrationIdempotencyId",
-						"short": "A unique identifier to ensure idempotency of the message within the integration.",
+						"title": "Integration Idempotency Id",
 						"type": "`$STRING`",
+						"short": "A unique identifier to ensure idempotency of the message within the integration.",
 					},
 					map[string]any{
 						"name": "integrationThreadId",
-						"short": "A unique identifier for the thread within the integration.",
+						"title": "Integration Thread Id",
 						"type": "`$STRING`",
+						"short": "A unique identifier for the thread within the integration.",
 					},
 					map[string]any{
 						"name": "messageDirection",
+						"title": "Message Direction",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The direction of the message, indicating whether it is 'INCOMING' or 'OUTGOING'.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "preResolvedContacts",
-						"req": true,
+						"title": "Pre Resolved Contacts",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "recipients",
+						"title": "Recipients",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of recipients of the message, each containing recipient details.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "richText",
-						"short": "The rich text content of the message, if available.",
+						"title": "Rich Text",
 						"type": "`$STRING`",
+						"short": "The rich text content of the message, if available.",
 					},
 					map[string]any{
 						"name": "senders",
+						"title": "Senders",
+						"type": "`$ARRAY`",
 						"req": true,
 						"short": "An array of senders associated with the message, each containing sender details.",
-						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "status",
-						"req": true,
+						"title": "Status",
 						"type": "`$OBJECT`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "statusType",
+						"title": "Status Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Valid status are SENT, FAILED, and READ",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "subject",
-						"short": "The subject of the message, if applicable.",
+						"title": "Subject",
 						"type": "`$STRING`",
+						"short": "The subject of the message, if applicable.",
 					},
 					map[string]any{
 						"name": "text",
+						"title": "Text",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The plain text content of the message.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
+						"title": "Timestamp",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date and time when the message was created, in ISO 8601 format.",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "truncationStatus",
+						"title": "Truncation Status",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Indicates whether the message content is truncated.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"title": "Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The type of the message, which is always 'MESSAGE'.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "updatedAt",
-						"short": "The date and time when the message was last updated, in ISO 8601 format.",
+						"title": "Updated At",
 						"type": "`$STRING`",
+						"short": "The date and time when the message was last updated, in ISO 8601 format.",
+						"format": "date-time",
 					},
 				},
 				"id": map[string]any{
@@ -5012,26 +5169,9 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/messages",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -5049,21 +5189,38 @@ func MakeConfig() map[string]any {
 										"lit": "messages",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
 									"2026-09",
 									"{channel_id}",
 									"messages",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+									},
 								},
 							},
 						},
@@ -5073,35 +5230,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "message_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-										"messageId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -5122,16 +5253,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
@@ -5139,6 +5260,42 @@ func MakeConfig() map[string]any {
 									"{channel_id}",
 									"messages",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+										"messageId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "message_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+										"id",
+									},
 								},
 							},
 						},
@@ -5148,35 +5305,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "channel_id",
-											"orig": "channel_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "message_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"channelId": "channel_id",
-										"messageId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -5197,16 +5328,6 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"channel_id",
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"custom-channels",
@@ -5215,22 +5336,55 @@ func MakeConfig() map[string]any {
 									"messages",
 									"{id}",
 								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"channelId": "channel_id",
+										"messageId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "channel_id",
+											"orig": "channel_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "message_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"channel_id",
+										"id",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"2026_09",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"public_thread": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -5245,25 +5399,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/conversations/v3/conversations/threads/{threadId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -5281,21 +5419,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"v3",
 									"conversations",
 									"threads",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -5309,6 +5463,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -5323,26 +5478,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": nil,
-											"kind": "param",
-											"name": "id",
-											"orig": "thread_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/conversations/conversations/2026-09/threads/{threadId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"threadId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "conversations",
@@ -5360,21 +5498,38 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"conversations",
 									"conversations",
 									"2026-09",
 									"threads",
 									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"threadId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "thread_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": nil,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -5388,31 +5543,36 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "email",
+						"title": "Email",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The email of the visitor that you wish to identify",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "firstName",
-						"short": "The first name of the visitor that you wish to identify.",
+						"title": "First Name",
 						"type": "`$STRING`",
+						"short": "The first name of the visitor that you wish to identify.",
 					},
 					map[string]any{
 						"name": "hsCustomerAgentContext",
+						"title": "Hs Customer Agent Context",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "An object containing additional context about the customer agent.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "lastName",
-						"short": "The last name of the visitor that you wish to identify.",
+						"title": "Last Name",
 						"type": "`$STRING`",
+						"short": "The last name of the visitor that you wish to identify.",
 					},
 					map[string]any{
 						"name": "token",
+						"title": "Token",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "An identification token that allows the visitor to be treated as a known contact.",
-						"type": "`$STRING`",
 					},
 				},
 				"name": "visitor_identification_identification_token",
@@ -5422,7 +5582,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/visitor-identification/2026-09/tokens/create",
@@ -5440,17 +5599,19 @@ func MakeConfig() map[string]any {
 										"lit": "create",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"visitor-identification",
 									"2026-09",
 									"tokens",
 									"create",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

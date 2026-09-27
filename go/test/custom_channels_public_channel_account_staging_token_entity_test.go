@@ -114,7 +114,7 @@ func custom_channels_public_channel_account_staging_tokenBasicSetup(extra map[st
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"custom_channels_public_channel_account_staging_token01", "custom_channels_public_channel_account_staging_token02", "custom_channels_public_channel_account_staging_token03", "2026_0901", "2026_0902", "2026_0903", "channel01"},
+		[]any{"custom_channels_public_channel_account_staging_token01", "custom_channels_public_channel_account_staging_token02", "custom_channels_public_channel_account_staging_token03", "channel01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

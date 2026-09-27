@@ -1,0 +1,266 @@
+# Entity: conversations_collection_response_public_thread_forward_paging
+
+main: kit: entity: conversations_collection_response_public_thread_forward_paging: {
+
+  alias: field: {}
+
+  fields: {
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      sh: "Whether this thread is archived."
+      t: "`$BOOLEAN`"
+    }
+    assignedTo: {
+      h: "Assigned To"
+      n: "assignedTo"
+      r: false
+      t: "`$STRING`"
+    }
+    associatedContactId: {
+      h: "Associated Contact Id"
+      n: "associatedContactId"
+      r: true
+      sh: "The ID of the associated Contact in the CRM."
+      t: "`$STRING`"
+    }
+    closedAt: {
+      fo: "date-time"
+      h: "Closed At"
+      n: "closedAt"
+      r: false
+      sh: "When the thread was closed."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "When the thread was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique ID of the thread."
+      t: "`$STRING`"
+    }
+    inboxId: {
+      h: "Inbox Id"
+      n: "inboxId"
+      r: true
+      sh: "The ID of the conversations inbox containing the thread."
+      t: "`$STRING`"
+    }
+    latestMessageReceivedTimestamp: {
+      fo: "date-time"
+      h: "Latest Message Received Timestamp"
+      n: "latestMessageReceivedTimestamp"
+      r: false
+      sh: "The time that the latest message was sent on the thread."
+      t: "`$STRING`"
+    }
+    latestMessageSentTimestamp: {
+      fo: "date-time"
+      h: "Latest Message Sent Timestamp"
+      n: "latestMessageSentTimestamp"
+      r: false
+      sh: "The time that the latest message was sent on the thread."
+      t: "`$STRING`"
+    }
+    latestMessageTimestamp: {
+      fo: "date-time"
+      h: "Latest Message Timestamp"
+      n: "latestMessageTimestamp"
+      r: false
+      sh: "The time that the latest message was sent or received on the thread."
+      t: "`$STRING`"
+    }
+    originalChannelAccountId: {
+      h: "Original Channel Account Id"
+      n: "originalChannelAccountId"
+      r: true
+      t: "`$STRING`"
+    }
+    originalChannelId: {
+      h: "Original Channel Id"
+      n: "originalChannelId"
+      r: true
+      t: "`$STRING`"
+    }
+    spam: {
+      h: "Spam"
+      n: "spam"
+      r: true
+      sh: "Whether the thread is marked as spam."
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The thread's status: `OPEN` or `CLOSED`."
+      t: "`$STRING`"
+    }
+    threadAssociations: {
+      h: "Thread Associations"
+      n: "threadAssociations"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversations_collection_response_public_thread_forward_paging"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/conversations/2026-09/threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "associated_contact_id"
+                or: "associated_contact_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "associated_ticket_id"
+                or: "associated_ticket_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "association"
+                or: "association"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "inbox_id"
+                or: "inbox_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "latest_message_timestamp_after"
+                or: "latest_message_timestamp_after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "property"
+                or: "property"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "thread_status"
+                or: "thread_status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/conversations/2026-09/threads"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "associated_contact_id"
+              "associated_ticket_id"
+              "association"
+              "inbox_id"
+              "latest_message_timestamp_after"
+              "limit"
+              "property"
+              "sort"
+              "thread_status"
+            ]
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "threads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -80,7 +80,7 @@ def _custom_channels_public_channel_account_staging_token_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["custom_channels_public_channel_account_staging_token01", "custom_channels_public_channel_account_staging_token02", "custom_channels_public_channel_account_staging_token03", "2026_0901", "2026_0902", "2026_0903", "channel01"],
+        ["custom_channels_public_channel_account_staging_token01", "custom_channels_public_channel_account_staging_token02", "custom_channels_public_channel_account_staging_token03", "channel01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

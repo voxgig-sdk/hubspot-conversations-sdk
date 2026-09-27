@@ -1,0 +1,420 @@
+# Entity: custom_channels_public_conversations_message
+
+main: kit: entity: custom_channels_public_conversations_message: {
+
+  alias: field: {}
+
+  fields: {
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      sh: "A boolean indicating whether the message is archived."
+      t: "`$BOOLEAN`"
+    }
+    associateWithContactId: {
+      fo: "int64"
+      h: "Associate With Contact Id"
+      n: "associateWithContactId"
+      r: false
+      sh: "The ID of the contact with which this message should be associated."
+      t: "`$INTEGER`"
+    }
+    attachments: {
+      h: "Attachments"
+      n: "attachments"
+      r: true
+      sh: "An array of attachments included with the message, which can be files, locations, contacts, or other supported types."
+      t: "`$ARRAY`"
+      union: {
+        branches: 8
+        count: 1
+        depth: 1
+      }
+    }
+    channelAccountId: {
+      h: "Channel Account Id"
+      n: "channelAccountId"
+      r: true
+      sh: "The identifier of the channel account associated with the message."
+      t: "`$STRING`"
+    }
+    channelId: {
+      h: "Channel Id"
+      n: "channelId"
+      r: true
+      sh: "The identifier of the channel through which the message was sent."
+      t: "`$STRING`"
+    }
+    client: {
+      h: "Client"
+      n: "client"
+      r: true
+      t: "`$OBJECT`"
+    }
+    conversationsThreadId: {
+      h: "Conversations Thread Id"
+      n: "conversationsThreadId"
+      r: true
+      sh: "The identifier for the conversation thread to which this message belongs."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date and time when the message was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    createdBy: {
+      h: "Created By"
+      n: "createdBy"
+      r: true
+      sh: "The identifier of the user or system that created the message."
+      t: "`$STRING`"
+    }
+    direction: {
+      h: "Direction"
+      n: "direction"
+      r: true
+      sh: "The direction of the message, either 'INCOMING' or 'OUTGOING'."
+      t: "`$STRING`"
+    }
+    errorMessage: {
+      h: "Error Message"
+      n: "errorMessage"
+      r: false
+      sh: "A string containing an error message, if applicable."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the message."
+      t: "`$STRING`"
+    }
+    inReplyToId: {
+      h: "In Reply To Id"
+      n: "inReplyToId"
+      r: false
+      sh: "The identifier of the message to which this message is a reply, if applicable."
+      t: "`$STRING`"
+    }
+    integrationIdempotencyId: {
+      h: "Integration Idempotency Id"
+      n: "integrationIdempotencyId"
+      r: false
+      sh: "A unique identifier to ensure idempotency of the message within the integration."
+      t: "`$STRING`"
+    }
+    integrationThreadId: {
+      h: "Integration Thread Id"
+      n: "integrationThreadId"
+      r: false
+      sh: "A unique identifier for the thread within the integration."
+      t: "`$STRING`"
+    }
+    messageDirection: {
+      h: "Message Direction"
+      n: "messageDirection"
+      r: true
+      sh: "The direction of the message, indicating whether it is 'INCOMING' or 'OUTGOING'."
+      t: "`$STRING`"
+    }
+    preResolvedContacts: {
+      h: "Pre Resolved Contacts"
+      n: "preResolvedContacts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    recipients: {
+      h: "Recipients"
+      n: "recipients"
+      r: true
+      sh: "An array of recipients of the message, each containing recipient details."
+      t: "`$ARRAY`"
+    }
+    richText: {
+      h: "Rich Text"
+      n: "richText"
+      r: false
+      sh: "The rich text content of the message, if available."
+      t: "`$STRING`"
+    }
+    senders: {
+      h: "Senders"
+      n: "senders"
+      r: true
+      sh: "An array of senders associated with the message, each containing sender details."
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$OBJECT`"
+    }
+    statusType: {
+      h: "Status Type"
+      n: "statusType"
+      r: true
+      sh: "Valid status are SENT, FAILED, and READ"
+      t: "`$STRING`"
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      r: false
+      sh: "The subject of the message, if applicable."
+      t: "`$STRING`"
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: true
+      sh: "The plain text content of the message."
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: true
+      sh: "The date and time when the message was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    truncationStatus: {
+      h: "Truncation Status"
+      n: "truncationStatus"
+      r: true
+      sh: "Indicates whether the message content is truncated."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of the message, which is always 'MESSAGE'."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when the message was last updated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "custom_channels_public_conversations_message"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /conversations/custom-channels/2026-09/{channelId}/messages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/conversations/custom-channels/2026-09/{channelId}/messages"
+          q: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/custom-channels/2026-09/{channelId}/messages/{messageId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "message_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}"
+          q: {
+            exist: [
+              "channel_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+              messageId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /conversations/custom-channels/2026-09/{channelId}/messages/{messageId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "message_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/conversations/custom-channels/2026-09/{channelId}/messages/{messageId}"
+          q: {
+            exist: [
+              "channel_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+              messageId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

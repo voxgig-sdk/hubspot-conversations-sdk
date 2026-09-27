@@ -137,7 +137,7 @@ func custom_channels_public_conversations_messageBasicSetup(extra map[string]any
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"custom_channels_public_conversations_message01", "custom_channels_public_conversations_message02", "custom_channels_public_conversations_message03", "2026_0901", "2026_0902", "2026_0903", "channel01"},
+		[]any{"custom_channels_public_conversations_message01", "custom_channels_public_conversations_message02", "custom_channels_public_conversations_message03", "channel01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -1,0 +1,124 @@
+# Entity: custom_channels_public_channel_account_staging_token
+
+main: kit: entity: custom_channels_public_channel_account_staging_token: {
+
+  alias: field: {}
+
+  fields: {
+    accountName: {
+      h: "Account Name"
+      n: "accountName"
+      r: false
+      sh: "A string representing the name of the account associated with the staging token."
+      t: "`$STRING`"
+    }
+    deliveryIdentifier: {
+      h: "Delivery Identifier"
+      n: "deliveryIdentifier"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "A string representing the type of delivery identifier."
+      t: "`$STRING`"
+    }
+    value: {
+      h: "Value"
+      n: "value"
+      r: true
+      sh: "A string representing the value associated with the delivery identifier type."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "custom_channels_public_channel_account_staging_token"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /conversations/custom-channels/2026-09/{channelId}/channel-account-staging-tokens/{accountToken}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "account_token"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/conversations/custom-channels/2026-09/{channelId}/channel-account-staging-tokens/{accountToken}"
+          q: {
+            exist: [
+              "channel_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              accountToken: "id"
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "channel-account-staging-tokens"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deliveryIdentifier`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

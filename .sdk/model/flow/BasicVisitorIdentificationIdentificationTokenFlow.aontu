@@ -1,0 +1,18 @@
+# BasicVisitorIdentificationIdentificationTokenFlow
+
+main: kit: flow: BasicVisitorIdentificationIdentificationTokenFlow:
+{
+  entity: "visitor_identification_identification_token",
+  kind: "basic",
+  name: "BasicVisitorIdentificationIdentificationTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "visitor_identification_identification_token_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVisitorIdentificationIdentificationTokenFlow"
+}

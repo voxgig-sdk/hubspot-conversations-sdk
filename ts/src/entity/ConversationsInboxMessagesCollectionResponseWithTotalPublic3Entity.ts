@@ -19,7 +19,6 @@ import type {
   ConversationsInboxMessagesCollectionResponseWithTotalPublic3ListMatch,
 } from '../HubspotConversationsTypes'
 
-// TODO: needs Entity superclass
 class ConversationsInboxMessagesCollectionResponseWithTotalPublic3Entity extends HubspotConversationsEntityBase<ConversationsInboxMessagesCollectionResponseWithTotalPublic3> {
 
   constructor(client: HubspotConversationsSDK, entopts: any) {

@@ -150,7 +150,7 @@ func custom_channels_collection_response_with_total_public_channel2BasicSetup(ex
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"custom_channels_collection_response_with_total_public_channel201", "custom_channels_collection_response_with_total_public_channel202", "custom_channels_collection_response_with_total_public_channel203", "2026_0901", "2026_0902", "2026_0903", "channel01"},
+		[]any{"custom_channels_collection_response_with_total_public_channel201", "custom_channels_collection_response_with_total_public_channel202", "custom_channels_collection_response_with_total_public_channel203", "channel01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

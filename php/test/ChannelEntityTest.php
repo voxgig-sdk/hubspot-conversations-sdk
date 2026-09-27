@@ -64,7 +64,7 @@ function channel_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["channel01", "channel02", "channel03", "2026_0901", "2026_0902", "2026_0903"] as $k) {
+    foreach (["channel01", "channel02", "channel03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

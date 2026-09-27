@@ -1,0 +1,70 @@
+# Entity: channel
+
+main: kit: entity: channel: {
+
+  alias: field: {}
+
+  name: "channel"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /conversations/custom-channels/2026-09/{channelId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/conversations/custom-channels/2026-09/{channelId}"
+          q: {
+            exist: [
+              "channel_id"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

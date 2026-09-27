@@ -1,7 +1,7 @@
 // Typed models for the HubspotConversations SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -23,15 +23,6 @@ type ChannelRemoveMatch struct {
 
 // ConversationsBatchResponsePublicActor is the typed data model for the conversations_batch_response_public_actor entity.
 type ConversationsBatchResponsePublicActor struct {
-	CompletedAt string `json:"completedAt"`
-	Errors *[]any `json:"errors,omitempty"`
-	Inputs []any `json:"inputs"`
-	Links *map[string]any `json:"links,omitempty"`
-	NumErrors *int `json:"numErrors,omitempty"`
-	RequestedAt *string `json:"requestedAt,omitempty"`
-	Results []any `json:"results"`
-	StartedAt string `json:"startedAt"`
-	Status string `json:"status"`
 }
 
 // ConversationsBatchResponsePublicActorCreateData is the typed request payload for ConversationsBatchResponsePublicActor.CreateTyped.
@@ -50,8 +41,6 @@ type ConversationsBatchResponsePublicActorCreateData struct {
 
 // ConversationsCollectionResponsePublicMessageForwardPaging is the typed data model for the conversations_collection_response_public_message_forward_paging entity.
 type ConversationsCollectionResponsePublicMessageForwardPaging struct {
-	Paging *map[string]any `json:"paging,omitempty"`
-	Results []any `json:"results"`
 }
 
 // ConversationsCollectionResponsePublicMessageForwardPagingListMatch is the typed request payload for ConversationsCollectionResponsePublicMessageForwardPaging.ListTyped.
@@ -66,21 +55,6 @@ type ConversationsCollectionResponsePublicMessageForwardPagingListMatch struct {
 
 // ConversationsCollectionResponsePublicThreadForwardPaging is the typed data model for the conversations_collection_response_public_thread_forward_paging entity.
 type ConversationsCollectionResponsePublicThreadForwardPaging struct {
-	Archived bool `json:"archived"`
-	AssignedTo *string `json:"assignedTo,omitempty"`
-	AssociatedContactId string `json:"associatedContactId"`
-	ClosedAt *string `json:"closedAt,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	InboxId string `json:"inboxId"`
-	LatestMessageReceivedTimestamp *string `json:"latestMessageReceivedTimestamp,omitempty"`
-	LatestMessageSentTimestamp *string `json:"latestMessageSentTimestamp,omitempty"`
-	LatestMessageTimestamp *string `json:"latestMessageTimestamp,omitempty"`
-	OriginalChannelAccountId string `json:"originalChannelAccountId"`
-	OriginalChannelId string `json:"originalChannelId"`
-	Spam bool `json:"spam"`
-	Status string `json:"status"`
-	ThreadAssociations *map[string]any `json:"threadAssociations,omitempty"`
 }
 
 // ConversationsCollectionResponsePublicThreadForwardPagingListMatch is the typed request payload for ConversationsCollectionResponsePublicThreadForwardPaging.ListTyped.
@@ -100,8 +74,6 @@ type ConversationsCollectionResponsePublicThreadForwardPagingListMatch struct {
 
 // ConversationsCollectionResponseWithTotalPublicChannel is the typed data model for the conversations_collection_response_with_total_public_channel entity.
 type ConversationsCollectionResponseWithTotalPublicChannel struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
 }
 
 // ConversationsCollectionResponseWithTotalPublicChannelListMatch is the typed request payload for ConversationsCollectionResponseWithTotalPublicChannel.ListTyped.
@@ -114,16 +86,6 @@ type ConversationsCollectionResponseWithTotalPublicChannelListMatch struct {
 
 // ConversationsCollectionResponseWithTotalPublicChannelAccount is the typed data model for the conversations_collection_response_with_total_public_channel_account entity.
 type ConversationsCollectionResponseWithTotalPublicChannelAccount struct {
-	Active bool `json:"active"`
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	Authorized bool `json:"authorized"`
-	ChannelId string `json:"channelId"`
-	CreatedAt string `json:"createdAt"`
-	DeliveryIdentifier map[string]any `json:"deliveryIdentifier"`
-	Id string `json:"id"`
-	InboxId string `json:"inboxId"`
-	Name string `json:"name"`
 }
 
 // ConversationsCollectionResponseWithTotalPublicChannelAccountListMatch is the typed request payload for ConversationsCollectionResponseWithTotalPublicChannelAccount.ListTyped.
@@ -139,13 +101,6 @@ type ConversationsCollectionResponseWithTotalPublicChannelAccountListMatch struc
 
 // ConversationsCollectionResponseWithTotalPublicInbox is the typed data model for the conversations_collection_response_with_total_public_inbox entity.
 type ConversationsCollectionResponseWithTotalPublicInbox struct {
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	UpdatedAt string `json:"updatedAt"`
 }
 
 // ConversationsCollectionResponseWithTotalPublicInboxListMatch is the typed request payload for ConversationsCollectionResponseWithTotalPublicInbox.ListTyped.
@@ -159,13 +114,6 @@ type ConversationsCollectionResponseWithTotalPublicInboxListMatch struct {
 
 // ConversationsInboxMessagesBatchResponsePublicActor is the typed data model for the conversations_inbox_messages_batch_response_public_actor entity.
 type ConversationsInboxMessagesBatchResponsePublicActor struct {
-	CompletedAt string `json:"completedAt"`
-	Inputs []any `json:"inputs"`
-	Links *map[string]any `json:"links,omitempty"`
-	RequestedAt *string `json:"requestedAt,omitempty"`
-	Results []any `json:"results"`
-	StartedAt string `json:"startedAt"`
-	Status string `json:"status"`
 }
 
 // ConversationsInboxMessagesBatchResponsePublicActorCreateData is the typed request payload for ConversationsInboxMessagesBatchResponsePublicActor.CreateTyped.
@@ -182,8 +130,6 @@ type ConversationsInboxMessagesBatchResponsePublicActorCreateData struct {
 
 // ConversationsInboxMessagesCollectionResponsePublicMessage is the typed data model for the conversations_inbox_messages_collection_response_public_message entity.
 type ConversationsInboxMessagesCollectionResponsePublicMessage struct {
-	Paging *map[string]any `json:"paging,omitempty"`
-	Results []any `json:"results"`
 }
 
 // ConversationsInboxMessagesCollectionResponsePublicMessageListMatch is the typed request payload for ConversationsInboxMessagesCollectionResponsePublicMessage.ListTyped.
@@ -198,21 +144,6 @@ type ConversationsInboxMessagesCollectionResponsePublicMessageListMatch struct {
 
 // ConversationsInboxMessagesCollectionResponsePublicThread is the typed data model for the conversations_inbox_messages_collection_response_public_thread entity.
 type ConversationsInboxMessagesCollectionResponsePublicThread struct {
-	Archived bool `json:"archived"`
-	AssignedTo *string `json:"assignedTo,omitempty"`
-	AssociatedContactId string `json:"associatedContactId"`
-	ClosedAt *string `json:"closedAt,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	InboxId string `json:"inboxId"`
-	LatestMessageReceivedTimestamp *string `json:"latestMessageReceivedTimestamp,omitempty"`
-	LatestMessageSentTimestamp *string `json:"latestMessageSentTimestamp,omitempty"`
-	LatestMessageTimestamp *string `json:"latestMessageTimestamp,omitempty"`
-	OriginalChannelAccountId string `json:"originalChannelAccountId"`
-	OriginalChannelId string `json:"originalChannelId"`
-	Spam bool `json:"spam"`
-	Status string `json:"status"`
-	ThreadAssociations *map[string]any `json:"threadAssociations,omitempty"`
 }
 
 // ConversationsInboxMessagesCollectionResponsePublicThreadListMatch is the typed request payload for ConversationsInboxMessagesCollectionResponsePublicThread.ListTyped.
@@ -231,16 +162,6 @@ type ConversationsInboxMessagesCollectionResponsePublicThreadListMatch struct {
 
 // ConversationsInboxMessagesCollectionResponseWithTotalPublic is the typed data model for the conversations_inbox_messages_collection_response_with_total_public entity.
 type ConversationsInboxMessagesCollectionResponseWithTotalPublic struct {
-	Active bool `json:"active"`
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	Authorized bool `json:"authorized"`
-	ChannelId string `json:"channelId"`
-	CreatedAt string `json:"createdAt"`
-	DeliveryIdentifier map[string]any `json:"deliveryIdentifier"`
-	Id string `json:"id"`
-	InboxId string `json:"inboxId"`
-	Name string `json:"name"`
 }
 
 // ConversationsInboxMessagesCollectionResponseWithTotalPublicListMatch is the typed request payload for ConversationsInboxMessagesCollectionResponseWithTotalPublic.ListTyped.
@@ -256,8 +177,6 @@ type ConversationsInboxMessagesCollectionResponseWithTotalPublicListMatch struct
 
 // ConversationsInboxMessagesCollectionResponseWithTotalPublic2 is the typed data model for the conversations_inbox_messages_collection_response_with_total_public2 entity.
 type ConversationsInboxMessagesCollectionResponseWithTotalPublic2 struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
 }
 
 // ConversationsInboxMessagesCollectionResponseWithTotalPublic2ListMatch is the typed request payload for ConversationsInboxMessagesCollectionResponseWithTotalPublic2.ListTyped.
@@ -270,13 +189,6 @@ type ConversationsInboxMessagesCollectionResponseWithTotalPublic2ListMatch struc
 
 // ConversationsInboxMessagesCollectionResponseWithTotalPublic3 is the typed data model for the conversations_inbox_messages_collection_response_with_total_public3 entity.
 type ConversationsInboxMessagesCollectionResponseWithTotalPublic3 struct {
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	UpdatedAt string `json:"updatedAt"`
 }
 
 // ConversationsInboxMessagesCollectionResponseWithTotalPublic3ListMatch is the typed request payload for ConversationsInboxMessagesCollectionResponseWithTotalPublic3.ListTyped.
@@ -290,7 +202,6 @@ type ConversationsInboxMessagesCollectionResponseWithTotalPublic3ListMatch struc
 
 // ConversationsInboxMessagesPublicActor is the typed data model for the conversations_inbox_messages_public_actor entity.
 type ConversationsInboxMessagesPublicActor struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ConversationsInboxMessagesPublicActorLoadMatch is the typed request payload for ConversationsInboxMessagesPublicActor.LoadTyped.
@@ -301,8 +212,6 @@ type ConversationsInboxMessagesPublicActorLoadMatch struct {
 
 // ConversationsInboxMessagesPublicChannel is the typed data model for the conversations_inbox_messages_public_channel entity.
 type ConversationsInboxMessagesPublicChannel struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
 }
 
 // ConversationsInboxMessagesPublicChannelLoadMatch is the typed request payload for ConversationsInboxMessagesPublicChannel.LoadTyped.
@@ -312,9 +221,6 @@ type ConversationsInboxMessagesPublicChannelLoadMatch struct {
 
 // ConversationsInboxMessagesPublicChannelAccount is the typed data model for the conversations_inbox_messages_public_channel_account entity.
 type ConversationsInboxMessagesPublicChannelAccount struct {
-	Id *string `json:"id,omitempty"`
-	Type string `json:"type"`
-	Value string `json:"value"`
 }
 
 // ConversationsInboxMessagesPublicChannelAccountLoadMatch is the typed request payload for ConversationsInboxMessagesPublicChannelAccount.LoadTyped.
@@ -325,13 +231,6 @@ type ConversationsInboxMessagesPublicChannelAccountLoadMatch struct {
 
 // ConversationsInboxMessagesPublicInbox is the typed data model for the conversations_inbox_messages_public_inbox entity.
 type ConversationsInboxMessagesPublicInbox struct {
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	UpdatedAt string `json:"updatedAt"`
 }
 
 // ConversationsInboxMessagesPublicInboxLoadMatch is the typed request payload for ConversationsInboxMessagesPublicInbox.LoadTyped.
@@ -342,7 +241,6 @@ type ConversationsInboxMessagesPublicInboxLoadMatch struct {
 
 // ConversationsInboxMessagesPublicMessage is the typed data model for the conversations_inbox_messages_public_message entity.
 type ConversationsInboxMessagesPublicMessage struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ConversationsInboxMessagesPublicMessageLoadMatch is the typed request payload for ConversationsInboxMessagesPublicMessage.LoadTyped.
@@ -360,8 +258,6 @@ type ConversationsInboxMessagesPublicMessageCreateData struct {
 
 // ConversationsInboxMessagesPublicMessageContent is the typed data model for the conversations_inbox_messages_public_message_content entity.
 type ConversationsInboxMessagesPublicMessageContent struct {
-	RichText *string `json:"richText,omitempty"`
-	Text *string `json:"text,omitempty"`
 }
 
 // ConversationsInboxMessagesPublicMessageContentLoadMatch is the typed request payload for ConversationsInboxMessagesPublicMessageContent.LoadTyped.
@@ -373,10 +269,6 @@ type ConversationsInboxMessagesPublicMessageContentLoadMatch struct {
 
 // ConversationsInboxMessagesPublicThread is the typed data model for the conversations_inbox_messages_public_thread entity.
 type ConversationsInboxMessagesPublicThread struct {
-	Archived *bool `json:"archived,omitempty"`
-	AssociatedTicketId *string `json:"associatedTicketId,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Status *string `json:"status,omitempty"`
 }
 
 // ConversationsInboxMessagesPublicThreadLoadMatch is the typed request payload for ConversationsInboxMessagesPublicThread.LoadTyped.
@@ -397,7 +289,6 @@ type ConversationsInboxMessagesPublicThreadUpdateData struct {
 
 // ConversationsPublicActor is the typed data model for the conversations_public_actor entity.
 type ConversationsPublicActor struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ConversationsPublicActorLoadMatch is the typed request payload for ConversationsPublicActor.LoadTyped.
@@ -408,8 +299,6 @@ type ConversationsPublicActorLoadMatch struct {
 
 // ConversationsPublicChannel is the typed data model for the conversations_public_channel entity.
 type ConversationsPublicChannel struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
 }
 
 // ConversationsPublicChannelLoadMatch is the typed request payload for ConversationsPublicChannel.LoadTyped.
@@ -419,9 +308,6 @@ type ConversationsPublicChannelLoadMatch struct {
 
 // ConversationsPublicChannelAccount is the typed data model for the conversations_public_channel_account entity.
 type ConversationsPublicChannelAccount struct {
-	Id *string `json:"id,omitempty"`
-	Type string `json:"type"`
-	Value string `json:"value"`
 }
 
 // ConversationsPublicChannelAccountLoadMatch is the typed request payload for ConversationsPublicChannelAccount.LoadTyped.
@@ -432,13 +318,6 @@ type ConversationsPublicChannelAccountLoadMatch struct {
 
 // ConversationsPublicInbox is the typed data model for the conversations_public_inbox entity.
 type ConversationsPublicInbox struct {
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	UpdatedAt string `json:"updatedAt"`
 }
 
 // ConversationsPublicInboxLoadMatch is the typed request payload for ConversationsPublicInbox.LoadTyped.
@@ -449,7 +328,6 @@ type ConversationsPublicInboxLoadMatch struct {
 
 // ConversationsPublicMessage is the typed data model for the conversations_public_message entity.
 type ConversationsPublicMessage struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ConversationsPublicMessageLoadMatch is the typed request payload for ConversationsPublicMessage.LoadTyped.
@@ -467,8 +345,6 @@ type ConversationsPublicMessageCreateData struct {
 
 // ConversationsPublicMessageContent is the typed data model for the conversations_public_message_content entity.
 type ConversationsPublicMessageContent struct {
-	RichText *string `json:"richText,omitempty"`
-	Text *string `json:"text,omitempty"`
 }
 
 // ConversationsPublicMessageContentLoadMatch is the typed request payload for ConversationsPublicMessageContent.LoadTyped.
@@ -480,10 +356,6 @@ type ConversationsPublicMessageContentLoadMatch struct {
 
 // ConversationsPublicThread is the typed data model for the conversations_public_thread entity.
 type ConversationsPublicThread struct {
-	Archived *bool `json:"archived,omitempty"`
-	AssociatedTicketId *string `json:"associatedTicketId,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Status *string `json:"status,omitempty"`
 }
 
 // ConversationsPublicThreadLoadMatch is the typed request payload for ConversationsPublicThread.LoadTyped.
@@ -509,14 +381,6 @@ type ConversationsPublicThreadRemoveMatch struct {
 
 // CustomChannelsCollectionResponseWithTotalPublicChannel is the typed data model for the custom_channels_collection_response_with_total_public_channel entity.
 type CustomChannelsCollectionResponseWithTotalPublicChannel struct {
-	Capabilities map[string]any `json:"capabilities"`
-	ChannelAccountConnectionRedirectUrl *string `json:"channelAccountConnectionRedirectUrl,omitempty"`
-	ChannelDescription *string `json:"channelDescription,omitempty"`
-	ChannelLogoUrl *string `json:"channelLogoUrl,omitempty"`
-	CreatedAt string `json:"createdAt"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	WebhookUrl *string `json:"webhookUrl,omitempty"`
 }
 
 // CustomChannelsCollectionResponseWithTotalPublicChannelListMatch is the typed request payload for CustomChannelsCollectionResponseWithTotalPublicChannel.ListTyped.
@@ -529,16 +393,6 @@ type CustomChannelsCollectionResponseWithTotalPublicChannelListMatch struct {
 
 // CustomChannelsCollectionResponseWithTotalPublicChannel2 is the typed data model for the custom_channels_collection_response_with_total_public_channel2 entity.
 type CustomChannelsCollectionResponseWithTotalPublicChannel2 struct {
-	Active bool `json:"active"`
-	Archived bool `json:"archived"`
-	ArchivedAt *string `json:"archivedAt,omitempty"`
-	Authorized bool `json:"authorized"`
-	ChannelId string `json:"channelId"`
-	CreatedAt string `json:"createdAt"`
-	DeliveryIdentifier map[string]any `json:"deliveryIdentifier"`
-	Id string `json:"id"`
-	InboxId string `json:"inboxId"`
-	Name string `json:"name"`
 }
 
 // CustomChannelsCollectionResponseWithTotalPublicChannel2ListMatch is the typed request payload for CustomChannelsCollectionResponseWithTotalPublicChannel2.ListTyped.
@@ -555,13 +409,6 @@ type CustomChannelsCollectionResponseWithTotalPublicChannel2ListMatch struct {
 
 // CustomChannelsPublicChannelAccount is the typed data model for the custom_channels_public_channel_account entity.
 type CustomChannelsPublicChannelAccount struct {
-	Authorized bool `json:"authorized"`
-	DeliveryIdentifier map[string]any `json:"deliveryIdentifier"`
-	Id *string `json:"id,omitempty"`
-	InboxId string `json:"inboxId"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Value string `json:"value"`
 }
 
 // CustomChannelsPublicChannelAccountLoadMatch is the typed request payload for CustomChannelsPublicChannelAccount.LoadTyped.
@@ -597,11 +444,6 @@ type CustomChannelsPublicChannelAccountUpdateData struct {
 
 // CustomChannelsPublicChannelAccountStagingToken is the typed data model for the custom_channels_public_channel_account_staging_token entity.
 type CustomChannelsPublicChannelAccountStagingToken struct {
-	AccountName *string `json:"accountName,omitempty"`
-	DeliveryIdentifier map[string]any `json:"deliveryIdentifier"`
-	Id *string `json:"id,omitempty"`
-	Type string `json:"type"`
-	Value string `json:"value"`
 }
 
 // CustomChannelsPublicChannelAccountStagingTokenUpdateData is the typed request payload for CustomChannelsPublicChannelAccountStagingToken.UpdateTyped.
@@ -616,12 +458,6 @@ type CustomChannelsPublicChannelAccountStagingTokenUpdateData struct {
 
 // CustomChannelsPublicChannelIntegrationChannel is the typed data model for the custom_channels_public_channel_integration_channel entity.
 type CustomChannelsPublicChannelIntegrationChannel struct {
-	Capabilities map[string]any `json:"capabilities"`
-	ChannelAccountConnectionRedirectUrl *string `json:"channelAccountConnectionRedirectUrl,omitempty"`
-	ChannelDescription *string `json:"channelDescription,omitempty"`
-	ChannelLogoUrl *string `json:"channelLogoUrl,omitempty"`
-	Name string `json:"name"`
-	WebhookUrl *string `json:"webhookUrl,omitempty"`
 }
 
 // CustomChannelsPublicChannelIntegrationChannelLoadMatch is the typed request payload for CustomChannelsPublicChannelIntegrationChannel.LoadTyped.
@@ -652,34 +488,6 @@ type CustomChannelsPublicChannelIntegrationChannelUpdateData struct {
 
 // CustomChannelsPublicConversationsMessage is the typed data model for the custom_channels_public_conversations_message entity.
 type CustomChannelsPublicConversationsMessage struct {
-	Archived bool `json:"archived"`
-	AssociateWithContactId *int `json:"associateWithContactId,omitempty"`
-	Attachments []any `json:"attachments"`
-	ChannelAccountId string `json:"channelAccountId"`
-	ChannelId string `json:"channelId"`
-	Client map[string]any `json:"client"`
-	ConversationsThreadId string `json:"conversationsThreadId"`
-	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
-	Direction string `json:"direction"`
-	ErrorMessage *string `json:"errorMessage,omitempty"`
-	Id string `json:"id"`
-	InReplyToId *string `json:"inReplyToId,omitempty"`
-	IntegrationIdempotencyId *string `json:"integrationIdempotencyId,omitempty"`
-	IntegrationThreadId *string `json:"integrationThreadId,omitempty"`
-	MessageDirection string `json:"messageDirection"`
-	PreResolvedContacts map[string]any `json:"preResolvedContacts"`
-	Recipients []any `json:"recipients"`
-	RichText *string `json:"richText,omitempty"`
-	Senders []any `json:"senders"`
-	Status map[string]any `json:"status"`
-	StatusType string `json:"statusType"`
-	Subject *string `json:"subject,omitempty"`
-	Text string `json:"text"`
-	Timestamp string `json:"timestamp"`
-	TruncationStatus string `json:"truncationStatus"`
-	Type string `json:"type"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
 
 // CustomChannelsPublicConversationsMessageLoadMatch is the typed request payload for CustomChannelsPublicConversationsMessage.LoadTyped.
@@ -756,7 +564,6 @@ type CustomChannelsPublicConversationsMessageUpdateData struct {
 
 // PublicThread is the typed data model for the public_thread entity.
 type PublicThread struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // PublicThreadRemoveMatch is the typed request payload for PublicThread.RemoveTyped.
@@ -766,7 +573,6 @@ type PublicThreadRemoveMatch struct {
 
 // Thread is the typed data model for the thread entity.
 type Thread struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ThreadRemoveMatch is the typed request payload for Thread.RemoveTyped.
@@ -776,11 +582,6 @@ type ThreadRemoveMatch struct {
 
 // VisitorIdentificationIdentificationToken is the typed data model for the visitor_identification_identification_token entity.
 type VisitorIdentificationIdentificationToken struct {
-	Email string `json:"email"`
-	FirstName *string `json:"firstName,omitempty"`
-	HsCustomerAgentContext map[string]any `json:"hsCustomerAgentContext"`
-	LastName *string `json:"lastName,omitempty"`
-	Token string `json:"token"`
 }
 
 // VisitorIdentificationIdentificationTokenCreateData is the typed request payload for VisitorIdentificationIdentificationToken.CreateTyped.

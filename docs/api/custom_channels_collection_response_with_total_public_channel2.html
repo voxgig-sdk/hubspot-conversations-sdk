@@ -54,14 +54,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="customchannelscollectionresponsewithtotalpublicchannel2">CustomChannelsCollectionResponseWithTotalPublicChannel2</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="customchannelscollectionresponsewithtotalpublicchannel2">CustomChannelsCollectionResponseWithTotalPublicChannel2</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -82,6 +82,36 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">custom_channels_collection_response_with_total_public_channel2s, err := client.CustomChannelsCollectionResponseWithTotalPublicChannel2(nil).List(map[string]any{&quot;channel_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(custom_channels_collection_response_with_total_public_channel2s)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const custom_channels_collection_response_with_total_public_channel2s = await client.CustomChannelsCollectionResponseWithTotalPublicChannel2().list({ channel_id: 1 })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local custom_channels_collection_response_with_total_public_channel2s, err = client:CustomChannelsCollectionResponseWithTotalPublicChannel2():list({ channel_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$custom_channels_collection_response_with_total_public_channel2s = $client-&gt;CustomChannelsCollectionResponseWithTotalPublicChannel2()-&gt;list([&quot;channel_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">custom_channels_collection_response_with_total_public_channel2s = client.CustomChannelsCollectionResponseWithTotalPublicChannel2().list({&quot;channel_id&quot;: 1})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const custom_channels_collection_response_with_total_public_channel2s = await client.CustomChannelsCollectionResponseWithTotalPublicChannel2().list({ channel_id: 1 })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -133,7 +163,7 @@
 <td><code>deliveryIdentifier</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Delivery Identifier</td>
 </tr>
 <tr>
 <td><code>id</code></td>
@@ -166,7 +196,7 @@
 | <code>after</code> | <code>query</code> | <code>string</code> | No | The paging cursor token of the last successfully read resource will be returned as the <code>paging.next.after</code> JSON property of a paged response containing more results. |
 | <code>archived</code> | <code>query</code> | <code>boolean</code> | No | Whether to return only results that have been archived. |
 | <code>defaultPageLength</code> | <code>query</code> | <code>integer (int32)</code> | No | The default number of results to display per page. |
-| <code>deliveryIdentifierType</code> | <code>query</code> | <code>array of enum: HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE, CHANNEL_SPECIFIC_OPAQUE_ID</code> | No | An array of delivery identifier types to filter the results. Valid values include HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE, and CHANNEL_SPECIFIC_OPAQUE_ID. |
+| <code>deliveryIdentifierType</code> | <code>query</code> | <code>array of enum: HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE, CHANNEL_SPECIFIC_OPAQUE_ID</code> | No | An array of delivery identifier types to filter the results. Valid values include <code>HS_EMAIL_ADDRESS</code>, <code>HS_PHONE_NUMBER</code>, <code>HS_SHORT_CODE</code>, and <code>CHANNEL_SPECIFIC_OPAQUE_ID</code>. |
 | <code>deliveryIdentifierValue</code> | <code>query</code> | <code>array of string</code> | No | An array of delivery identifier values to filter the results. |
 | <code>limit</code> | <code>query</code> | <code>integer (int32)</code> | No | The maximum number of results to display per page. |
 | <code>sort</code> | <code>query</code> | <code>array of string</code> | No | An array specifying the sort order of the results. |</p>
@@ -277,7 +307,7 @@
 <td><code>results[].deliveryIdentifier.type</code></td>
 <td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
 <td>Yes</td>
-<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
 </tr>
 <tr>
 <td><code>results[].deliveryIdentifier.value</code></td>

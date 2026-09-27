@@ -72,7 +72,7 @@ function conversations_public_message_content_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "conversations_public_message_content01", "conversations_public_message_content02", "conversations_public_message_content03", "thread01", "thread02", "thread03", "message01", "message02", "message03" },
+    { "conversations_public_message_content01", "conversations_public_message_content02", "conversations_public_message_content03", "thread01", "thread02", "thread03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

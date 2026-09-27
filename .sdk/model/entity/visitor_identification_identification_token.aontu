@@ -1,0 +1,83 @@
+# Entity: visitor_identification_identification_token
+
+main: kit: entity: visitor_identification_identification_token: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "The email of the visitor that you wish to identify"
+      t: "`$STRING`"
+    }
+    firstName: {
+      h: "First Name"
+      n: "firstName"
+      r: false
+      sh: "The first name of the visitor that you wish to identify."
+      t: "`$STRING`"
+    }
+    hsCustomerAgentContext: {
+      h: "Hs Customer Agent Context"
+      n: "hsCustomerAgentContext"
+      r: true
+      sh: "An object containing additional context about the customer agent."
+      t: "`$OBJECT`"
+    }
+    lastName: {
+      h: "Last Name"
+      n: "lastName"
+      r: false
+      sh: "The last name of the visitor that you wish to identify."
+      t: "`$STRING`"
+    }
+    token: {
+      h: "Token"
+      n: "token"
+      r: true
+      sh: "An identification token that allows the visitor to be treated as a known contact."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "visitor_identification_identification_token"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /visitor-identification/2026-09/tokens/create"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/visitor-identification/2026-09/tokens/create"
+          s: [
+            {
+              lit: "visitor-identification"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "tokens"
+            }
+            {
+              lit: "create"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

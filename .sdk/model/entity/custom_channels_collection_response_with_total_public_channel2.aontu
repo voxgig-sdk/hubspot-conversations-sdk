@@ -1,0 +1,214 @@
+# Entity: custom_channels_collection_response_with_total_public_channel2
+
+main: kit: entity: custom_channels_collection_response_with_total_public_channel2: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: true
+      sh: "A boolean indicating whether the channel account is currently active."
+      t: "`$BOOLEAN`"
+    }
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      sh: "A boolean indicating whether the channel account is archived."
+      t: "`$BOOLEAN`"
+    }
+    archivedAt: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archivedAt"
+      r: false
+      sh: "The date and time when the channel account was archived, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    authorized: {
+      h: "Authorized"
+      n: "authorized"
+      r: true
+      sh: "A boolean indicating whether the channel account is authorized."
+      t: "`$BOOLEAN`"
+    }
+    channelId: {
+      h: "Channel Id"
+      n: "channelId"
+      r: true
+      sh: "The unique identifier for the channel to which this account belongs, represented as a string."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "The date and time when the channel account was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    deliveryIdentifier: {
+      h: "Delivery Identifier"
+      n: "deliveryIdentifier"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for this channel account, represented as a string."
+      t: "`$STRING`"
+    }
+    inboxId: {
+      h: "Inbox Id"
+      n: "inboxId"
+      r: true
+      sh: "The unique identifier for the inbox associated with this channel account, represented as a string."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the channel account, represented as a string."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "custom_channels_collection_response_with_total_public_channel2"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/custom-channels/2026-09/{channelId}/channel-accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "channel_id"
+                or: "channel_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "default_page_length"
+                or: "default_page_length"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "delivery_identifier_type"
+                or: "delivery_identifier_type"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "delivery_identifier_value"
+                or: "delivery_identifier_value"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/custom-channels/2026-09/{channelId}/channel-accounts"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "channel_id"
+              "default_page_length"
+              "delivery_identifier_type"
+              "delivery_identifier_value"
+              "limit"
+              "sort"
+            ]
+          }
+          r: {
+            param: {
+              channelId: "channel_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "custom-channels"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              var: "channel_id"
+            }
+            {
+              lit: "channel-accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

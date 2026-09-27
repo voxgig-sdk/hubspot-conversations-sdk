@@ -1,0 +1,137 @@
+# Entity: conversations_inbox_messages_collection_response_public_message
+
+main: kit: entity: conversations_inbox_messages_collection_response_public_message: {
+
+  alias: field: {}
+
+  fields: {
+    paging: {
+      h: "Paging"
+      n: "paging"
+      r: false
+      t: "`$OBJECT`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 8
+        count: 5
+        depth: 12
+      }
+    }
+  }
+
+  name: "conversations_inbox_messages_collection_response_public_message"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /conversations/v3/conversations/threads/{threadId}/messages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "thread_id"
+                or: "thread_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "property"
+                or: "property"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/conversations/v3/conversations/threads/{threadId}/messages"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "limit"
+              "property"
+              "sort"
+              "thread_id"
+            ]
+          }
+          r: {
+            param: {
+              threadId: "thread_id"
+            }
+          }
+          s: [
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "thread_id"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.thread")]
+  ]
+
+}

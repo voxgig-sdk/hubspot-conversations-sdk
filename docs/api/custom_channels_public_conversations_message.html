@@ -56,14 +56,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="customchannelspublicconversationsmessage">CustomChannelsPublicConversationsMessage</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="customchannelspublicconversationsmessage">CustomChannelsPublicConversationsMessage</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -96,6 +96,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">custom_channels_public_conversations_message, err := client.CustomChannelsPublicConversationsMessage(nil).Load(map[string]any{&quot;channel_id&quot;: 1, &quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(custom_channels_public_conversations_message)
+created, err := client.CustomChannelsPublicConversationsMessage(nil).Create(map[string]any{&quot;channel_id&quot;: 1, &quot;archived&quot;: true, &quot;attachments&quot;: []any{}, &quot;channelAccountId&quot;: &quot;example&quot;, &quot;channelId&quot;: &quot;example&quot;, &quot;client&quot;: map[string]any{}, &quot;conversationsThreadId&quot;: &quot;example&quot;, &quot;createdAt&quot;: &quot;example&quot;, &quot;createdBy&quot;: &quot;example&quot;, &quot;direction&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;messageDirection&quot;: &quot;example&quot;, &quot;preResolvedContacts&quot;: map[string]any{}, &quot;recipients&quot;: []any{}, &quot;senders&quot;: []any{}, &quot;status&quot;: map[string]any{}, &quot;statusType&quot;: &quot;example&quot;, &quot;text&quot;: &quot;example&quot;, &quot;timestamp&quot;: &quot;example&quot;, &quot;truncationStatus&quot;: &quot;example&quot;, &quot;type&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.CustomChannelsPublicConversationsMessage(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;channel_id&quot;: 1, &quot;archived&quot;: true}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const custom_channels_public_conversations_message = await client.CustomChannelsPublicConversationsMessage().load({ channel_id: 1, id: &quot;example_id&quot; })
+const created = await client.CustomChannelsPublicConversationsMessage().create({ channel_id: 1, archived: true, attachments: [], channelAccountId: &quot;example&quot;, channelId: &quot;example&quot;, client: {}, conversationsThreadId: &quot;example&quot;, createdAt: &quot;example&quot;, createdBy: &quot;example&quot;, direction: &quot;example&quot;, id: &quot;example&quot;, messageDirection: &quot;example&quot;, preResolvedContacts: {}, recipients: [], senders: [], status: {}, statusType: &quot;example&quot;, text: &quot;example&quot;, timestamp: &quot;example&quot;, truncationStatus: &quot;example&quot;, type: &quot;example&quot; })
+const updated = await client.CustomChannelsPublicConversationsMessage().update({ id: &quot;example_id&quot;, channel_id: 1, archived: true })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local custom_channels_public_conversations_message, err = client:CustomChannelsPublicConversationsMessage():load({ channel_id = 1, id = &quot;example_id&quot; })
+local created, err = client:CustomChannelsPublicConversationsMessage():create({ channel_id = 1, archived = true, attachments = {}, channelAccountId = &quot;example&quot;, channelId = &quot;example&quot;, client = {}, conversationsThreadId = &quot;example&quot;, createdAt = &quot;example&quot;, createdBy = &quot;example&quot;, direction = &quot;example&quot;, id = &quot;example&quot;, messageDirection = &quot;example&quot;, preResolvedContacts = {}, recipients = {}, senders = {}, status = {}, statusType = &quot;example&quot;, text = &quot;example&quot;, timestamp = &quot;example&quot;, truncationStatus = &quot;example&quot;, type = &quot;example&quot; })
+local updated, err = client:CustomChannelsPublicConversationsMessage():update({ id = &quot;example_id&quot;, channel_id = 1, archived = true })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$custom_channels_public_conversations_message = $client-&gt;CustomChannelsPublicConversationsMessage()-&gt;load([&quot;channel_id&quot; =&gt; 1, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;CustomChannelsPublicConversationsMessage()-&gt;create([&quot;channel_id&quot; =&gt; 1, &quot;archived&quot; =&gt; true, &quot;attachments&quot; =&gt; [], &quot;channelAccountId&quot; =&gt; &quot;example&quot;, &quot;channelId&quot; =&gt; &quot;example&quot;, &quot;client&quot; =&gt; [], &quot;conversationsThreadId&quot; =&gt; &quot;example&quot;, &quot;createdAt&quot; =&gt; &quot;example&quot;, &quot;createdBy&quot; =&gt; &quot;example&quot;, &quot;direction&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;messageDirection&quot; =&gt; &quot;example&quot;, &quot;preResolvedContacts&quot; =&gt; [], &quot;recipients&quot; =&gt; [], &quot;senders&quot; =&gt; [], &quot;status&quot; =&gt; [], &quot;statusType&quot; =&gt; &quot;example&quot;, &quot;text&quot; =&gt; &quot;example&quot;, &quot;timestamp&quot; =&gt; &quot;example&quot;, &quot;truncationStatus&quot; =&gt; &quot;example&quot;, &quot;type&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;CustomChannelsPublicConversationsMessage()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;channel_id&quot; =&gt; 1, &quot;archived&quot; =&gt; true]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">custom_channels_public_conversations_message = client.CustomChannelsPublicConversationsMessage().load({&quot;channel_id&quot;: 1, &quot;id&quot;: &quot;example_id&quot;})
+created = client.CustomChannelsPublicConversationsMessage().create({ &quot;channel_id&quot;: 1, &quot;archived&quot;: True, &quot;attachments&quot;: [], &quot;channelAccountId&quot;: &quot;example&quot;, &quot;channelId&quot;: &quot;example&quot;, &quot;client&quot;: {}, &quot;conversationsThreadId&quot;: &quot;example&quot;, &quot;createdAt&quot;: &quot;example&quot;, &quot;createdBy&quot;: &quot;example&quot;, &quot;direction&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;messageDirection&quot;: &quot;example&quot;, &quot;preResolvedContacts&quot;: {}, &quot;recipients&quot;: [], &quot;senders&quot;: [], &quot;status&quot;: {}, &quot;statusType&quot;: &quot;example&quot;, &quot;text&quot;: &quot;example&quot;, &quot;timestamp&quot;: &quot;example&quot;, &quot;truncationStatus&quot;: &quot;example&quot;, &quot;type&quot;: &quot;example&quot; })
+updated = client.CustomChannelsPublicConversationsMessage().update({&quot;id&quot;: &quot;example_id&quot;, &quot;channel_id&quot;: 1, &quot;archived&quot;: True})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const custom_channels_public_conversations_message = await client.CustomChannelsPublicConversationsMessage().load({ channel_id: 1, id: &quot;example_id&quot; })
+const created = await client.CustomChannelsPublicConversationsMessage().create({ channel_id: 1, archived: true, attachments: [], channelAccountId: &quot;example&quot;, channelId: &quot;example&quot;, client: {}, conversationsThreadId: &quot;example&quot;, createdAt: &quot;example&quot;, createdBy: &quot;example&quot;, direction: &quot;example&quot;, id: &quot;example&quot;, messageDirection: &quot;example&quot;, preResolvedContacts: {}, recipients: [], senders: [], status: {}, statusType: &quot;example&quot;, text: &quot;example&quot;, timestamp: &quot;example&quot;, truncationStatus: &quot;example&quot;, type: &quot;example&quot; })
+const updated = await client.CustomChannelsPublicConversationsMessage().update({ id: &quot;example_id&quot;, channel_id: 1, archived: true })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -141,7 +191,7 @@
 <td><code>client</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Client</td>
 </tr>
 <tr>
 <td><code>conversationsThreadId</code></td>
@@ -207,7 +257,7 @@
 <td><code>preResolvedContacts</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Pre Resolved Contacts</td>
 </tr>
 <tr>
 <td><code>recipients</code></td>
@@ -231,7 +281,7 @@
 <td><code>status</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Status</td>
 </tr>
 <tr>
 <td><code>statusType</code></td>
@@ -379,7 +429,7 @@
 <td><code>recipients[].deliveryIdentifier.type</code></td>
 <td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
 <td>Yes</td>
-<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
 </tr>
 <tr>
 <td><code>recipients[].deliveryIdentifier.value</code></td>
@@ -412,10 +462,34 @@
 <td>An array of participants representing the senders of the message.</td>
 </tr>
 <tr>
-<td><code>senders[].$ref</code></td>
-<td><code>any</code></td>
-<td>No</td>
+<td><code>senders[].deliveryIdentifier</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
 <td></td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
+</tr>
+<tr>
+<td><code>senders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the participant. It is a string that can be used to identify the participant within the channel.</td>
+</tr>
+<tr>
+<td><code>senders[].senderActorId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the unique identifier of the sender actor. This is used to distinguish the sender within the channel integration.</td>
 </tr>
 <tr>
 <td><code>text</code></td>
@@ -544,7 +618,7 @@
 <td><code>recipients[].deliveryIdentifier.type</code></td>
 <td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
 <td>Yes</td>
-<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
 </tr>
 <tr>
 <td><code>recipients[].deliveryIdentifier.value</code></td>
@@ -589,10 +663,16 @@
 <td></td>
 </tr>
 <tr>
-<td><code>senders[].deliveryIdentifier.$ref</code></td>
-<td><code>any</code></td>
-<td>No</td>
-<td></td>
+<td><code>senders[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
 </tr>
 <tr>
 <td><code>senders[].name</code></td>
@@ -652,7 +732,7 @@
 <td><code>truncationStatus</code></td>
 <td><code>enum: NOT_TRUNCATED, TRUNCATED, TRUNCATED_TO_MOST_RECENT_REPLY</code></td>
 <td>Yes</td>
-<td>Indicates whether the message content is truncated. Valid values are 'NOT_TRUNCATED', 'TRUNCATED_TO_MOST_RECENT_REPLY', and 'TRUNCATED'.</td>
+<td>Indicates whether the message content is truncated. Valid values are '<code>NOT_TRUNCATED</code>', '<code>TRUNCATED_TO_MOST_RECENT_REPLY</code>', and 'TRUNCATED'.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -876,7 +956,7 @@
 <td><code>recipients[].deliveryIdentifier.type</code></td>
 <td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
 <td>Yes</td>
-<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
 </tr>
 <tr>
 <td><code>recipients[].deliveryIdentifier.value</code></td>
@@ -921,10 +1001,16 @@
 <td></td>
 </tr>
 <tr>
-<td><code>senders[].deliveryIdentifier.$ref</code></td>
-<td><code>any</code></td>
-<td>No</td>
-<td></td>
+<td><code>senders[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
 </tr>
 <tr>
 <td><code>senders[].name</code></td>
@@ -984,7 +1070,7 @@
 <td><code>truncationStatus</code></td>
 <td><code>enum: NOT_TRUNCATED, TRUNCATED, TRUNCATED_TO_MOST_RECENT_REPLY</code></td>
 <td>Yes</td>
-<td>Indicates whether the message content is truncated. Valid values are 'NOT_TRUNCATED', 'TRUNCATED_TO_MOST_RECENT_REPLY', and 'TRUNCATED'.</td>
+<td>Indicates whether the message content is truncated. Valid values are '<code>NOT_TRUNCATED</code>', '<code>TRUNCATED_TO_MOST_RECENT_REPLY</code>', and 'TRUNCATED'.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -1234,7 +1320,7 @@
 <td><code>recipients[].deliveryIdentifier.type</code></td>
 <td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
 <td>Yes</td>
-<td>A string representing the type of delivery identifier. Valid values include 'HS_EMAIL_ADDRESS', 'HS_PHONE_NUMBER', 'HS_SHORT_CODE', and 'CHANNEL_SPECIFIC_OPAQUE_ID'.</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
 </tr>
 <tr>
 <td><code>recipients[].deliveryIdentifier.value</code></td>
@@ -1279,10 +1365,16 @@
 <td></td>
 </tr>
 <tr>
-<td><code>senders[].deliveryIdentifier.$ref</code></td>
-<td><code>any</code></td>
-<td>No</td>
-<td></td>
+<td><code>senders[].deliveryIdentifier.type</code></td>
+<td><code>enum: CHANNEL_SPECIFIC_OPAQUE_ID, HS_EMAIL_ADDRESS, HS_PHONE_NUMBER, HS_SHORT_CODE</code></td>
+<td>Yes</td>
+<td>A string representing the type of delivery identifier. Valid values include '<code>HS_EMAIL_ADDRESS</code>', '<code>HS_PHONE_NUMBER</code>', '<code>HS_SHORT_CODE</code>', and '<code>CHANNEL_SPECIFIC_OPAQUE_ID</code>'.</td>
+</tr>
+<tr>
+<td><code>senders[].deliveryIdentifier.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the value associated with the delivery identifier type.</td>
 </tr>
 <tr>
 <td><code>senders[].name</code></td>
@@ -1342,7 +1434,7 @@
 <td><code>truncationStatus</code></td>
 <td><code>enum: NOT_TRUNCATED, TRUNCATED, TRUNCATED_TO_MOST_RECENT_REPLY</code></td>
 <td>Yes</td>
-<td>Indicates whether the message content is truncated. Valid values are 'NOT_TRUNCATED', 'TRUNCATED_TO_MOST_RECENT_REPLY', and 'TRUNCATED'.</td>
+<td>Indicates whether the message content is truncated. Valid values are '<code>NOT_TRUNCATED</code>', '<code>TRUNCATED_TO_MOST_RECENT_REPLY</code>', and 'TRUNCATED'.</td>
 </tr>
 <tr>
 <td><code>type</code></td>

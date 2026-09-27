@@ -19,7 +19,6 @@ import type {
   ConversationsCollectionResponsePublicMessageForwardPagingListMatch,
 } from '../HubspotConversationsTypes'
 
-// TODO: needs Entity superclass
 class ConversationsCollectionResponsePublicMessageForwardPagingEntity extends HubspotConversationsEntityBase<ConversationsCollectionResponsePublicMessageForwardPaging> {
 
   constructor(client: HubspotConversationsSDK, entopts: any) {

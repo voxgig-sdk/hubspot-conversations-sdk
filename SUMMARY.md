@@ -24,6 +24,12 @@ Results: successful operation.
 
 SDK operations: `create`.
 
+Key fields to recognise:
+
+- `errors`: The detailed error objects.
+- `links`: URLs linking to documentation or resources associated with the error.
+- `status`: The HTTP status code associated with the error.
+
 ### [ConversationsCollectionResponsePublicMessageForwardPaging](docs/api/conversations_collection_response_public_message_forward_paging.html)
 
 Results: successful operation.
@@ -87,6 +93,11 @@ Key fields to recognise:
 Results: successful operation; multiple statuses.
 
 SDK operations: `create`.
+
+Key fields to recognise:
+
+- `links`: URLs linking to documentation or resources associated with the error.
+- `status`: The HTTP status code associated with the error.
 
 ### [ConversationsInboxMessagesCollectionResponsePublicMessage](docs/api/conversations_inbox_messages_collection_response_public_message.html)
 
@@ -171,6 +182,7 @@ SDK operations: `load`.
 
 Key fields to recognise:
 
+- `id`: The ID of the channel account.
 - `type`: The type of identifier. HS_EMAIL_ADDRESS for email addresses; HS_PHONE_NUMBER for a phone number; CHANNEL_SPECIFIC_OPAQUE_ID for channels that use their own proprietary identifiers, like Facebook Messenger or LiveChat.
 - `value`: A string representation of the PublicDeliveryIdentifier, either an E.164 phone number, an email address, or a channel-specific identifier.
 
@@ -208,6 +220,7 @@ SDK operations: `load`, `update`.
 Key fields to recognise:
 
 - `archived`: Whether this thread is archived.
+- `id`: The unique ID of the thread.
 - `status`: The thread&#39;s status: `OPEN` or `CLOSED`.
 
 ### [ConversationsPublicActor](docs/api/conversations_public_actor.html)
@@ -235,6 +248,7 @@ SDK operations: `load`.
 
 Key fields to recognise:
 
+- `id`: The ID of the channel account.
 - `type`: The type of identifier. HS_EMAIL_ADDRESS for email addresses; HS_PHONE_NUMBER for a phone number; CHANNEL_SPECIFIC_OPAQUE_ID for channels that use their own proprietary identifiers, like Facebook Messenger or LiveChat.
 - `value`: A string representation of the PublicDeliveryIdentifier, either an E.164 phone number, an email address, or a channel-specific identifier.
 
@@ -272,6 +286,7 @@ SDK operations: `load`, `remove`, `update`.
 Key fields to recognise:
 
 - `archived`: Whether this thread is archived.
+- `id`: The unique ID of the thread.
 - `status`: The thread&#39;s status: `OPEN` or `CLOSED`.
 
 ### [CustomChannelsCollectionResponseWithTotalPublicChannel](docs/api/custom_channels_collection_response_with_total_public_channel.html)
@@ -311,10 +326,10 @@ SDK operations: `create`, `load`, `update`.
 Key fields to recognise:
 
 - `authorized`: A boolean indicating whether the channel account is authorized.
+- `id`: The unique identifier for this channel account, represented as a string.
 - `inboxId`: The unique identifier for the inbox associated with this channel account, represented as a string.
 - `name`: The name of the channel account, represented as a string.
 - `type`: A string representing the type of delivery identifier. Valid values include &#39;HS_EMAIL_ADDRESS&#39;, &#39;HS_PHONE_NUMBER&#39;, &#39;HS_SHORT_CODE&#39;, and &#39;CHANNEL_SPECIFIC_OPAQUE_ID&#39;.
-- `value`: A string representing the value associated with the delivery identifier type.
 
 ### [CustomChannelsPublicChannelAccountStagingToken](docs/api/custom_channels_public_channel_account_staging_token.html)
 

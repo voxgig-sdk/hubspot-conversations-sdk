@@ -137,7 +137,7 @@ func custom_channels_public_channel_accountBasicSetup(extra map[string]any) *ent
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"custom_channels_public_channel_account01", "custom_channels_public_channel_account02", "custom_channels_public_channel_account03", "2026_0901", "2026_0902", "2026_0903", "channel01"},
+		[]any{"custom_channels_public_channel_account01", "custom_channels_public_channel_account02", "custom_channels_public_channel_account03", "channel01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
